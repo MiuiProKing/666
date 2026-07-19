@@ -1,0 +1,14 @@
+{
+  "appId": "com.luckyjet.analys.exact",
+  "appName": "LuckyJet Exact",
+  "webDir": "www",
+  "server": {
+    "iosScheme": "capacitor",
+    "hostname": "localhost"
+  },
+  "ios": {
+    "contentInset": "always",
+    "preferredContentMode": "mobile",
+    "backgroundColor": "#0f1525"
+  }
+}
