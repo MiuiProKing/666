@@ -1,0 +1,77 @@
+name: Build Google Camera Tigr IPA
+
+on:
+  push:
+    branches:
+      - codex-ios-build-20260719
+    paths:
+      - codex-tigr-camera/**
+      - .github/workflows/codex-tigr-camera-build.yml
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate camera artwork
+        run: |
+          set -euo pipefail
+          cd "$GITHUB_WORKSPACE/codex-tigr-camera"
+          python3 - <<'PY'
+          import math
+          def write_ppm(path, size):
+              with open(path, 'wb') as f:
+                  f.write(f'P6\n{size} {size}\n255\n'.encode())
+                  for y in range(size):
+                      for x in range(size):
+                          dx=(x-size/2)/(size/2); dy=(y-size/2)/(size/2)
+                          r=math.hypot(dx,dy)
+                          if 0.18 < r < 0.42:
+                              c=(255,188,38)
+                          elif r <= 0.18:
+                              c=(18,22,30)
+                          else:
+                              glow=max(0,1-r)
+                              c=(int(9+28*glow),int(12+18*glow),int(20+44*glow))
+                          f.write(bytes(c))
+          write_ppm('/tmp/tigr-icon.ppm',1024)
+          write_ppm('/tmp/tigr-splash.ppm',1366)
+          PY
+          sips -s format png /tmp/tigr-icon.ppm --out App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png >/dev/null
+          sips -s format png /tmp/tigr-splash.ppm --out App/Assets.xcassets/Splash.imageset/splash-2732x2732.png >/dev/null
+          cp App/Assets.xcassets/Splash.imageset/splash-2732x2732.png App/Assets.xcassets/Splash.imageset/splash-2732x2732-1.png
+          cp App/Assets.xcassets/Splash.imageset/splash-2732x2732.png App/Assets.xcassets/Splash.imageset/splash-2732x2732-2.png
+      - name: Build unsigned app
+        run: |
+          set -euo pipefail
+          cd "$GITHUB_WORKSPACE/codex-tigr-camera"
+          xcodebuild \
+            -project App.xcodeproj \
+            -scheme App \
+            -configuration Release \
+            -sdk iphoneos \
+            -derivedDataPath build \
+            CODE_SIGN_STYLE=Manual \
+            CODE_SIGN_IDENTITY="" \
+            DEVELOPMENT_TEAM="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO \
+            clean build
+      - name: Package unsigned IPA
+        run: |
+          set -euo pipefail
+          cd "$GITHUB_WORKSPACE/codex-tigr-camera"
+          APP_PATH="build/Build/Products/Release-iphoneos/Google Camera Tigr.app"
+          test -d "$APP_PATH"
+          rm -rf Payload
+          mkdir Payload
+          cp -R "$APP_PATH" "Payload/GoogleCameraTigr.app"
+          /usr/bin/zip -qry Google-Camera-Tigr-unsigned.ipa Payload
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Google-Camera-Tigr-unsigned-ipa
+          path: codex-tigr-camera/Google-Camera-Tigr-unsigned.ipa
+          if-no-files-found: error
+          retention-days: 7
