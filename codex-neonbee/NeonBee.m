@@ -18,6 +18,92 @@ static NBHookedClass NBHooks[32];
 static NSUInteger NBHookCount = 0;
 static IMP NBOriginalCellForRow = NULL;
 static IMP NBOriginalDidSelect = NULL;
+static IMP NBOriginalSetBackgroundColor = NULL;
+static IMP NBOriginalSetTextColor = NULL;
+
+static BOOL NBColorComponents(UIColor *color, CGFloat *red, CGFloat *green, CGFloat *blue, CGFloat *alpha) {
+    if (!color) return NO;
+    if ([color getRed:red green:green blue:blue alpha:alpha]) return YES;
+    CGFloat white = 0.0;
+    if ([color getWhite:&white alpha:alpha]) {
+        *red = *green = *blue = white;
+        return YES;
+    }
+    return NO;
+}
+
+static UIColor *NBMappedBackground(UIView *view, UIColor *color) {
+    CGFloat r, g, b, a;
+    if (!NBColorComponents(color, &r, &g, &b, &a) || a < 0.08) return color;
+    CGFloat maximum = MAX(r, MAX(g, b));
+    CGFloat minimum = MIN(r, MIN(g, b));
+    CGFloat luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    CGFloat saturation = maximum > 0.001 ? (maximum - minimum) / maximum : 0.0;
+    if (luminance > 0.78 && saturation < 0.16) {
+        if ([view isKindOfClass:UIButton.class] || [view isKindOfClass:UITableViewCell.class]) return NBPanel();
+        return NBBlack();
+    }
+    return color;
+}
+
+static void NBSetBackgroundColor(id self, SEL _cmd, UIColor *color) {
+    UIColor *mapped = NBMappedBackground((UIView *)self, color);
+    ((void (*)(id, SEL, UIColor *))NBOriginalSetBackgroundColor)(self, _cmd, mapped);
+}
+
+static UIColor *NBMappedText(UIColor *color) {
+    CGFloat r, g, b, a;
+    if (!NBColorComponents(color, &r, &g, &b, &a) || a < 0.08) return color;
+    CGFloat maximum = MAX(r, MAX(g, b));
+    CGFloat minimum = MIN(r, MIN(g, b));
+    CGFloat luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    CGFloat saturation = maximum > 0.001 ? (maximum - minimum) / maximum : 0.0;
+    if (saturation < 0.16 && luminance < 0.28) return [UIColor colorWithWhite:0.97 alpha:a];
+    if (saturation < 0.16 && luminance >= 0.28 && luminance < 0.72) return [NBSecondary() colorWithAlphaComponent:a];
+    return color;
+}
+
+static void NBSetTextColor(id self, SEL _cmd, UIColor *color) {
+    ((void (*)(id, SEL, UIColor *))NBOriginalSetTextColor)(self, _cmd, NBMappedText(color));
+}
+
+static void NBHookGlobalAMOLED(void) {
+    Method backgroundMethod = class_getInstanceMethod(UIView.class, @selector(setBackgroundColor:));
+    if (backgroundMethod) {
+        NBOriginalSetBackgroundColor = method_getImplementation(backgroundMethod);
+        method_setImplementation(backgroundMethod, (IMP)NBSetBackgroundColor);
+    }
+    Method textMethod = class_getInstanceMethod(UILabel.class, @selector(setTextColor:));
+    if (textMethod) {
+        NBOriginalSetTextColor = method_getImplementation(textMethod);
+        method_setImplementation(textMethod, (IMP)NBSetTextColor);
+    }
+
+    UINavigationBarAppearance *navigation = [UINavigationBarAppearance new];
+    [navigation configureWithOpaqueBackground];
+    navigation.backgroundColor = NBBlack();
+    navigation.shadowColor = [NBPurple() colorWithAlphaComponent:0.30];
+    navigation.titleTextAttributes = @{NSForegroundColorAttributeName: UIColor.whiteColor};
+    UINavigationBar *navigationBar = UINavigationBar.appearance;
+    navigationBar.standardAppearance = navigation;
+    navigationBar.scrollEdgeAppearance = navigation;
+    navigationBar.compactAppearance = navigation;
+    navigationBar.tintColor = NBCyan();
+
+    UITabBarAppearance *tabs = [UITabBarAppearance new];
+    [tabs configureWithOpaqueBackground];
+    tabs.backgroundColor = NBBlack();
+    tabs.shadowColor = [NBPurple() colorWithAlphaComponent:0.30];
+    UITabBar *tabBar = UITabBar.appearance;
+    tabBar.standardAppearance = tabs;
+    if (@available(iOS 15.0, *)) tabBar.scrollEdgeAppearance = tabs;
+    tabBar.tintColor = NBPurple();
+    tabBar.unselectedItemTintColor = [UIColor colorWithWhite:0.55 alpha:1.0];
+
+    UITableView.appearance.backgroundColor = NBBlack();
+    UITableView.appearance.separatorColor = [NBPurple() colorWithAlphaComponent:0.20];
+    UICollectionView.appearance.backgroundColor = NBBlack();
+}
 
 static BOOL NBIsSettingsController(UIViewController *controller) {
     NSString *name = NSStringFromClass(controller.class);
@@ -43,11 +129,11 @@ static void NBApplyOwnerCard(UITableViewCell *cell) {
         return ay < by ? NSOrderedAscending : (ay > by ? NSOrderedDescending : NSOrderedSame);
     }];
     if (labels.count > 0) {
-        labels[0].text = @"Р’СЏС‡РµСЃР»Р°РІ";
+        labels[0].text = @"\u0412\u044f\u0447\u0435\u0441\u043b\u0430\u0432";
         labels[0].textColor = UIColor.whiteColor;
     }
     if (labels.count > 1) {
-        labels[1].text = @"Instagram @vyacheslavvya  вЂў  Telegram @VOXFF3";
+        labels[1].text = @"Instagram @vyacheslavvya  |  Telegram @VOXFF3";
         labels[1].textColor = NBCyan();
         labels[1].adjustsFontSizeToFitWidth = YES;
         labels[1].minimumScaleFactor = 0.72;
@@ -61,8 +147,8 @@ static void NBApplyOwnerCard(UITableViewCell *cell) {
             break;
         }
     }
-    cell.accessibilityLabel = @"РљРѕРЅС‚Р°РєС‚С‹ Р’СЏС‡РµСЃР»Р°РІР°";
-    cell.accessibilityHint = @"РћС‚РєСЂС‹РІР°РµС‚ Instagram РёР»Рё Telegram";
+    cell.accessibilityLabel = @"\u041a\u043e\u043d\u0442\u0430\u043a\u0442\u044b \u0412\u044f\u0447\u0435\u0441\u043b\u0430\u0432\u0430";
+    cell.accessibilityHint = @"Instagram / Telegram";
 }
 
 static void NBThemeView(UIView *view) {
@@ -154,13 +240,13 @@ static IMP NBOriginalForObject(id object, BOOL layout) {
 
 static void NBViewDidAppear(id self, SEL _cmd, BOOL animated) {
     IMP original = NBOriginalForObject(self, NO);
-    if (original) ((void (*)(id, SEL, BOOL))original)(self, _cmd, animated);
+    if (original && original != (IMP)NBViewDidAppear) ((void (*)(id, SEL, BOOL))original)(self, _cmd, animated);
     NBApplyTheme((UIViewController *)self);
 }
 
 static void NBViewDidLayoutSubviews(id self, SEL _cmd) {
     IMP original = NBOriginalForObject(self, YES);
-    if (original) ((void (*)(id, SEL))original)(self, _cmd);
+    if (original && original != (IMP)NBViewDidLayoutSubviews) ((void (*)(id, SEL))original)(self, _cmd);
     NBApplyTheme((UIViewController *)self);
 }
 
@@ -187,8 +273,8 @@ static void NBOpenWebURL(NSString *urlString) {
 
 static void NBShowContacts(UIViewController *controller, UITableView *table, NSIndexPath *path) {
     [table deselectRowAtIndexPath:path animated:YES];
-    UIAlertController *sheet = [UIAlertController alertControllerWithTitle:@"РљРѕРЅС‚Р°РєС‚С‹ Р’СЏС‡РµСЃР»Р°РІР°"
-                                                                    message:@"Р’С‹Р±РµСЂРёС‚Рµ, РєСѓРґР° РїРµСЂРµР№С‚Рё"
+    UIAlertController *sheet = [UIAlertController alertControllerWithTitle:@"\u041a\u043e\u043d\u0442\u0430\u043a\u0442\u044b \u0412\u044f\u0447\u0435\u0441\u043b\u0430\u0432\u0430"
+                                                                    message:@"Instagram / Telegram"
                                                              preferredStyle:UIAlertControllerStyleActionSheet];
     [sheet addAction:[UIAlertAction actionWithTitle:@"Instagram  @vyacheslavvya" style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction *action) {
         NBOpenWebURL(@"https://www.instagram.com/vyacheslavvya/");
@@ -196,7 +282,7 @@ static void NBShowContacts(UIViewController *controller, UITableView *table, NSI
     [sheet addAction:[UIAlertAction actionWithTitle:@"Telegram  @VOXFF3" style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction *action) {
         NBOpenWebURL(@"https://t.me/VOXFF3");
     }]];
-    [sheet addAction:[UIAlertAction actionWithTitle:@"РћС‚РјРµРЅР°" style:UIAlertActionStyleCancel handler:nil]];
+    [sheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
     UIPopoverPresentationController *popover = sheet.popoverPresentationController;
     if (popover) {
         UITableViewCell *cell = [table cellForRowAtIndexPath:path];
@@ -237,6 +323,7 @@ static void NBHookSettingsTable(void) {
 
 __attribute__((constructor)) static void NBInitialize(void) {
     dispatch_async(dispatch_get_main_queue(), ^{
+        NBHookGlobalAMOLED();
         NSArray<NSString *> *classNames = @[
             @"SettingsViewController", @"MessagesSettingsViewController", @"StoriesSettingsViewController",
             @"ReelsSettingsViewController", @"ProfileSettingsViewController", @"LanguageSettingsViewController",
