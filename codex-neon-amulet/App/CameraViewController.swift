@@ -1,5 +1,5 @@
-
 import AVFoundation
+import Combine
 import Speech
 import SwiftUI
 import UserNotifications
@@ -110,8 +110,7 @@ enum ReminderCenter {
     }
 }
 
-final class SpeechTranscriber: NSObject, Obse
-rvableObject {
+final class SpeechTranscriber: NSObject, ObservableObject {
     @Published var transcript = ""
     @Published var isRecording = false
     @Published var status = ""
@@ -231,8 +230,7 @@ struct AmuletBackground: View {
         LinearGradient(
             colors: [amuletBackground, Color(red: 0.055, green: 0.015, blue: 0.12), amuletBackground],
             startPoint: .topLeading,
-            endPoint: .b
-ottomTrailing
+            endPoint: .bottomTrailing
         )
         .overlay(
             RadialGradient(colors: [neonPurple.opacity(0.22), .clear], center: .topTrailing,
@@ -338,8 +336,7 @@ struct NotesView: View {
                     } else {
                         List {
                             ForEach(visible) { note in
-                                B
-utton { editing = note } label: { NoteRow(note: note) }
+                                Button { editing = note } label: { NoteRow(note: note) }
                                     .listRowBackground(Color.clear)
                                     .listRowSeparator(.hidden)
                             }
@@ -437,8 +434,7 @@ struct NoteEditorView: View {
                 AmuletBackground()
                 ScrollView {
                     VStack(spacing: 18) {
-           
-             AmuletLogo(size: 58)
+                        AmuletLogo(size: 58)
                         NeonCard {
                             TextField("Название", text: $title)
                                 .font(.title3.bold()).foregroundColor(.white)
@@ -523,8 +519,7 @@ struct ReminderListView: View {
         NavigationView {
             ZStack {
                 AmuletBackground()
-              
-  VStack {
+                VStack {
                     NeonHeader(title: "ПЛАНЫ", subtitle: "что и когда нужно сделать")
                     if planned.isEmpty {
                         Spacer()
@@ -601,8 +596,7 @@ struct FocusTimerView: View {
                     Button("Сохранить в отчёт") { saveSession() }
                         .disabled(total < 1)
                         .foregroundColor(total < 1 ? .gray : neonCyan)
-                    if !savedMessage.isEmpty { Text(savedMessage).font(.caption).foregroundColor(.g
-reen) }
+                    if !savedMessage.isEmpty { Text(savedMessage).font(.caption).foregroundColor(.green) }
                     Text("Таймер учитывает время даже при временном сворачивании приложения.")
                         .font(.caption).foregroundColor(.white.opacity(0.42)).multilineTextAlignment(.center)
                         .padding(.horizontal)
@@ -688,8 +682,7 @@ struct ReportView: View {
                                             Text(session.name).bold()
                                             Text(session.startedAt.formatted(date: .abbreviated, time: .shortened))
                                                 .font(.caption).foregroundColor(.white.opacity(0.48))
-                       
-                 }
+                                        }
                                         Spacer()
                                         Text(compactDuration(session.duration)).foregroundColor(neonCyan).bold()
                                     }
