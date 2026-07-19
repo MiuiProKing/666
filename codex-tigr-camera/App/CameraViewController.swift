@@ -314,4 +314,596 @@ final class CameraViewController: UIViewController {
             previewView.topAnchor.constraint(equalTo: view.topAnchor), previewView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             gridView.leadingAnchor.constraint(equalTo: previewView.leadingAnchor), gridView.trailingAnchor.constraint(equalTo: previewView.trailingAnchor),
             gridView.topAnchor.constraint(equalTo: previewView.topAnchor), gridView.bottomAnchor.constraint(equalTo: previewView.bottomAnchor),
-            topBar.leadingAnchor.constraint(equalTo: view.leadingAnchor), topBar.trailing÷¾ù¶‰žËkºwµçd€´ø%%µ…”ì(€€€€€€€Õ…É¥µ…•Ì¹½Õ¹Ð€ø€Ä•±Í”ìÉ•ÑÕÉ¸¥µ…•ÍlÁtô(€€€€€€€±•ÐÍ…±”€ô±½…Ð Ä¸À€¼½Õ‰±”¡¥µ…•Ì¹½Õ¹Ð¤¤(€€€€€€€™Õ¹ŒÍ…±•¡|¥µ…”è%%µ…”¤€´ø%%µ…”ì(€€€€€€€€€€€¥µ…”¹…ÁÁ±å¥¹¥±Ñ•È ‰%½±½É5…ÑÉ¥àˆ°Á…É…µ•Ñ•ÉÌèl(€€€€€€€€€€€€€€€€‰¥¹ÁÕÑIY•Ñ½Èˆè%Y•Ñ½È¡àèÍ…±”°äè€À°èè€À°Üè€À¤°€‰¥¹ÁÕÑY•Ñ½Èˆè%Y•Ñ½È¡àè€À°äèÍ…±”°èè€À°Üè€À¤°(€€€€€€€€€€€€€€€€‰¥¹ÁÕÑ	Y•Ñ½Èˆè%Y•Ñ½È¡àè€À°äè€À°èèÍ…±”°Üè€À¤°€‰¥¹ÁÕÑY•Ñ½Èˆè%Y•Ñ½È¡àè€À°äè€À°èè€À°ÜèÍ…±”¤(€€€€€€€€€€€t¤(€€€€€€€ô(€€€€€€€É•ÑÕÉ¸¥µ…•Ì¹‘É½Á¥ÉÍÐ ¤¹É•‘Õ”¡Í…±•¡¥µ…•ÍlÁt¤¤ìÉ•ÍÕ±Ð°¥µ…”¥¸Í…±•¡¥µ…”¤¹…ÁÁ±å¥¹¥±Ñ•È ‰%‘‘¥Ñ¥½¹½µÁ½Í¥Ñ¥¹œˆ°Á…É…µ•Ñ•ÉÌèm­%%¹ÁÕÑ	…­É½Õ¹‘%µ…•-•äèÉ•ÍÕ±Ñt¤ô(€€€ô((€€€ÁÉ¥Ù…Ñ”ÍÑ…Ñ¥Œ™Õ¹ŒÑ½¹”¡|¥µ…”è%%µ…”°µ½‘”èA¡½Ñ½5½‘”°Í•ÑÑ¥¹ÌÌèAÉ½•ÍÍ¥¹M•ÑÑ¥¹Ì¤€´ø%%µ…”ì(€€€€€€€±•Ðµ½‘•	½½ÍÐè±½…Ð€ôµ½‘”€ôô€¹¹¥¡Ð€ü€À¸ÈÔ€è€¡µ½‘”€ôô€¹¡‘È€ü€À¸ÄÈ€è€À¤(€€€€€€€Ù…ÈÍ…ÑÕÉ…Ñ¥½¸€ôÌ¹Í…ÑÕÉ…Ñ¥½¸(€€€€€€€Ù…È½¹ÑÉ…ÍÐè±½…Ð€ô€Ä¸ÀÌ€¬Ì¹¡‘ÉMÑÉ•¹Ñ €¨€À¸Àà(€€€€€€€Ù…ÈÑ•µÁ•É…ÑÕÉ”€ôÌ¹Ñ•µÁ•É…ÑÕÉ”(€€€€€€€ÍÝ¥Ñ Ì¹ÍÑå±”ì…Í”€ÄèÑ•µÁ•É…ÑÕÉ”€´ô€ÈÔÀì½¹ÑÉ…ÍÐ€¬ô€À¸ÀÐì…Í”€ÈèÍ…ÑÕÉ…Ñ¥½¸€´ô€À¸ÀÔìÑ•µÁ•É…ÑÕÉ”€¬ô€ÄÈÀì…Í”€ÌèÍ…ÑÕÉ…Ñ¥½¸€¬ô€À¸ÄÈì½¹ÑÉ…ÍÐ€¬ô€À¸ÀÌì‘•™…Õ±Ðè‰É•…¬ô(€€€€€€€Ù…ÈÉ•ÍÕ±Ð€ô¥µ…”¹…ÁÁ±å¥¹¥±Ñ•È ‰%9½¥Í•I•‘ÕÑ¥½¸ˆ°Á…É…µ•Ñ•ÉÌèl‰¥¹ÁÕÑ9½¥Í•1•Ù•°ˆè€À¸ÀÄÔ€¬Ì¹‘•¹½¥Í”€¨€À¸ÀÜ°€‰¥¹ÁÕÑM¡…ÉÁ¹•ÍÌˆè€À¸ÌÕt¤(€€€€€€€É•ÍÕ±Ð€ôÉ•ÍÕ±Ð¹…ÁÁ±å¥¹¥±Ñ•È ‰%!¥¡±¥¡ÑM¡…‘½Ý‘©ÕÍÐˆ°Á…É…µ•Ñ•ÉÌèl‰¥¹ÁÕÑM¡…‘½Ýµ½Õ¹Ðˆèµ¥¸ Ä°Ì¹Í¡…‘½ÝÌ€¬µ½‘•	½½ÍÐ¤°€‰¥¹ÁÕÑ!¥¡±¥¡Ñµ½Õ¹Ðˆèµ…à À¸ÈÔ°€Ä€´Ì¹¡¥¡±¥¡ÑÌ€¨€¡Ì¹ÁÉ•Í•ÉÙ•M­ä€ü€À¸àÔ€è€À¸ÔÔ¤¥t¤(€€€€€€€É•ÍÕ±Ð€ôÉ•ÍÕ±Ð¹…ÁÁ±å¥¹¥±Ñ•È ‰%½±½É½¹ÑÉ½±Ìˆ°Á…É…µ•Ñ•ÉÌèm­%%¹ÁÕÑM…ÑÕÉ…Ñ¥½¹-•äèÍ…ÑÕÉ…Ñ¥½¸°­%%¹ÁÕÑ½¹ÑÉ…ÍÑ-•äè½¹ÑÉ…ÍÐ°­%%¹ÁÕÑ	É¥¡Ñ¹•ÍÍ-•äèµ½‘”€ôô€¹¹¥¡Ð€ü€À¸ÀÈÔ€è€Át¤(€€€€€€€É•ÍÕ±Ð€ôÉ•ÍÕ±Ð¹…ÁÁ±å¥¹¥±Ñ•È ‰%M¡…ÉÁ•¹1Õµ¥¹…¹”ˆ°Á…É…µ•Ñ•ÉÌèm­%%¹ÁÕÑM¡…ÉÁ¹•ÍÍ-•äè€À¸ÄÔ€¬Ì¹Í¡…ÉÁ¹•ÍÌ€¨€À¸åt¤(€€€€€€€É•ÍÕ±Ð€ôÉ•ÍÕ±Ð¹…ÁÁ±å¥¹¥±Ñ•È ‰%Q•µÁ•É…ÑÕÉ•¹‘Q¥¹Ðˆ°Á…É…µ•Ñ•ÉÌèl‰¥¹ÁÕÑ9•ÕÑÉ…°ˆè%Y•Ñ½È¡àè€ØÔÀÀ°äè€À¤°€‰¥¹ÁÕÑQ…É•Ñ9•ÕÑÉ…°ˆè%Y•Ñ½È¡àè±½…Ð¡Ñ•µÁ•É…ÑÕÉ”¤°äèÌ¹¹…ÑÕÉ…±M­¥¸€ü€À€è€Ì¥t¤(€€€€€€€É•ÑÕÉ¸É•ÍÕ±Ð¹É½ÁÁ•¡Ñ¼è¥µ…”¹•áÑ•¹Ð¤(€€€ô((€€€ÁÉ¥Ù…Ñ”ÍÑ…Ñ¥Œ™Õ¹ŒÁ½ÉÑÉ…¥Ð¡|¥µ…”è%%µ…”¤€´ø%%µ…”ì(€€€€€€€±•ÐÉ•ÅÕ•ÍÐ€ôY9•¹•É…Ñ•A•ÉÍ½¹M•µ•¹Ñ…Ñ¥½¹I•ÅÕ•ÍÐ ¤ìÉ•ÅÕ•ÍÐ¹ÅÕ…±¥Ñå1•Ù•°€ô€¹‰…±…¹•ìÉ•ÅÕ•ÍÐ¹½ÕÑÁÕÑA¥á•±½Éµ…Ð€ô­YA¥á•±½Éµ…ÑQåÁ•}=¹•½µÁ½¹•¹Ðà(€€€€€€€‘¼ì(€€€€€€€€€€€ÑÉäY9%µ…•I•ÅÕ•ÍÑ!…¹‘±•È¡¥%µ…”è¥µ…”¤¹Á•É™½É´¡mÉ•ÅÕ•ÍÑt¤(€€€€€€€€€€€Õ…É±•Ð‰Õ™™•È€ôÉ•ÅÕ•ÍÐ¹É•ÍÕ±ÑÌü¹™¥ÉÍÐü¹Á¥á•±	Õ™™•È•±Í”ìÉ•ÑÕÉ¸¥µ…”ô(€€€€€€€€€€€±•ÐÉ…Ý5…Í¬€ô%%µ…”¡ÙA¥á•±	Õ™™•Èè‰Õ™™•È¤(€€€€€€€€€€€±•Ðµ…Í¬€ôÉ…Ý5…Í¬¹ÑÉ…¹Í™½Éµ•¡‰äè™™¥¹•QÉ…¹Í™½É´¡Í…±•`è¥µ…”¹•áÑ•¹Ð¹Ý¥‘Ñ €¼É…Ý5…Í¬¹•áÑ•¹Ð¹Ý¥‘Ñ °äè¥µ…”¹•áÑ•¹Ð¹¡•¥¡Ð€¼É…Ý5…Í¬¹•áÑ•¹Ð¹¡•¥¡Ð¤¤¹É½ÁÁ•¡Ñ¼è¥µ…”¹•áÑ•¹Ð¤(€€€€€€€€€€€±•Ð‰…­É½Õ¹€ô¥µ…”¹±…µÁ•‘Q½áÑ•¹Ð ¤¹…ÁÁ±å¥¹…ÕÍÍ¥…¹	±ÕÈ¡Í¥µ„è€ÄÐ¤¹É½ÁÁ•¡Ñ¼è¥µ…”¹•áÑ•¹Ð¤(€€€€€€€€€€€É•ÑÕÉ¸¥µ…”¹…ÁÁ±å¥¹¥±Ñ•È ‰%	±•¹‘]¥Ñ¡5…Í¬ˆ°Á…É…µ•Ñ•ÉÌèm­%%¹ÁÕÑ	…­É½Õ¹‘%µ…•-•äè‰…­É½Õ¹°­%%¹ÁÕÑ5…Í­%µ…•-•äèµ…Í­t¤¹É½ÁÁ•¡Ñ¼è¥µ…”¹•áÑ•¹Ð¤(€€€€€€€ô…Ñ ìÉ•ÑÕÉ¸¥µ…”ô(€€€ô)ô()ÁÉ¥Ù…Ñ”™¥¹…°±…ÍÌAÉ½•ÍÍ¥¹M•ÑÑ¥¹ÍY¥•Ý½¹ÑÉ½±±•ÈèU%Y¥•Ý½¹ÑÉ½±±•È°U%½Õµ•¹ÑA¥­•É•±•…Ñ”ì(€€€Ù…È½¹M…Ù”è€ ¡AÉ½•ÍÍ¥¹M•ÑÑ¥¹Ì°±½…Ð¤€´øY½¥¤ü(€€€ÁÉ¥Ù…Ñ”Ù…ÈÍ•ÑÑ¥¹ÌèAÉ½•ÍÍ¥¹M•ÑÑ¥¹Ì(€€€ÁÉ¥Ù…Ñ”Ù…È•áÁ½ÍÕÉ”è±½…Ð(€€€ÁÉ¥Ù…Ñ”±•Ð±•¹Í9…µ”èMÑÉ¥¹œ(€€€ÁÉ¥Ù…Ñ”±•ÐÉ…ÝMÕÁÁ½ÉÑ•è	½½°(€€€ÁÉ¥Ù…Ñ”±•Ð‘•Ù¥•MÕµµ…ÉäèMÑÉ¥¹œ(€€€ÁÉ¥Ù…Ñ”±•ÐÍÑ…¬€ôU%MÑ…­Y¥•Ü ¤((€€€¥¹¥Ð¡Í•ÑÑ¥¹ÌèAÉ½•ÍÍ¥¹M•ÑÑ¥¹Ì°•áÁ½ÍÕÉ”è±½…Ð°±•¹Í9…µ”èMÑÉ¥¹œ°É…ÝMÕÁÁ½ÉÑ•è	½½°°‘•Ù¥•MÕµµ…ÉäèMÑÉ¥¹œ¤ìÍ•±˜¹Í•ÑÑ¥¹Ì€ôÍ•ÑÑ¥¹ÌìÍ•±˜¹•áÁ½ÍÕÉ”€ô•áÁ½ÍÕÉ”ìÍ•±˜¹±•¹Í9…µ”€ô±•¹Í9…µ”ìÍ•±˜¹É…ÝMÕÁÁ½ÉÑ•€ôÉ…ÝMÕÁÁ½ÉÑ•ìÍ•±˜¹‘•Ù¥•MÕµµ…Éä€ô‘•Ù¥•MÕµµ…ÉäìÍÕÁ•È¹¥¹¥Ð¡¹¥‰9…µ”è¹¥°°‰Õ¹‘±”è¹¥°¤ô(€€€É•ÅÕ¥É•¥¹¥Ðü¡½‘•Èè9M½‘•È¤ì™…Ñ…±ÉÉ½È ¤ô((€€€½Ù•ÉÉ¥‘”™Õ¹ŒÙ¥•Ý¥‘1½… ¤ì(€€€€€€€ÍÕÁ•È¹Ù¥•Ý¥‘1½… ¤ìÙ¥•Ü¹‰…­É½Õ¹‘½±½È€ô€¹ÍåÍÑ•µ	…­É½Õ¹ìÑ¥Ñ±”€ô€‰1%AQ!HƒŠˆp¡±•¹Í9…µ”¤ˆ(€€€€€€€¹…Ù¥…Ñ¥½¹%Ñ•´¹É¥¡Ñ	…É	ÕÑÑ½¹%Ñ•´€ôU%	…É	ÕÑÑ½¹%Ñ•´¡Ñ¥Ñ±”è€‹BOBûFBûBËBøˆ°ÍÑå±”è€¹‘½¹”°Ñ…É•ÐèÍ•±˜°…Ñ¥½¸è€Í•±•Ñ½È¡‘½¹”¤¤(€€€€€€€±•ÐÍÉ½±°€ôU%MÉ½±±Y¥•Ü ¤ìÍÉ½±°¹ÑÉ…¹Í±…Ñ•ÍÕÑ½É•Í¥é¥¹5…Í­%¹Ñ½½¹ÍÑÉ…¥¹ÑÌ€ô™…±Í”ìÙ¥•Ü¹…‘‘MÕ‰Ù¥•Ü¡ÍÉ½±°¤(€€€€€€€ÍÑ…¬¹ÑÉ…¹Í±…Ñ•ÍÕÑ½É•Í¥é¥¹5…Í­%¹Ñ½½¹ÍÑÉ…¥¹ÑÌ€ô™…±Í”ìÍÑ…¬¹…á¥Ì€ô€¹Ù•ÉÑ¥…°ìÍÑ…¬¹ÍÁ…¥¹œ€ô€ÄÐìÍÑ…¬¹¥Í1…å½ÕÑ5…É¥¹ÍI•±…Ñ¥Ù•ÉÉ…¹•µ•¹Ð€ôÑÉÕ”ìÍÑ…¬¹±…å½ÕÑ5…É¥¹Ì€ô€¹¥¹¥Ð¡Ñ½Àè€Äà°±•™Ðè€Äà°‰½ÑÑ½´è€ÌÀ°É¥¡Ðè€Äà¤ìÍÉ½±°¹…‘‘MÕ‰Ù¥•Ü¡ÍÑ…¬¤(€€€€€€€9M1…å½ÕÑ½¹ÍÑÉ…¥¹Ð¹…Ñ¥Ù…Ñ”¡mÍÉ½±°¹±•…‘¥¹¹¡½È¹½¹ÍÑÉ…¥¹Ð¡•ÅÕ…±Q¼èÙ¥•Ü¹±•…‘¥¹¹¡½È¤°ÍÉ½±°¹ÑÉ…¥±¥¹¹¡½È¹½¹ÍÑÉ…¥¹Ð¡•ÅÕ…±Q¼èÙ¥•Ü¹ÑÉ…¥±¥¹¹¡½È¤°ÍÉ½±°¹Ñ½Á¹¡½È¹½¹ÍÑÉ…¥¹Ð¡•ÅÕ…±Q¼èÙ¥•Ü¹Ñ½Á¹¡½È¤°ÍÉ½±°¹‰½ÑÑ½µ¹¡½È¹½¹ÍÑÉ…¥¹Ð¡•ÅÕ…±Q¼èÙ¥•Ü¹‰½ÑÑ½µ¹¡½È¤°ÍÑ…¬¹±•…‘¥¹¹¡½È¹½¹ÍÑÉ…¥¹Ð¡•ÅÕ…±Q¼èÍÉ½±°¹½¹Ñ•¹Ñ1…å½ÕÑÕ¥‘”¹±•…‘¥¹¹¡½È¤°ÍÑ…¬¹ÑÉ…¥±¥¹¹¡½È¹½¹ÍÑÉ…¥¹Ð¡•ÅÕ…±Q¼èÍÉ½±°¹½¹Ñ•¹Ñ1…å½ÕÑÕ¥‘”¹ÑÉ…¥±¥¹¹¡½È¤°ÍÑ…¬¹Ñ½Á¹¡½È¹½¹ÍÑÉ…¥¹Ð¡•ÅÕ…±Q¼èÍÉ½±°¹½¹Ñ•¹Ñ1…å½ÕÑÕ¥‘”¹Ñ½Á¹¡½È¤°ÍÑ…¬¹‰½ÑÑ½µ¹¡½È¹½¹ÍÑÉ…¥¹Ð¡•ÅÕ…±Q¼èÍÉ½±°¹½¹Ñ•¹Ñ1…å½ÕÑÕ¥‘”¹‰½ÑÑ½µ¹¡½È¤°ÍÑ…¬¹Ý¥‘Ñ¡¹¡½È¹½¹ÍÑÉ…¥¹Ð¡•ÅÕ…±Q¼èÍÉ½±°¹™É…µ•1…å½ÕÑÕ¥‘”¹Ý¥‘Ñ¡¹¡½È¥t¤((€€€€€€€±•Ð¥¹™¼€ôU%1…‰•° ¤ì¥¹™¼¹¹Õµ‰•É=™1¥¹•Ì€ô€Àì¥¹™¼¹™½¹Ð€ô€¹ÍåÍÑ•µ½¹Ð¡½™M¥é”è€ÄÌ¤ì¥¹™¼¹Ñ•áÑ½±½È€ô€¹Í•½¹‘…Éå1…‰•°ì¥¹™¼¹Ñ•áÐ€ô‘•Ù¥•MÕµµ…ÉäìÍÑ…¬¹…‘‘ÉÉ…¹•‘MÕ‰Ù¥•Ü¡¥¹™¼¤(€€€€€€€±•Ð½¹™¥I½Ü€ôU%MÑ…­Y¥•Ü ¤ì½¹™¥I½Ü¹…á¥Ì€ô€¹¡½É¥é½¹Ñ…°ì½¹™¥I½Ü¹‘¥ÍÑÉ¥‰ÕÑ¥½¸€ô€¹™¥±±ÅÕ…±±äì½¹™¥I½Ü¹ÍÁ…¥¹œ€ô€ÄÀ(€€€€€€€±•Ð¥µÁ½ÉÑ	ÕÑÑ½¸€ôU%	ÕÑÑ½¸¡ÑåÁ”è€¹ÍåÍÑ•´¤ì¥µÁ½ÉÑ	ÕÑÑ½¸¹Í•ÑQ¥Ñ±” ‹BcBóBÿBûFF)M=8ˆ°™½Èè€¹¹½Éµ…°¤ì¥µÁ½ÉÑ	ÕÑÑ½¸¹…‘‘Q…É•Ð¡Í•±˜°…Ñ¥½¸è€Í•±•Ñ½È¡¥µÁ½ÉÑ½¹™¥œ¤°™½Èè€¹Ñ½Õ¡UÁ%¹Í¥‘”¤(€€€€€€€±•Ð•áÁ½ÉÑ	ÕÑÑ½¸€ôU%	ÕÑÑ½¸¡ÑåÁ”è€¹ÍåÍÑ•´¤ì•áÁ½ÉÑ	ÕÑÑ½¸¹Í•ÑQ¥Ñ±” ‹B·BëFBÿBûFF)M=8ˆ°™½Èè€¹¹½Éµ…°¤ì•áÁ½ÉÑ	ÕÑÑ½¸¹…‘‘Q…É•Ð¡Í•±˜°…Ñ¥½¸è€Í•±•Ñ½È¡•áÁ½ÉÑ½¹™¥œ¤°™½Èè€¹Ñ½Õ¡UÁ%¹Í¥‘”¤(€€€€€€€½¹™¥I½Ü¹…‘‘ÉÉ…¹•‘MÕ‰Ù¥•Ü¡¥µÁ½ÉÑ	ÕÑÑ½¸¤ì½¹™¥I½Ü¹…‘‘ÉÉ…¹•‘MÕ‰Ù¥•Ü¡•áÁ½ÉÑ	ÕÑÑ½¸¤ìÍÑ…¬¹…‘‘ÉÉ…¹•‘MÕ‰Ù¥•Ü¡½¹™¥I½Ü¤(€€€€€€€…‘‘!•…‘•È ‹B{BÇF+B×BÓBãB÷B×B÷BãBÔƒBëBÃBÓFBûBÈˆ¤(€€€€€€€±•Ð™É…µ•Ì€ôU%M•µ•¹Ñ•‘½¹ÑÉ½°¡¥Ñ•µÌèlˆÌˆ°€ˆÔˆ°€ˆàˆ°€ˆÄÈ‰t¤ì™É…µ•Ì¹Í•±•Ñ•‘M•µ•¹Ñ%¹‘•à€ôlÌ°Ô°à°ÄÉt¹™¥ÉÍÑ%¹‘•à¡½˜èÍ•ÑÑ¥¹Ì¹™É…µ•½Õ¹Ð¤€üü€Äì™É…µ•Ì¹…‘‘Ñ¥½¸¡U%Ñ¥½¸ìmÝ•…¬Í•±™t|¥¸Í•±˜ü¹Í•ÑÑ¥¹Ì¹™É…µ•½Õ¹Ð€ôlÌ°Ô°à°ÄÉum™É…µ•Ì¹Í•±•Ñ•‘M•µ•¹Ñ%¹‘•átô°™½Èè€¹Ù…±Õ•¡…¹•¤ìÍÑ…¬¹…‘‘ÉÉ…¹•‘MÕ‰Ù¥•Ü¡™É…µ•Ì¤(€€€€€€€…‘‘M±¥‘•È ‹B‡BãBïBÀ!Hˆ°€À°€Ä°Í•ÑÑ¥¹Ì¹¡‘ÉMÑÉ•¹Ñ ¤ìÍ•±˜¹Í•ÑÑ¥¹Ì¹¡‘ÉMÑÉ•¹Ñ €ô€Àô(€€€€€€€…‘‘M±¥‘•È ‹BGBÃBßBûBËBÃF<ƒF7BëFBÿBûBßBãFBãF<ˆ°€´È°€È°•áÁ½ÍÕÉ”°Ù…±Õ•Q•áÐèìMÑÉ¥¹œ¡™½Éµ…Ðè€ˆ”¬¸É˜Xˆ°€À¤ô¤ìÍ•±˜¹•áÁ½ÍÕÉ”€ô€Àô(€€€€€€€…‘‘M±¥‘•È ‹B£FBóBûBÿBûBÓBÃBËBïB×B÷BãBÔˆ°€À°€Ä°Í•ÑÑ¥¹Ì¹‘•¹½¥Í”¤ìÍ•±˜¹Í•ÑÑ¥¹Ì¹‘•¹½¥Í”€ô€Àô(€€€€€€€…‘‘M±¥‘•È ‹BƒB×BßBëBûFFF0ˆ°€À°€Ä°Í•ÑÑ¥¹Ì¹Í¡…ÉÁ¹•ÍÌ¤ìÍ•±˜¹Í•ÑÑ¥¹Ì¹Í¡…ÉÁ¹•ÍÌ€ô€Àô(€€€€€€€…‘‘M±¥‘•È ‹BwBÃFF/F'B×B÷B÷BûFFF0ˆ°€À¸Ü°€Ä¸Ð°Í•ÑÑ¥¹Ì¹Í…ÑÕÉ…Ñ¥½¸¤ìÍ•±˜¹Í•ÑÑ¥¹Ì¹Í…ÑÕÉ…Ñ¥½¸€ô€Àô(€€€€€€€…‘‘M±¥‘•È ‹B‡BËB×FBïF/BÔƒFFBÃFFBëBàˆ°€À°€Ä°Í•ÑÑ¥¹Ì¹¡¥¡±¥¡ÑÌ¤ìÍ•±˜¹Í•ÑÑ¥¹Ì¹¡¥¡±¥¡ÑÌ€ô€Àô(€€€€€€€…‘‘M±¥‘•È ‹BSB×FBÃBïBãBßBÃFBãF<ƒFB×B÷B×Bäˆ°€À°€Ä°Í•ÑÑ¥¹Ì¹Í¡…‘½ÝÌ¤ìÍ•±˜¹Í•ÑÑ¥¹Ì¹Í¡…‘½ÝÌ€ô€Àô(€€€€€€€…‘‘M±¥‘•È ‹B‹B×BóBÿB×FBÃFFFBÀˆ°€ÌÔÀÀ°€àÔÀÀ°Í•ÑÑ¥¹Ì¹Ñ•µÁ•É…ÑÕÉ”°Ù…±Õ•Q•áÐèì€‰p¡%¹Ð À¤¤,ˆô¤ìÍ•±˜¹Í•ÑÑ¥¹Ì¹Ñ•µÁ•É…ÑÕÉ”€ô€Àô(€€€€€€€…‘‘MÝ¥Ñ  ‹B‡BûFFBÃB÷F?FF0ƒB÷B×BÇBøƒBàƒF?FBëBãBÔƒBïBÃBóBÿF,ˆ°Í•ÑÑ¥¹Ì¹ÁÉ•Í•ÉÙ•M­ä¤ìÍ•±˜¹Í•ÑÑ¥¹Ì¹ÁÉ•Í•ÉÙ•M­ä€ô€Àô(€€€€€€€…‘‘MÝ¥Ñ  ‹BwBÃFFFBÃBïF3B÷F/BäƒBûFFB×B÷BûBèƒBëBûBÛBàˆ°Í•ÑÑ¥¹Ì¹¹…ÑÕÉ…±M­¥¸¤ìÍ•±˜¹Í•ÑÑ¥¹Ì¹¹…ÑÕÉ…±M­¥¸€ô€Àô(€€€€€€€…‘‘MÝ¥Ñ  ‹B‡BûFFBÃB÷F?FF0ƒBãFFBûBÓB÷F/BäƒBëBÃBÓF ˆ°Í•ÑÑ¥¹Ì¹Í…Ù•=É¥¥¹…°¤ìÍ•±˜¹Í•ÑÑ¥¹Ì¹Í…Ù•=É¥¥¹…°€ô€Àô(€€€€€€€…‘‘MÝ¥Ñ ¡É…ÝMÕÁÁ½ÉÑ•€ü€‰I\½AÉ½I\ˆ€è€‰I\½AÉ½I\ƒŠPƒB÷BÔƒBÿBûBÓBÓB×FBÛBãBËBÃB×FFF<ˆ°Í•ÑÑ¥¹Ì¹É…Ý¹…‰±•€˜˜É…ÝMÕÁÁ½ÉÑ•°•¹…‰±•èÉ…ÝMÕÁÁ½ÉÑ•¤ìÍ•±˜¹Í•ÑÑ¥¹Ì¹É…Ý¹…‰±•€ô€Àô((€€€€€€€…‘‘!•…‘•È ‹B›BËB×FBûBËBûBäƒBÿFBûFBãBïF0ˆ¤(€€€€€€€±•ÐÍÑå±•Ì€ôU%M•µ•¹Ñ•‘½¹ÑÉ½°¡¥Ñ•µÌèl‹BSB×B÷F0ˆ°€‹BwBûFF0ˆ°€‹BoF;BÓBàˆ°€‹BFBãFBûBÓBÀ‰t¤ìÍÑå±•Ì¹Í•±•Ñ•‘M•µ•¹Ñ%¹‘•à€ôÍ•ÑÑ¥¹Ì¹ÍÑå±”ìÍÑå±•Ì¹…‘‘Ñ¥½¸¡U%Ñ¥½¸ìmÝ•…¬Í•±™t|¥¸Í•±˜ü¹Í•ÑÑ¥¹Ì¹ÍÑå±”€ôÍÑå±•Ì¹Í•±•Ñ•‘M•µ•¹Ñ%¹‘•àô°™½Èè€¹Ù…±Õ•¡…¹•¤ìÍÑ…¬¹…‘‘ÉÉ…¹•‘MÕ‰Ù¥•Ü¡ÍÑå±•Ì¤((€€€€€€€…‘‘!•…‘•È ‹BƒFFB÷BûBÔƒFBÿFBÃBËBïB×B÷BãBÔˆ¤(€€€€€€€…‘‘MÝ¥Ñ  ‹BKBëBïF;FBãFF0AÉ¼·FB×BÛBãBðˆ°Í•ÑÑ¥¹Ì¹µ…¹Õ…±¹…‰±•¤ìÍ•±˜¹Í•ÑÑ¥¹Ì¹µ…¹Õ…±¹…‰±•€ô€Àô(€€€€€€€…‘‘M±¥‘•È ‰%M<ˆ°€ÈÔ°€ÌÈÀÀ°Í•ÑÑ¥¹Ì¹¥Í¼°Ù…±Õ•Q•áÐèì€‰p¡%¹Ð À¤¤ˆô¤ìÍ•±˜¹Í•ÑÑ¥¹Ì¹¥Í¼€ô€Àô(€€€€€€€…‘‘M±¥‘•È ‹BKF/BÓB×FBÛBëBÀˆ°€Ä¸À¼àÀÀÀ¸À°€Ä°Í•ÑÑ¥¹Ì¹Í¡ÕÑÑ•ÉM•½¹‘Ì°Ù…±Õ•Q•áÐèì€À€øô€À¸Ô€üMÑÉ¥¹œ¡™½Éµ…Ðè€ˆ”¸Å˜ƒFˆ°€À¤€è€ˆÄ½p¡µ…à Ä°%¹Ð Ä€¼€À¤¤¤ƒFˆô¤ìÍ•±˜¹Í•ÑÑ¥¹Ì¹Í¡ÕÑÑ•ÉM•½¹‘Ì€ô€Àô(€€€€€€€…‘‘M±¥‘•È ‹BƒFFB÷BûBäƒFBûBëFFˆ°€À°€Ä°Í•ÑÑ¥¹Ì¹™½ÕÌ¤ìÍ•±˜¹Í•ÑÑ¥¹Ì¹™½ÕÌ€ô€Àô(€€€€€€€…‘‘M±¥‘•È ‹BGBÃBïBÃB÷FƒBÇB×BïBûBÏBøˆ°€ÌÀÀÀ°€àÔÀÀ°Í•ÑÑ¥¹Ì¹Ý¡¥Ñ•	…±…¹”°Ù…±Õ•Q•áÐèì€‰p¡%¹Ð À¤¤,ˆô¤ìÍ•±˜¹Í•ÑÑ¥¹Ì¹Ý¡¥Ñ•	…±…¹”€ô€Àô(€€€ô((€€€ÁÉ¥Ù…Ñ”™Õ¹Œ…‘‘!•…‘•È¡|Ñ•áÐèMÑÉ¥¹œ¤ì±•Ð±…‰•°€ôU%1…‰•° ¤ì±…‰•°¹Ñ•áÐ€ôÑ•áÐì±…‰•°¹™½¹Ð€ô€¹ÍåÍÑ•µ½¹Ð¡½™M¥é”è€Äà°Ý•¥¡Ðè€¹‰½±¤ì±…‰•°¹Ñ•áÑ½±½È€ô€¹±…‰•°ìÍÑ…¬¹…‘‘ÉÉ…¹•‘MÕ‰Ù¥•Ü¡±…‰•°¤ô((€€€ÁÉ¥Ù…Ñ”™Õ¹Œ…‘‘MÝ¥Ñ ¡|Ñ¥Ñ±”èMÑÉ¥¹œ°|Ù…±Õ”è	½½°°•¹…‰±•è	½½°€ôÑÉÕ”°¡…¹”è•Í…Á¥¹œ€¡	½½°¤€´øY½¥¤ì(€€€€€€€±•ÐÉ½Ü€ôU%MÑ…­Y¥•Ü ¤ìÉ½Ü¹…á¥Ì€ô€¹¡½É¥é½¹Ñ…°(€€€€€€€±•Ð±…‰•°€ôU%1…‰•° ¤ì±…‰•°¹Ñ•áÐ€ôÑ¥Ñ±”ì±…‰•°¹™½¹Ð€ô€¹ÍåÍÑ•µ½¹Ð¡½™M¥é”è€ÄÔ¤ì±…‰•°¹¹Õµ‰•É=™1¥¹•Ì€ô€È(€€€€€€€±•Ð½¹ÑÉ½°€ôU%MÝ¥Ñ  ¤ì½¹ÑÉ½°¹¥Í=¸€ôÙ…±Õ”ì½¹ÑÉ½°¹¥Í¹…‰±•€ô•¹…‰±•ì½¹ÑÉ½°¹…‘‘Ñ¥½¸¡U%Ñ¥½¸ì|¥¸¡…¹”¡½¹ÑÉ½°¹¥Í=¸¤ô°™½Èè€¹Ù…±Õ•¡…¹•¤(€€€€€€€É½Ü¹…‘‘ÉÉ…¹•‘MÕ‰Ù¥•Ü¡±…‰•°¤ìÉ½Ü¹…‘‘ÉÉ…¹•‘MÕ‰Ù¥•Ü¡½¹ÑÉ½°¤ìÍÑ…¬¹…‘‘ÉÉ…¹•‘MÕ‰Ù¥•Ü¡É½Ü¤(€€€ô((€€€ÁÉ¥Ù…Ñ”™Õ¹Œ…‘‘M±¥‘•È¡|Ñ¥Ñ±”èMÑÉ¥¹œ°|µ¥¸è±½…Ð°|µ…àè±½…Ð°|Ù…±Õ”è±½…Ð°Ù…±Õ•Q•áÐè•Í…Á¥¹œ€¡±½…Ð¤€´øMÑÉ¥¹œ€ôìMÑÉ¥¹œ¡™½Éµ…Ðè€ˆ”¸É˜ˆ°€À¤ô°¡…¹”è•Í…Á¥¹œ€¡±½…Ð¤€´øY½¥¤ì(€€€€€€€±•Ð±…‰•°€ôU%1…‰•° ¤ì±…‰•°¹™½¹Ð€ô€¹ÍåÍÑ•µ½¹Ð¡½™M¥é”è€ÄÐ°Ý•¥¡Ðè€¹µ•‘¥Õ´¤ì±…‰•°¹Ñ•áÐ€ô€‰p¡Ñ¥Ñ±”¤èp¡Ù…±Õ•Q•áÐ¡Ù…±Õ”¤¤ˆìÍÑ…¬¹…‘‘ÉÉ…¹•‘MÕ‰Ù¥•Ü¡±…‰•°¤(€€€€€€€±•ÐÍ±¥‘•È€ôU%M±¥‘•È ¤ìÍ±¥‘•È¹µ¥¹¥µÕµY…±Õ”€ôµ¥¸ìÍ±¥‘•È¹µ…á¥µÕµY…±Õ”€ôµ…àìÍ±¥‘•È¹Ù…±Õ”€ôÙ…±Õ”ìÍ±¥‘•È¹µ¥¹¥µÕµQÉ…­Q¥¹Ñ½±½È€ôU%½±½È¡É•è€À¸äÔ°É••¸è€À¸ØÈ°‰±Õ”è€À¸Àà°…±Á¡„è€Ä¤(€€€€€€€Í±¥‘•È¹…‘‘Ñ¥½¸¡U%Ñ¥½¸ì|¥¸±…‰•°¹Ñ•áÐ€ô€‰p¡Ñ¥Ñ±”¤èp¡Ù…±Õ•Q•áÐ¡Í±¥‘•È¹Ù…±Õ”¤¤ˆì¡…¹”¡Í±¥‘•È¹Ù…±Õ”¤ô°™½Èè€¹Ù…±Õ•¡…¹•¤ìÍÑ…¬¹…‘‘ÉÉ…¹•‘MÕ‰Ù¥•Ü¡Í±¥‘•È¤(€€€ô((€€€½‰©ŒÁÉ¥Ù…Ñ”™Õ¹Œ¥µÁ½ÉÑ½¹™¥œ ¤ì(€€€€€€€±•ÐÁ¥­•È€ôU%½Õµ•¹ÑA¥­•ÉY¥•Ý½¹ÑÉ½±±•È¡™½É=Á•¹¥¹½¹Ñ•¹ÑQåÁ•Ìèl¹©Í½¹t°…Í½ÁäèÑÉÕ”¤ìÁ¥­•È¹‘•±•…Ñ”€ôÍ•±˜ìÁÉ•Í•¹Ð¡Á¥­•È°…¹¥µ…Ñ•èÑÉÕ”¤(€€€ô((€€€½‰©ŒÁÉ¥Ù…Ñ”™Õ¹Œ•áÁ½ÉÑ½¹™¥œ ¤ì(€€€€€€€±•Ð½¹™¥œ€ôQ¥É½¹™¥œ¡Í•ÑÑ¥¹ÌèÍ•ÑÑ¥¹Ì°•áÁ½ÍÕÉ”è•áÁ½ÍÕÉ”°¹…µ”è€‰Q¥ÈMÑå±”p¡±•¹Í9…µ”¤ˆ¤(€€€€€€€±•Ð•¹½‘•È€ô)M=9¹½‘•È ¤ì•¹½‘•È¹½ÕÑÁÕÑ½Éµ…ÑÑ¥¹œ€ôl¹ÁÉ•ÑÑåAÉ¥¹Ñ•°€¹Í½ÉÑ•‘-•åÍt(€€€€€€€Õ…É±•Ð‘…Ñ„€ôÑÉäü•¹½‘•È¹•¹½‘”¡½¹™¥œ¤•±Í”ìÉ•ÑÕÉ¸ô(€€€€€€€±•ÐÕÉ°€ô¥±•5…¹…•È¹‘•™…Õ±Ð¹Ñ•µÁ½É…Éå¥É•Ñ½Éä¹…ÁÁ•¹‘¥¹A…Ñ¡½µÁ½¹•¹Ð ‰Q¥ÈµMÑå±”µp¡±•¹Í9…µ”¤¹©Í½¸ˆ¤(€€€€€€€‘¼ìÑÉä‘…Ñ„¹ÝÉ¥Ñ”¡Ñ¼èÕÉ°°½ÁÑ¥½¹Ìè€¹…Ñ½µ¥Œ¤ìÁÉ•Í•¹Ð¡U%Ñ¥Ù¥ÑåY¥•Ý½¹ÑÉ½±±•È¡…Ñ¥Ù¥Ñå%Ñ•µÌèmÕÉ±t°…ÁÁ±¥…Ñ¥½¹Ñ¥Ù¥Ñ¥•Ìè¹¥°¤°…¹¥µ…Ñ•èÑÉÕ”¤ô…Ñ ìô(€€€ô((€€€™Õ¹Œ‘½Õµ•¹ÑA¥­•È¡|½¹ÑÉ½±±•ÈèU%½Õµ•¹ÑA¥­•ÉY¥•Ý½¹ÑÉ½±±•È°‘¥‘A¥­½Õµ•¹ÑÍÐÕÉ±ÌèmUI1t¤ì(€€€€€€€Õ…É±•ÐÕÉ°€ôÕÉ±Ì¹™¥ÉÍÐ°±•Ð‘…Ñ„€ôÑÉäü…Ñ„¡½¹Ñ•¹ÑÍ=˜èÕÉ°¤°±•Ð½¹™¥œ€ôÑÉäü)M=9•½‘•È ¤¹‘•½‘”¡Q¥É½¹™¥œ¹Í•±˜°™É½´è‘…Ñ„¤•±Í”ì(€€€€€€€€€€€±•Ð…±•ÉÐ€ôU%±•ÉÑ½¹ÑÉ½±±•È¡Ñ¥Ñ±”è€‹B{F#BãBÇBëBÀˆ°µ•ÍÍ…”è€‹BwBÔƒFBÓBÃBïBûFF0ƒBÿFBûFBãFBÃFF0ƒBëBûB÷FBãBÌQ¥È)M=8¸ˆ°ÁÉ•™•ÉÉ•‘MÑå±”è€¹…±•ÉÐ¤ì…±•ÉÐ¹…‘‘Ñ¥½¸¡U%±•ÉÑÑ¥½¸¡Ñ¥Ñ±”è€‰=,ˆ°ÍÑå±”è€¹‘•™…Õ±Ð¤¤ìÁÉ•Í•¹Ð¡…±•ÉÐ°…¹¥µ…Ñ•èÑÉÕ”¤ìÉ•ÑÕÉ¸(€€€€€€€ô(€€€€€€€Í•ÑÑ¥¹Ì€ô½¹™¥œ¹…ÁÁ±¥•¡Ñ¼èÍ•ÑÑ¥¹Ì¤ì•áÁ½ÍÕÉ”€ôµ¥¸¡µ…à¡½¹™¥œ¹•áÁ½ÍÕÉ”°€´È¤°€È¤(€€€€€€€±•Ð…±•ÉÐ€ôU%±•ÉÑ½¹ÑÉ½±±•È¡Ñ¥Ñ±”è€‹BkBûB÷FBãBÌƒBãBóBÿBûFFBãFBûBËBÃBôˆ°µ•ÍÍ…”è€‰p¡½¹™¥œ¹¹…µ”¤ƒBÿFBãBóB×B÷FGBôƒBèƒBûBÇF+B×BëFBãBËFp¡±•¹Í9…µ”¤¸ˆ°ÁÉ•™•ÉÉ•‘MÑå±”è€¹…±•ÉÐ¤(€€€€€€€…±•ÉÐ¹…‘‘Ñ¥½¸¡U%±•ÉÑÑ¥½¸¡Ñ¥Ñ±”è€‹BFBãBóB×B÷BãFF0ˆ°ÍÑå±”è€¹‘•™…Õ±Ð¤ìmÝ•…¬Í•±™t|¥¸Õ…É±•ÐÍ•±˜•±Í”ìÉ•ÑÕÉ¸ôìÍ•±˜¹½¹M…Ù”ü¡Í•±˜¹Í•ÑÑ¥¹Ì°Í•±˜¹•áÁ½ÍÕÉ”¤ìÍ•±˜¹‘¥Íµ¥ÍÌ¡…¹¥µ…Ñ•èÑÉÕ”¤ô¤(€€€€€€€ÁÉ•Í•¹Ð¡…±•ÉÐ°…¹¥µ…Ñ•èÑÉÕ”¤(€€€ô((€€€½‰©ŒÁÉ¥Ù…Ñ”™Õ¹Œ‘½¹” ¤ì½¹M…Ù”ü¡Í•ÑÑ¥¹Ì°•áÁ½ÍÕÉ”¤ì‘¥Íµ¥ÍÌ¡…¹¥µ…Ñ•èÑÉÕ”¤ô)ô()ÁÉ¥Ù…Ñ”•¹Õ´•Ù¥•%¹™¼ì(€€€ÍÑ…Ñ¥Œ™Õ¹Œµ…¡¥¹” ¤€´øMÑÉ¥¹œìÙ…È¥¹™¼€ôÕÑÍ¹…µ” ¤ìÕ¹…µ” ™¥¹™¼¤ìÉ•ÑÕÉ¸Ý¥Ñ¡U¹Í…™•A½¥¹Ñ•È¡Ñ¼è€™¥¹™¼¹µ…¡¥¹”¤ì€À¹Ý¥Ñ¡5•µ½ÉåI•‰½Õ¹¡Ñ¼è¡…È¹Í•±˜°…Á…¥Ñäè€Ä¤ìMÑÉ¥¹œ¡MÑÉ¥¹œè€À¤ôôô(€€€ÍÑ…Ñ¥Œ™Õ¹Œ¡…Í1•¹Ì¡|ÑåÁ”èY…ÁÑÕÉ••Ù¥”¹•Ù¥•QåÁ”¤€´ø	½½°ì€…Y…ÁÑÕÉ••Ù¥”¹¥Í½Ù•ÉåM•ÍÍ¥½¸¡‘•Ù¥•QåÁ•ÌèmÑåÁ•t°µ•‘¥…QåÁ”è€¹Ù¥‘•¼°Á½Í¥Ñ¥½¸è€¹‰…¬¤¹‘•Ù¥•Ì¹¥ÍµÁÑäô(€€€ÍÑ…Ñ¥Œ™Õ¹ŒÍ¡½ÉÑMÕµµ…Éä¡Á¡½Ñ½=ÕÑÁÕÐèY…ÁÑÕÉ•A¡½Ñ½=ÕÑÁÕÐ¤€´øMÑÉ¥¹œì€‰p¡µ…¡¥¹” ¤¤ƒŠˆI\p¡Á¡½Ñ½=ÕÑÁÕÐ¹…Ù…¥±…‰±•I…ÝA¡½Ñ½A¥á•±½Éµ…ÑQåÁ•Ì¹¥ÍµÁÑä€ü€‹B÷B×Fˆ€è€‹BÓBÀˆ¤ˆô(€€€ÍÑ…Ñ¥Œ™Õ¹ŒÍÕµµ…Éä¡Á¡½Ñ½=ÕÑÁÕÐèY…ÁÑÕÉ•A¡½Ñ½=ÕÑÁÕÐ¤€´øMÑÉ¥¹œì(€€€€€€€€‹BFFFBûBçFFBËBøèp¡µ…¡¥¹” ¤¥q¸À¸×\èp¡¡…Í1•¹Ì ¹‰Õ¥±Ñ%¹U±ÑÉ…]¥‘•…µ•É„¤€ü€‹BÿBûBÓBÓB×FBÛBãBËBÃB×FFF<ˆ€è€‹B÷B×Fˆ¤ƒŠˆ€Ë\èp¡¡…Í1•¹Ì ¹‰Õ¥±Ñ%¹Q•±•Á¡½Ñ½…µ•É„¤€ü€‹BÿBûBÓBÓB×FBÛBãBËBÃB×FFF<ˆ€è€‹B÷B×Fˆ¥q¹I\½AÉ½I\èp¡Á¡½Ñ½=ÕÑÁÕÐ¹…Ù…¥±…‰±•I…ÝA¡½Ñ½A¥á•±½Éµ…ÑQåÁ•Ì¹¥ÍµÁÑä€ü€‹B÷BÔƒBÿBûBÓBÓB×FBÛBãBËBÃB×FFF<ˆ€è€‹BÿBûBÓBÓB×FBÛBãBËBÃB×FFF<ˆ¤ƒŠˆƒBBûFFFB×FB÷BÃF<ƒBÏBïFBÇBãB÷BÀèp¡Á¡½Ñ½=ÕÑÁÕÐ¹¥Í•ÁÑ¡…Ñ…•±¥Ù•ÉåMÕÁÁ½ÉÑ•€ü€‹BÓBÀˆ€è€‹BÿFBûBÏFBÃBóBóB÷BûBÔƒFBÃBßBóF/FBãBÔˆ¤ˆ(€€€ô)ô()•áÑ•¹Í¥½¸…µ•É…Y¥•Ý½¹ÑÉ½±±•ÈèY…ÁÑÕÉ•¥±•=ÕÑÁÕÑI•½É‘¥¹•±•…Ñ”ì(€€€™Õ¹Œ™¥±•=ÕÑÁÕÐ¡|½ÕÑÁÕÐèY…ÁÑÕÉ•¥±•=ÕÑÁÕÐ°‘¥‘¥¹¥Í¡I•½É‘¥¹Q¼½ÕÑÁÕÑ¥±•UI0èUI0°™É½´½¹¹•Ñ¥½¹ÌèmY…ÁÑÕÉ•½¹¹•Ñ¥½¹t°•ÉÉ½ÈèÉÉ½Èü¤ì(€€€€€€€¥ÍÁ…Ñ¡EÕ•Õ”¹µ…¥¸¹…Íå¹ŒìÍ•±˜¹Í•ÑI•½É‘¥¹U$¡…Ñ¥Ù”è™…±Í”¤ô(€€€€€€€Õ…É•ÉÉ½È€ôô¹¥°•±Í”ìÑÉäü¥±•5…¹…•È¹‘•™…Õ±Ð¹É•µ½Ù•%Ñ•´¡…Ðè½ÕÑÁÕÑ¥±•UI0¤ì¥ÍÁ…Ñ¡EÕ•Õ”¹µ…¥¸¹…Íå¹ŒìÍ•±˜¹Í¡½ÝMÑ…ÑÕÌ ‹B{F#BãBÇBëBÀƒBßBÃBÿBãFBàˆ¤ôìÉ•ÑÕÉ¸ô(€€€€€€€Í…Ù•Y¥‘•¼¡½ÕÑÁÕÑ¥±•UI0¤(€€€ô)ô()•áÑ•¹Í¥½¸…µ•É…Y¥•Ý½¹ÑÉ½±±•ÈèA!A¥­•ÉY¥•Ý½¹ÑÉ½±±•É•±•…Ñ”ì™Õ¹ŒÁ¥­•È¡|Á¥­•ÈèA!A¥­•ÉY¥•Ý½¹ÑÉ½±±•È°‘¥‘¥¹¥Í¡A¥­¥¹œÉ•ÍÕ±ÑÌèmA!A¥­•ÉI•ÍÕ±Ñt¤ìÁ¥­•È¹‘¥Íµ¥ÍÌ¡…¹¥µ…Ñ•èÑÉÕ”¤ôô()ÁÉ¥Ù…Ñ”™¥¹…°±…ÍÌÉ¥‘=Ù•É±…åY¥•ÜèU%Y¥•Üì(€€€½Ù•ÉÉ¥‘”±…ÍÌÙ…È±…å•É±…ÍÌè¹å±…ÍÌìM¡…Á•1…å•È¹Í•±˜ô(€€€½Ù•ÉÉ¥‘”™Õ¹Œ±…å½ÕÑMÕ‰Ù¥•ÝÌ ¤ì(€€€€€€€ÍÕÁ•È¹±…å½ÕÑMÕ‰Ù¥•ÝÌ ¤ìÕ…É±•ÐÍ¡…Á”€ô±…å•È…ÌüM¡…Á•1…å•È•±Í”ìÉ•ÑÕÉ¸ôì±•ÐÁ…Ñ €ôU%	•é¥•ÉA…Ñ  ¤(€€€€€€€™½È˜¥¸m±½…Ð Ä¸À¼Ì¸À¤°±½…Ð È¸À¼Ì¸À¥tìÁ…Ñ ¹µ½Ù”¡Ñ¼è€¹¥¹¥Ð¡àè‰½Õ¹‘Ì¹Ý¥‘Ñ ©˜°äè€À¤¤ìÁ…Ñ ¹…‘‘1¥¹”¡Ñ¼è€¹¥¹¥Ð¡àè‰½Õ¹‘Ì¹Ý¥‘Ñ ©˜°äè‰½Õ¹‘Ì¹¡•¥¡Ð¤¤ìÁ…Ñ ¹µ½Ù”¡Ñ¼è€¹¥¹¥Ð¡àè€À°äè‰½Õ¹‘Ì¹¡•¥¡Ð©˜¤¤ìÁ…Ñ ¹…‘‘1¥¹”¡Ñ¼è€¹¥¹¥Ð¡àè‰½Õ¹‘Ì¹Ý¥‘Ñ °äè‰½Õ¹‘Ì¹¡•¥¡Ð©˜¤¤ô(€€€€€€€Í¡…Á”¹Á…Ñ €ôÁ…Ñ ¹A…Ñ ìÍ¡…Á”¹ÍÑÉ½­•½±½È€ôU%½±½È¹Ý¡¥Ñ”¹Ý¥Ñ¡±Á¡…½µÁ½¹•¹Ð À¸ÌÐ¤¹½±½ÈìÍ¡…Á”¹™¥±±½±½È€ôU%½±½È¹±•…È¹½±½ÈìÍ¡…Á”¹±¥¹•]¥‘Ñ €ô€À¸Ü(€€€ô)ô(
+            topBar.leadingAnchor.constraint(equalTo: view.leadingAnchor), topBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            topBar.topAnchor.constraint(equalTo: view.topAnchor), topBar.heightAnchor.constraint(equalToConstant: 82),
+            topStack.leadingAnchor.constraint(equalTo: topBar.contentView.leadingAnchor, constant: 16),
+            topStack.trailingAnchor.constraint(equalTo: topBar.contentView.trailingAnchor, constant: -16),
+            topStack.bottomAnchor.constraint(equalTo: topBar.contentView.bottomAnchor, constant: -8), topStack.heightAnchor.constraint(equalToConstant: 42),
+            bottomBar.leadingAnchor.constraint(equalTo: view.leadingAnchor), bottomBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            bottomBar.bottomAnchor.constraint(equalTo: view.bottomAnchor), bottomBar.heightAnchor.constraint(equalToConstant: 235),
+            modeControl.topAnchor.constraint(equalTo: bottomBar.contentView.topAnchor, constant: 14), modeControl.centerXAnchor.constraint(equalTo: bottomBar.contentView.centerXAnchor),
+            modeControl.widthAnchor.constraint(equalTo: bottomBar.contentView.widthAnchor, constant: -28),
+            exposureLabel.leadingAnchor.constraint(equalTo: bottomBar.contentView.leadingAnchor, constant: 24), exposureLabel.topAnchor.constraint(equalTo: modeControl.bottomAnchor, constant: 14), exposureLabel.widthAnchor.constraint(equalToConstant: 52),
+            exposureSlider.leadingAnchor.constraint(equalTo: exposureLabel.trailingAnchor, constant: 8), exposureSlider.trailingAnchor.constraint(equalTo: bottomBar.contentView.trailingAnchor, constant: -24), exposureSlider.centerYAnchor.constraint(equalTo: exposureLabel.centerYAnchor),
+            shutterButton.centerXAnchor.constraint(equalTo: bottomBar.contentView.centerXAnchor), shutterButton.bottomAnchor.constraint(equalTo: bottomBar.contentView.safeAreaLayoutGuide.bottomAnchor, constant: -20), shutterButton.widthAnchor.constraint(equalToConstant: 72), shutterButton.heightAnchor.constraint(equalToConstant: 72),
+            galleryButton.centerYAnchor.constraint(equalTo: shutterButton.centerYAnchor), galleryButton.trailingAnchor.constraint(equalTo: shutterButton.leadingAnchor, constant: -54), galleryButton.widthAnchor.constraint(equalToConstant: 54), galleryButton.heightAnchor.constraint(equalToConstant: 54),
+            switchButton.centerYAnchor.constraint(equalTo: shutterButton.centerYAnchor), switchButton.leadingAnchor.constraint(equalTo: shutterButton.trailingAnchor, constant: 54), switchButton.widthAnchor.constraint(equalToConstant: 54), switchButton.heightAnchor.constraint(equalToConstant: 54),
+            zoomStack.centerXAnchor.constraint(equalTo: view.centerXAnchor), zoomStack.bottomAnchor.constraint(equalTo: bottomBar.topAnchor, constant: -14), zoomStack.widthAnchor.constraint(equalToConstant: 190), zoomStack.heightAnchor.constraint(equalToConstant: 36),
+            countdownLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor), countdownLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -40),
+            recordingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor), recordingLabel.topAnchor.constraint(equalTo: topBar.bottomAnchor, constant: 12), recordingLabel.widthAnchor.constraint(equalToConstant: 112), recordingLabel.heightAnchor.constraint(equalToConstant: 28),
+            statusLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor), statusLabel.bottomAnchor.constraint(equalTo: zoomStack.topAnchor, constant: -16), statusLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 170), statusLabel.heightAnchor.constraint(equalToConstant: 34)
+        ])
+    }
+
+    private func configureTopButton(_ button: UIButton, image: String, action: Selector) {
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(systemName: image), for: .normal)
+        button.tintColor = .white
+        button.addTarget(self, action: action, for: .touchUpInside)
+        button.widthAnchor.constraint(equalToConstant: 42).isActive = true
+    }
+
+    private func configureRoundButton(_ button: UIButton, image: String, action: Selector) {
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(systemName: image), for: .normal)
+        button.tintColor = .white
+        button.backgroundColor = UIColor.white.withAlphaComponent(0.12)
+        button.layer.cornerRadius = 27
+        button.addTarget(self, action: action, for: .touchUpInside)
+    }
+
+    private func requestCameraPermission() {
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+        case .authorized: configureSession()
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video) { [weak self] allowed in
+                DispatchQueue.main.async { allowed ? self?.configureSession() : self?.showPermissionMessage() }
+            }
+        default: showPermissionMessage()
+        }
+    }
+
+    private func showPermissionMessage() {
+        let alert = UIAlertController(title: "ÐÑƒÐ¶ÐµÐ½ Ð´Ð¾ÑÑ‚ÑƒÐ¿ Ðº ÐºÐ°Ð¼ÐµÑ€Ðµ", message: "Ð Ð°Ð·Ñ€ÐµÑˆÐ¸Ñ‚Ðµ Ð´Ð¾ÑÑ‚ÑƒÐ¿ Ðº ÐºÐ°Ð¼ÐµÑ€Ðµ Ð² Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ°Ñ… iPhone.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸", style: .default) { _ in
+            if let url = URL(string: UIApplication.openSettingsURLString) { UIApplication.shared.open(url) }
+        })
+        alert.addAction(UIAlertAction(title: "ÐžÑ‚Ð¼ÐµÐ½Ð°", style: .cancel))
+        present(alert, animated: true)
+    }
+
+    private func configureSession() {
+        sessionQueue.async { [weak self] in
+            guard let self, !self.isConfigured else { return }
+            self.session.beginConfiguration()
+            self.session.sessionPreset = .photo
+            do {
+                guard let device = self.cameraDevice(position: .back, lens: .builtInWideAngleCamera) else { throw CameraError.noCamera }
+                let input = try AVCaptureDeviceInput(device: device)
+                guard self.session.canAddInput(input) else { throw CameraError.inputUnavailable }
+                self.session.addInput(input)
+                self.videoInput = input
+                guard self.session.canAddOutput(self.photoOutput), self.session.canAddOutput(self.movieOutput) else { throw CameraError.outputUnavailable }
+                self.session.addOutput(self.photoOutput)
+                self.session.addOutput(self.movieOutput)
+                self.photoOutput.isHighResolutionCaptureEnabled = true
+                if self.photoOutput.isDepthDataDeliverySupported { self.photoOutput.isDepthDataDeliveryEnabled = true }
+                if self.photoOutput.isAppleProRAWSupported { self.photoOutput.isAppleProRAWEnabled = true }
+                self.isConfigured = true
+                self.session.commitConfiguration()
+                self.applyManualControls()
+                self.session.startRunning()
+                DispatchQueue.main.async { self.showDeviceCapabilities() }
+            } catch {
+                self.session.commitConfiguration()
+                DispatchQueue.main.async { self.showStatus("ÐšÐ°Ð¼ÐµÑ€Ð° Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð°") }
+            }
+        }
+    }
+
+    private func startSessionIfPossible() {
+        sessionQueue.async { [weak self] in guard let self, self.isConfigured, !self.session.isRunning else { return }; self.session.startRunning() }
+    }
+
+    private func cameraDevice(position: AVCaptureDevice.Position, lens: AVCaptureDevice.DeviceType) -> AVCaptureDevice? {
+        AVCaptureDevice.DiscoverySession(deviceTypes: [lens], mediaType: .video, position: position).devices.first
+            ?? AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: position)
+    }
+
+    private func replaceVideoInput(position: AVCaptureDevice.Position, lens: AVCaptureDevice.DeviceType) {
+        sessionQueue.async { [weak self] in
+            guard let self, let device = self.cameraDevice(position: position, lens: lens) else { return }
+            do {
+                let newInput = try AVCaptureDeviceInput(device: device)
+                self.session.beginConfiguration()
+                let oldInput = self.videoInput
+                if let oldInput { self.session.removeInput(oldInput) }
+                if self.session.canAddInput(newInput) { self.session.addInput(newInput); self.videoInput = newInput }
+                else if let oldInput, self.session.canAddInput(oldInput) { self.session.addInput(oldInput) }
+                self.session.commitConfiguration()
+                self.applyManualControls()
+            } catch { DispatchQueue.main.async { self.showStatus("ÐžÐ±ÑŠÐµÐºÑ‚Ð¸Ð² Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿ÐµÐ½") } }
+        }
+    }
+
+    private func applyManualControls() {
+        guard let device = videoInput?.device else { return }
+        do {
+            try device.lockForConfiguration()
+            if settings.manualEnabled {
+                let seconds = min(max(Double(settings.shutterSeconds), CMTimeGetSeconds(device.activeFormat.minExposureDuration)), CMTimeGetSeconds(device.activeFormat.maxExposureDuration))
+                let iso = min(max(settings.iso, device.activeFormat.minISO), device.activeFormat.maxISO)
+                device.setExposureModeCustom(duration: CMTimeMakeWithSeconds(seconds, preferredTimescale: 1_000_000_000), iso: iso)
+                if device.isLockingFocusWithCustomLensPositionSupported { device.setFocusModeLocked(lensPosition: min(max(settings.focus, 0), 1)) }
+                if device.isLockingWhiteBalanceWithCustomDeviceGainsSupported {
+                    var gains = device.deviceWhiteBalanceGains(for: .init(temperature: settings.whiteBalance, tint: 0))
+                    gains.redGain = min(max(gains.redGain, 1), device.maxWhiteBalanceGain)
+                    gains.greenGain = min(max(gains.greenGain, 1), device.maxWhiteBalanceGain)
+                    gains.blueGain = min(max(gains.blueGain, 1), device.maxWhiteBalanceGain)
+                    device.setWhiteBalanceModeLocked(with: gains)
+                }
+            } else {
+                if device.isExposureModeSupported(.continuousAutoExposure) { device.exposureMode = .continuousAutoExposure }
+                if device.isFocusModeSupported(.continuousAutoFocus) { device.focusMode = .continuousAutoFocus }
+                if device.isWhiteBalanceModeSupported(.continuousAutoWhiteBalance) { device.whiteBalanceMode = .continuousAutoWhiteBalance }
+            }
+            device.unlockForConfiguration()
+        } catch { }
+    }
+
+    @objc private func toggleFlash() {
+        flashMode = flashMode == .off ? .on : (flashMode == .on ? .auto : .off)
+        let symbol = flashMode == .on ? "bolt.fill" : (flashMode == .auto ? "bolt.badge.a.fill" : "bolt.slash.fill")
+        flashButton.setImage(UIImage(systemName: symbol), for: .normal)
+    }
+
+    @objc private func toggleTimer() {
+        timerSeconds = timerSeconds == 0 ? 3 : (timerSeconds == 3 ? 10 : 0)
+        timerButton.setTitle(timerSeconds == 0 ? nil : "\(timerSeconds)", for: .normal)
+        timerButton.setImage(timerSeconds == 0 ? UIImage(systemName: "timer") : nil, for: .normal)
+        showStatus(timerSeconds == 0 ? "Ð¢Ð°Ð¹Ð¼ÐµÑ€ Ð²Ñ‹ÐºÐ»ÑŽÑ‡ÐµÐ½" : "Ð¢Ð°Ð¹Ð¼ÐµÑ€ \(timerSeconds) Ñ")
+    }
+
+    @objc private func toggleGrid() {
+        gridVisible.toggle(); gridView.isHidden = !gridVisible
+        gridButton.tintColor = gridVisible ? UIColor(red: 0.98, green: 0.74, blue: 0.18, alpha: 1) : .white
+    }
+
+    @objc private func toggleVideoMode() {
+        guard !movieOutput.isRecording else { stopRecording(); return }
+        isVideoMode.toggle()
+        videoButton.tintColor = isVideoMode ? .systemRed : .white
+        modeControl.isEnabled = !isVideoMode
+        modeControl.alpha = isVideoMode ? 0.4 : 1
+        shutterButton.backgroundColor = isVideoMode ? .systemRed : .white
+        sessionQueue.async { [weak self] in
+            guard let self else { return }
+            self.session.beginConfiguration(); self.session.sessionPreset = self.isVideoMode ? .high : .photo; self.session.commitConfiguration()
+        }
+        showStatus(isVideoMode ? "Ð ÐµÐ¶Ð¸Ð¼ Ð²Ð¸Ð´ÐµÐ¾" : photoMode.title)
+    }
+
+    @objc private func modeChanged() {
+        photoMode = PhotoMode(rawValue: modeControl.selectedSegmentIndex) ?? .normal
+        isVideoMode = false; videoButton.tintColor = .white; shutterButton.backgroundColor = .white
+        showStatus(photoMode.title)
+    }
+
+    @objc private func exposureChanged() {
+        let value = exposureSlider.value
+        exposureLabel.text = String(format: "EV %.1f", value)
+        guard !settings.manualEnabled else { return }
+        sessionQueue.async { [weak self] in
+            guard let device = self?.videoInput?.device else { return }
+            do { try device.lockForConfiguration(); device.setExposureTargetBias(min(max(value, device.minExposureTargetBias), device.maxExposureTargetBias)); device.unlockForConfiguration() } catch { }
+        }
+    }
+
+    @objc private func shutterTapped() {
+        if isVideoMode { movieOutput.isRecording ? stopRecording() : prepareVideoRecording() }
+        else { beginCountdown(seconds: timerSeconds) { [weak self] in self?.captureSeries() } }
+    }
+
+    private func beginCountdown(seconds: Int, completion: @escaping () -> Void) {
+        guard seconds > 0 else { completion(); return }
+        var remaining = seconds
+        countdownLabel.text = "\(remaining)"; countdownLabel.isHidden = false; shutterButton.isEnabled = false
+        countdownTimer?.invalidate()
+        countdownTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
+            remaining -= 1
+            if remaining <= 0 { timer.invalidate(); self?.countdownLabel.isHidden = true; self?.shutterButton.isEnabled = true; completion() }
+            else { self?.countdownLabel.text = "\(remaining)" }
+        }
+    }
+
+    private func exposureBrackets() -> [Float] {
+        let count: Int
+        switch photoMode { case .normal, .portrait: count = 1; case .hdr, .night: count = settings.frameCount }
+        guard count > 1 else { return [exposureSlider.value] }
+        let range: Float = photoMode == .night ? 1.35 : 1.7
+        return (0..<count).map { -range + (2 * range * Float($0) / Float(count - 1)) + exposureSlider.value }
+    }
+
+    private func captureSeries() {
+        guard !isCapturingSeries else { return }
+        isCapturingSeries = true; shutterButton.isEnabled = false
+        let brackets = exposureBrackets()
+        captureNext(brackets: brackets, index: 0, accumulator: SeriesAccumulator())
+    }
+
+    private func captureNext(brackets: [Float], index: Int, accumulator: SeriesAccumulator) {
+        if index >= brackets.count { processCapturedFrames(accumulator.frames); return }
+        showStatus("\(photoMode.title): ÐºÐ°Ð´Ñ€ \(index + 1)/\(brackets.count)")
+        sessionQueue.async { [weak self] in
+            guard let self, let device = self.videoInput?.device else { return }
+            if !self.settings.manualEnabled {
+                do { try device.lockForConfiguration(); device.setExposureTargetBias(min(max(brackets[index], device.minExposureTargetBias), device.maxExposureTargetBias)); device.unlockForConfiguration() } catch { }
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + (index == 0 ? 0.08 : 0.16)) { [weak self] in
+                self?.captureOneFrame(wantsRaw: index == 0 && self?.photoMode == .normal) { frame in
+                    guard let self else { return }
+                    if let frame { accumulator.frames.append(frame) }
+                    self.captureNext(brackets: brackets, index: index + 1, accumulator: accumulator)
+                }
+            }
+        }
+    }
+
+    private func captureOneFrame(wantsRaw: Bool, completion: @escaping (CapturedFrame?) -> Void) {
+        sessionQueue.async { [weak self] in
+            guard let self else { return }
+            let rawAvailable = self.settings.rawEnabled && wantsRaw && !self.photoOutput.availableRawPhotoPixelFormatTypes.isEmpty
+            let captureSettings: AVCapturePhotoSettings
+            if rawAvailable {
+                captureSettings = AVCapturePhotoSettings(rawPixelFormatType: self.photoOutput.availableRawPhotoPixelFormatTypes[0], processedFormat: [AVVideoCodecKey: AVVideoCodecType.hevc])
+            } else {
+                captureSettings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.hevc])
+            }
+            captureSettings.isHighResolutionPhotoEnabled = true
+            if self.videoInput?.device.hasFlash == true { captureSettings.flashMode = self.flashMode }
+            if self.photoMode == .portrait && self.photoOutput.isDepthDataDeliverySupported { captureSettings.isDepthDataDeliveryEnabled = true }
+            if let connection = self.photoOutput.connection(with: .video) {
+                connection.videoOrientation = .portrait
+                connection.isVideoMirrored = self.videoInput?.device.position == .front
+            }
+            let id = UUID()
+            let delegate = FrameCaptureDelegate { [weak self] frame in
+                self?.activeDelegates.removeValue(forKey: id)
+                completion(frame)
+            }
+            self.activeDelegates[id] = delegate
+            self.photoOutput.capturePhoto(with: captureSettings, delegate: delegate)
+        }
+    }
+
+    private func processCapturedFrames(_ frames: [CapturedFrame]) {
+        guard !frames.isEmpty else { finishCapture(message: "ÐžÑˆÐ¸Ð±ÐºÐ° ÑÑŠÑ‘Ð¼ÐºÐ¸"); return }
+        showStatus("ÐžÐ±Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐ°â€¦")
+        let mode = photoMode, prefs = settings
+        processingQueue.async { [weak self] in
+            let result = PhotoProcessor.process(frames.map(\.image), mode: mode, settings: prefs)
+            DispatchQueue.main.async {
+                guard let self else { return }
+                guard let image = result, let data = image.jpegData(compressionQuality: 0.96) else { self.finishCapture(message: "ÐžÑˆÐ¸Ð±ÐºÐ° Ð¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐ¸"); return }
+                self.galleryButton.setImage(image.withRenderingMode(.alwaysOriginal), for: .normal)
+                self.galleryButton.imageView?.contentMode = .scaleAspectFill; self.galleryButton.clipsToBounds = true
+                self.saveCapture(processed: data, original: prefs.saveOriginal ? frames.first?.originalData : nil, raw: frames.first?.rawData)
+                self.finishCapture(message: "Ð¤Ð¾Ñ‚Ð¾ ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ð¾")
+            }
+        }
+    }
+
+    private func finishCapture(message: String) {
+        isCapturingSeries = false; shutterButton.isEnabled = true; showStatus(message)
+        if !settings.manualEnabled { exposureChanged() }
+    }
+
+    private func prepareVideoRecording() {
+        let status = AVCaptureDevice.authorizationStatus(for: .audio)
+        if status == .notDetermined { AVCaptureDevice.requestAccess(for: .audio) { [weak self] _ in DispatchQueue.main.async { self?.startRecording() } } }
+        else { startRecording() }
+    }
+
+    private func startRecording() {
+        sessionQueue.async { [weak self] in
+            guard let self, !self.movieOutput.isRecording else { return }
+            self.addAudioInputIfAllowed()
+            let url = FileManager.default.temporaryDirectory.appendingPathComponent("TigrCamera-\(UUID().uuidString).mov")
+            if let connection = self.movieOutput.connection(with: .video) { connection.videoOrientation = .portrait; connection.isVideoMirrored = self.videoInput?.device.position == .front }
+            self.movieOutput.startRecording(to: url, recordingDelegate: self)
+            DispatchQueue.main.async { self.setRecordingUI(active: true) }
+        }
+    }
+
+    private func addAudioInputIfAllowed() {
+        guard AVCaptureDevice.authorizationStatus(for: .audio) == .authorized, audioInput == nil, let device = AVCaptureDevice.default(for: .audio), let input = try? AVCaptureDeviceInput(device: device) else { return }
+        session.beginConfiguration(); if session.canAddInput(input) { session.addInput(input); audioInput = input }; session.commitConfiguration()
+    }
+
+    private func stopRecording() { sessionQueue.async { [weak self] in self?.movieOutput.stopRecording() }; setRecordingUI(active: false) }
+
+    private func setRecordingUI(active: Bool) {
+        recordingTimer?.invalidate(); recordingStartedAt = active ? Date() : nil; recordingLabel.isHidden = !active
+        shutterButton.layer.cornerRadius = active ? 12 : 36; shutterButton.transform = active ? CGAffineTransform(scaleX: 0.62, y: 0.62) : .identity
+        if active { recordingTimer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true) { [weak self] _ in
+            guard let start = self?.recordingStartedAt else { return }; let seconds = Int(Date().timeIntervalSince(start)); self?.recordingLabel.text = String(format: " REC %02d:%02d ", seconds / 60, seconds % 60)
+        }}
+    }
+
+    @objc private func switchCamera() {
+        guard !movieOutput.isRecording, !isCapturingSeries else { return }
+        settings.save(lens: currentLensKey)
+        let goingFront = videoInput?.device.position == .back
+        currentLensKey = goingFront ? "front" : "1x"
+        settings = ProcessingSettings.load(lens: currentLensKey)
+        replaceVideoInput(position: goingFront ? .front : .back, lens: .builtInWideAngleCamera)
+    }
+
+    @objc private func zoomPreset(_ sender: UIButton) {
+        guard !isCapturingSeries else { return }
+        if videoInput?.device.position == .front { applyZoom(sender.tag == 20 ? 2 : 1); return }
+        settings.save(lens: currentLensKey)
+        currentLensKey = sender.tag == 5 ? "0.5x" : (sender.tag == 20 ? "2x" : "1x")
+        settings = ProcessingSettings.load(lens: currentLensKey)
+        let lens: AVCaptureDevice.DeviceType = sender.tag == 5 ? .builtInUltraWideCamera : (sender.tag == 20 ? .builtInTelephotoCamera : .builtInWideAngleCamera)
+        replaceVideoInput(position: .back, lens: lens)
+        zoomStack.arrangedSubviews.compactMap { $0 as? UIButton }.forEach { $0.backgroundColor = $0 == sender ? UIColor(red: 0.98, green: 0.74, blue: 0.18, alpha: 0.8) : UIColor.black.withAlphaComponent(0.55) }
+    }
+
+    @objc private func pinchZoom(_ gesture: UIPinchGestureRecognizer) {
+        guard let device = videoInput?.device, gesture.state == .changed else { return }; applyZoom(device.videoZoomFactor * gesture.scale); gesture.scale = 1
+    }
+
+    private func applyZoom(_ factor: CGFloat) {
+        sessionQueue.async { [weak self] in guard let device = self?.videoInput?.device else { return }; do { try device.lockForConfiguration(); device.videoZoomFactor = min(max(factor, 1), min(device.activeFormat.videoMaxZoomFactor, 8)); device.unlockForConfiguration() } catch { } }
+    }
+
+    @objc private func focusTapped(_ gesture: UITapGestureRecognizer) {
+        let point = gesture.location(in: previewView), devicePoint = previewLayer.captureDevicePointConverted(fromLayerPoint: point)
+        focusRing.center = point; focusRing.transform = CGAffineTransform(scaleX: 1.35, y: 1.35); focusRing.alpha = 1
+        UIView.animate(withDuration: 0.25, animations: { self.focusRing.transform = .identity }) { _ in UIView.animate(withDuration: 0.35, delay: 0.45, animations: { self.focusRing.alpha = 0 }) }
+        guard !settings.manualEnabled else { return }
+        sessionQueue.async { [weak self] in guard let device = self?.videoInput?.device else { return }; do {
+            try device.lockForConfiguration()
+            if device.isFocusPointOfInterestSupported { device.focusPointOfInterest = devicePoint; device.focusMode = .autoFocus }
+            if device.isExposurePointOfInterestSupported { device.exposurePointOfInterest = devicePoint; device.exposureMode = .continuousAutoExposure }
+            device.unlockForConfiguration()
+        } catch { } }
+    }
+
+    @objc private func openSettings() {
+        let rawSupported = !photoOutput.availableRawPhotoPixelFormatTypes.isEmpty
+        let controller = ProcessingSettingsViewController(settings: settings, exposure: exposureSlider.value, lensName: currentLensKey, rawSupported: rawSupported, deviceSummary: DeviceInfo.summary(photoOutput: photoOutput))
+        controller.onSave = { [weak self] newSettings, exposure in
+            guard let self else { return }; self.settings = newSettings; newSettings.save(lens: self.currentLensKey)
+            self.exposureSlider.value = exposure; self.exposureChanged(); self.sessionQueue.async { self.applyManualControls() }
+            self.showStatus("ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð¿Ñ€Ð¸Ð¼ÐµÐ½ÐµÐ½Ñ‹")
+        }
+        let nav = UINavigationController(rootViewController: controller)
+        if let sheet = nav.sheetPresentationController { sheet.detents = [.medium(), .large()]; sheet.prefersGrabberVisible = true }
+        present(nav, animated: true)
+    }
+
+    private func showDeviceCapabilities() { showStatus(DeviceInfo.shortSummary(photoOutput: photoOutput)) }
+
+    @objc private func openGallery() {
+        var configuration = PHPickerConfiguration(photoLibrary: .shared()); configuration.filter = .any(of: [.images, .videos]); configuration.selectionLimit = 1
+        let picker = PHPickerViewController(configuration: configuration); picker.delegate = self; present(picker, animated: true)
+    }
+
+    private func saveCapture(processed: Data, original: Data?, raw: Data?) {
+        PHPhotoLibrary.requestAuthorization(for: .addOnly) { [weak self] status in
+            guard status == .authorized || status == .limited else { DispatchQueue.main.async { self?.showStatus("ÐÐµÑ‚ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð° Ðº Ð¤Ð¾Ñ‚Ð¾") }; return }
+            PHPhotoLibrary.shared().performChanges({
+                for data in [processed, original, raw].compactMap({ $0 }) { let request = PHAssetCreationRequest.forAsset(); request.addResource(with: .photo, data: data, options: nil) }
+            }) { success, _ in if !success { DispatchQueue.main.async { self?.showStatus("ÐžÑˆÐ¸Ð±ÐºÐ° ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ð¸Ñ") } } }
+        }
+    }
+
+    private func saveVideo(_ url: URL) {
+        PHPhotoLibrary.requestAuthorization(for: .addOnly) { [weak self] status in
+            guard status == .authorized || status == .limited else { try? FileManager.default.removeItem(at: url); DispatchQueue.main.async { self?.showStatus("ÐÐµÑ‚ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð° Ðº Ð¤Ð¾Ñ‚Ð¾") }; return }
+            PHPhotoLibrary.shared().performChanges({ PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url) }) { success, _ in try? FileManager.default.removeItem(at: url); DispatchQueue.main.async { self?.showStatus(success ? "Ð’Ð¸Ð´ÐµÐ¾ ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ð¾" : "ÐžÑˆÐ¸Ð±ÐºÐ° ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ð¸Ñ") } }
+        }
+    }
+
+    private func showStatus(_ text: String) {
+        statusLabel.text = "  \(text)  "; UIView.animate(withDuration: 0.2, animations: { self.statusLabel.alpha = 1 }) { _ in UIView.animate(withDuration: 0.35, delay: 1.5, animations: { self.statusLabel.alpha = 0 }) }
+    }
+
+    private enum CameraError: Error { case noCamera, inputUnavailable, outputUnavailable }
+}
+
+private final class FrameCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate {
+    private let completion: (CapturedFrame?) -> Void
+    private var processedData: Data?
+    private var rawData: Data?
+    init(completion: @escaping (CapturedFrame?) -> Void) { self.completion = completion }
+
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        guard error == nil, let data = photo.fileDataRepresentation() else { return }
+        if photo.isRawPhoto { rawData = data } else { processedData = data }
+    }
+
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishCaptureFor resolvedSettings: AVCaptureResolvedPhotoSettings, error: Error?) {
+        guard error == nil, let data = processedData, let image = UIImage(data: data) else { completion(nil); return }
+        completion(CapturedFrame(image: image, originalData: data, rawData: rawData))
+    }
+}
+
+private enum PhotoProcessor {
+    static func process(_ images: [UIImage], mode: PhotoMode, settings: ProcessingSettings) -> UIImage? {
+        let context = CIContext(options: [.useSoftwareRenderer: false])
+        let ciImages = images.compactMap { CIImage(image: $0) }
+        guard let reference = ciImages.first else { return nil }
+        let aligned = ciImages.enumerated().map { index, image in index == 0 ? image : align(image, to: reference) }
+        var output = merge(aligned)
+        output = tone(output, mode: mode, settings: settings)
+        if mode == .portrait { output = portrait(output) }
+        guard let cg = context.createCGImage(output, from: output.extent) else { return nil }
+        return UIImage(cgImage: cg, scale: images.first?.scale ?? 1, orientation: .up)
+    }
+
+    private static func align(_ image: CIImage, to reference: CIImage) -> CIImage {
+        let request = VNTranslationalImageRegistrationRequest(targetedCIImage: image)
+        let handler = VNImageRequestHandler(ciImage: reference)
+        do { try handler.perform([request]); if let result = request.results?.first as? VNImageTranslationAlignmentObservation { return image.transformed(by: result.alignmentTransform).cropped(to: reference.extent) } } catch { }
+        return image.cropped(to: reference.extent)
+    }
+
+    private static func merge(_ images: [CIImage]) -> CIImage {
+        guard images.count > 1 else { return images[0] }
+        let scale = CGFloat(1.0 / Double(images.count))
+        func scaled(_ image: CIImage) -> CIImage {
+            image.applyingFilter("CIColorMatrix", parameters: [
+                "inputRVector": CIVector(x: scale, y: 0, z: 0, w: 0), "inputGVector": CIVector(x: 0, y: scale, z: 0, w: 0),
+                "inputBVector": CIVector(x: 0, y: 0, z: scale, w: 0), "inputAVector": CIVector(x: 0, y: 0, z: 0, w: scale)
+            ])
+        }
+        return images.dropFirst().reduce(scaled(images[0])) { result, image in scaled(image).applyingFilter("CIAdditionCompositing", parameters: [kCIInputBackgroundImageKey: result]) }
+    }
+
+    private static func tone(_ image: CIImage, mode: PhotoMode, settings s: ProcessingSettings) -> CIImage {
+        let modeBoost: Float = mode == .night ? 0.25 : (mode == .hdr ? 0.12 : 0)
+        var saturation = s.saturation
+        var contrast: Float = 1.03 + s.hdrStrength * 0.08
+        var temperature = s.temperature
+        switch s.style { case 1: temperature -= 250; contrast += 0.04; case 2: saturation -= 0.05; temperature += 120; case 3: saturation += 0.12; contrast += 0.03; default: break }
+        var result = image.applyingFilter("CINoiseReduction", parameters: ["inputNoiseLevel": 0.015 + s.denoise * 0.07, "inputSharpness": 0.35])
+        result = result.applyingFilter("CIHighlightShadowAdjust", parameters: ["inputShadowAmount": min(1, s.shadows + modeBoost), "inputHighlightAmount": max(0.25, 1 - s.highlights * (s.preserveSky ? 0.85 : 0.55))])
+        result = result.applyingFilter("CIColorControls", parameters: [kCIInputSaturationKey: saturation, kCIInputContrastKey: contrast, kCIInputBrightnessKey: mode == .night ? 0.025 : 0])
+        result = result.applyingFilter("CISharpenLuminance", parameters: [kCIInputSharpnessKey: 0.15 + s.sharpness * 0.9])
+        result = result.applyingFilter("CITemperatureAndTint", parameters: ["inputNeutral": CIVector(x: 6500, y: 0), "inputTargetNeutral": CIVector(x: CGFloat(temperature), y: s.naturalSkin ? 0 : 3)])
+        return result.cropped(to: image.extent)
+    }
+
+    private static func portrait(_ image: CIImage) -> CIImage {
+        let request = VNGeneratePersonSegmentationRequest(); request.qualityLevel = .balanced; request.outputPixelFormat = kCVPixelFormatType_OneComponent8
+        do {
+            try VNImageRequestHandler(ciImage: image).perform([request])
+            guard let buffer = request.results?.first?.pixelBuffer else { return image }
+            let rawMask = CIImage(cvPixelBuffer: buffer)
+            let mask = rawMask.transformed(by: CGAffineTransform(scaleX: image.extent.width / rawMask.extent.width, y: image.extent.height / rawMask.extent.height)).cropped(to: image.extent)
+            let background = image.clampedToExtent().applyingGaussianBlur(sigma: 14).cropped(to: image.extent)
+            return image.applyingFilter("CIBlendWithMask", parameters: [kCIInputBackgroundImageKey: background, kCIInputMaskImageKey: mask]).cropped(to: image.extent)
+        } catch { return image }
+    }
+}
+
+private final class ProcessingSettingsViewController: UIViewController, UIDocumentPickerDelegate {
+    var onSave: ((ProcessingSettings, Float) -> Void)?
+    private var settings: ProcessingSettings
+    private var exposure: Float
+    private let lensName: String
+    private let rawSupported: Bool
+    private let deviceSummary: String
+    private let stack = UIStackView()
+
+    init(settings: ProcessingSettings, exposure: Float, lensName: String, rawSupported: Bool, deviceSummary: String) { self.settings = settings; self.exposure = exposure; self.lensName = lensName; self.rawSupported = rawSupported; self.deviceSummary = deviceSummary; super.init(nibName: nil, bundle: nil) }
+    required init?(coder: NSCoder) { fatalError() }
+
+    override func viewDidLoad() {
+        super.viewDidLoad(); view.backgroundColor = .systemBackground; title = "LIB PATCHER â€¢ \(lensName)"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Ð“Ð¾Ñ‚Ð¾Ð²Ð¾", style: .done, target: self, action: #selector(done))
+        let scroll = UIScrollView(); scroll.translatesAutoresizingMaskIntoConstraints = false; view.addSubview(scroll)
+        stack.translatesAutoresizingMaskIntoConstraints = false; stack.axis = .vertical; stack.spacing = 14; stack.isLayoutMarginsRelativeArrangement = true; stack.layoutMargins = .init(top: 18, left: 18, bottom: 30, right: 18); scroll.addSubview(stack)
+        NSLayoutConstraint.activate([scroll.leadingAnchor.constraint(equalTo: view.leadingAnchor), scroll.trailingAnchor.constraint(equalTo: view.trailingAnchor), scroll.topAnchor.constraint(equalTo: view.topAnchor), scroll.bottomAnchor.constraint(equalTo: view.bottomAnchor), stack.leadingAnchor.constraint(equalTo: scroll.contentLayoutGuide.leadingAnchor), stack.trailingAnchor.constraint(equalTo: scroll.contentLayoutGuide.trailingAnchor), stack.topAnchor.constraint(equalTo: scroll.contentLayoutGuide.topAnchor), stack.bottomAnchor.constraint(equalTo: scroll.contentLayoutGuide.bottomAnchor), stack.widthAnchor.constraint(equalTo: scroll.frameLayoutGuide.widthAnchor)])
+
+        let info = UILabel(); info.numberOfLines = 0; info.font = .systemFont(ofSize: 13); info.textColor = .secondaryLabel; info.text = deviceSummary; stack.addArrangedSubview(info)
+        let configRow = UIStackView(); configRow.axis = .horizontal; configRow.distribution = .fillEqually; configRow.spacing = 10
+        let importButton = UIButton(type: .system); importButton.setTitle("Ð˜Ð¼Ð¿Ð¾Ñ€Ñ‚ JSON", for: .normal); importButton.addTarget(self, action: #selector(importConfig), for: .touchUpInside)
+        let exportButton = UIButton(type: .system); exportButton.setTitle("Ð­ÐºÑÐ¿Ð¾Ñ€Ñ‚ JSON", for: .normal); exportButton.addTarget(self, action: #selector(exportConfig), for: .touchUpInside)
+        configRow.addArrangedSubview(importButton); configRow.addArrangedSubview(exportButton); stack.addArrangedSubview(configRow)
+        addHeader("ÐžÐ±ÑŠÐµÐ´Ð¸Ð½ÐµÐ½Ð¸Ðµ ÐºÐ°Ð´Ñ€Ð¾Ð²")
+        let frames = UISegmentedControl(items: ["3", "5", "8", "12"]); frames.selectedSegmentIndex = [3,5,8,12].firstIndex(of: settings.frameCount) ?? 1; frames.addAction(UIAction { [weak self] _ in self?.settings.frameCount = [3,5,8,12][frames.selectedSegmentIndex] }, for: .valueChanged); stack.addArrangedSubview(frames)
+        addSlider("Ð¡Ð¸Ð»Ð° HDR", 0, 1, settings.hdrStrength) { self.settings.hdrStrength = $0 }
+        addSlider("Ð‘Ð°Ð·Ð¾Ð²Ð°Ñ ÑÐºÑÐ¿Ð¾Ð·Ð¸Ñ†Ð¸Ñ", -2, 2, exposure, valueText: { String(format: "%+.2f EV", $0) }) { self.exposure = $0 }
+        addSlider("Ð¨ÑƒÐ¼Ð¾Ð¿Ð¾Ð´Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ", 0, 1, settings.denoise) { self.settings.denoise = $0 }
+        addSlider("Ð ÐµÐ·ÐºÐ¾ÑÑ‚ÑŒ", 0, 1, settings.sharpness) { self.settings.sharpness = $0 }
+        addSlider("ÐÐ°ÑÑ‹Ñ‰ÐµÐ½Ð½Ð¾ÑÑ‚ÑŒ", 0.7, 1.4, settings.saturation) { self.settings.saturation = $0 }
+        addSlider("Ð¡Ð²ÐµÑ‚Ð»Ñ‹Ðµ ÑƒÑ‡Ð°ÑÑ‚ÐºÐ¸", 0, 1, settings.highlights) { self.settings.highlights = $0 }
+        addSlider("Ð”ÐµÑ‚Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ Ñ‚ÐµÐ½ÐµÐ¹", 0, 1, settings.shadows) { self.settings.shadows = $0 }
+        addSlider("Ð¢ÐµÐ¼Ð¿ÐµÑ€Ð°Ñ‚ÑƒÑ€Ð°", 3500, 8500, settings.temperature, valueText: { "\(Int($0)) K" }) { self.settings.temperature = $0 }
+        addSwitch("Ð¡Ð¾Ñ…Ñ€Ð°Ð½ÑÑ‚ÑŒ Ð½ÐµÐ±Ð¾ Ð¸ ÑÑ€ÐºÐ¸Ðµ Ð»Ð°Ð¼Ð¿Ñ‹", settings.preserveSky) { self.settings.preserveSky = $0 }
+        addSwitch("ÐÐ°Ñ‚ÑƒÑ€Ð°Ð»ÑŒÐ½Ñ‹Ð¹ Ð¾Ñ‚Ñ‚ÐµÐ½Ð¾Ðº ÐºÐ¾Ð¶Ð¸", settings.naturalSkin) { self.settings.naturalSkin = $0 }
+        addSwitch("Ð¡Ð¾Ñ…Ñ€Ð°Ð½ÑÑ‚ÑŒ Ð¸ÑÑ…Ð¾Ð´Ð½Ñ‹Ð¹ ÐºÐ°Ð´Ñ€", settings.saveOriginal) { self.settings.saveOriginal = $0 }
+        addSwitch(rawSupported ? "RAW/ProRAW" : "RAW/ProRAW â€” Ð½Ðµ Ð¿Ð¾Ð´Ð´ÐµÑ€Ð¶Ð¸Ð²Ð°ÐµÑ‚ÑÑ", settings.rawEnabled && rawSupported, enabled: rawSupported) { self.settings.rawEnabled = $0 }
+
+        addHeader("Ð¦Ð²ÐµÑ‚Ð¾Ð²Ð¾Ð¹ Ð¿Ñ€Ð¾Ñ„Ð¸Ð»ÑŒ")
+        let styles = UISegmentedControl(items: ["Ð”ÐµÐ½ÑŒ", "ÐÐ¾Ñ‡ÑŒ", "Ð›ÑŽÐ´Ð¸", "ÐŸÑ€Ð¸Ñ€Ð¾Ð´Ð°"]); styles.selectedSegmentIndex = settings.style; styles.addAction(UIAction { [weak self] _ in self?.settings.style = styles.selectedSegmentIndex }, for: .valueChanged); stack.addArrangedSubview(styles)
+
+        addHeader("Ð ÑƒÑ‡Ð½Ð¾Ðµ ÑƒÐ¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ")
+        addSwitch("Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ Pro-Ñ€ÐµÐ¶Ð¸Ð¼", settings.manualEnabled) { self.settings.manualEnabled = $0 }
+        addSlider("ISO", 25, 3200, settings.iso, valueText: { "\(Int($0))" }) { self.settings.iso = $0 }
+        addSlider("Ð’Ñ‹Ð´ÐµÑ€Ð¶ÐºÐ°", 1.0/8000.0, 1, settings.shutterSeconds, valueText: { $0 >= 0.5 ? String(format: "%.1f Ñ", $0) : "1/\(max(1, Int(1 / $0))) Ñ" }) { self.settings.shutterSeconds = $0 }
+        addSlider("Ð ÑƒÑ‡Ð½Ð¾Ð¹ Ñ„Ð¾ÐºÑƒÑ", 0, 1, settings.focus) { self.settings.focus = $0 }
+        addSlider("Ð‘Ð°Ð»Ð°Ð½Ñ Ð±ÐµÐ»Ð¾Ð³Ð¾", 3000, 8500, settings.whiteBalance, valueText: { "\(Int($0)) K" }) { self.settings.whiteBalance = $0 }
+    }
+
+    private func addHeader(_ text: String) { let label = UILabel(); label.text = text; label.font = .systemFont(ofSize: 18, weight: .bold); label.textColor = .label; stack.addArrangedSubview(label) }
+
+    private func addSwitch(_ title: String, _ value: Bool, enabled: Bool = true, change: @escaping (Bool) -> Void) {
+        let row = UIStackView(); row.axis = .horizontal
+        let label = UILabel(); label.text = title; label.font = .systemFont(ofSize: 15); label.numberOfLines = 2
+        let control = UISwitch(); control.isOn = value; control.isEnabled = enabled; control.addAction(UIAction { _ in change(control.isOn) }, for: .valueChanged)
+        row.addArrangedSubview(label); row.addArrangedSubview(control); stack.addArrangedSubview(row)
+    }
+
+    private func addSlider(_ title: String, _ min: Float, _ max: Float, _ value: Float, valueText: @escaping (Float) -> String = { String(format: "%.2f", $0) }, change: @escaping (Float) -> Void) {
+        let label = UILabel(); label.font = .systemFont(ofSize: 14, weight: .medium); label.text = "\(title): \(valueText(value))"; stack.addArrangedSubview(label)
+        let slider = UISlider(); slider.minimumValue = min; slider.maximumValue = max; slider.value = value; slider.minimumTrackTintColor = UIColor(red: 0.95, green: 0.62, blue: 0.08, alpha: 1)
+        slider.addAction(UIAction { _ in label.text = "\(title): \(valueText(slider.value))"; change(slider.value) }, for: .valueChanged); stack.addArrangedSubview(slider)
+    }
+
+    @objc private func importConfig() {
+        let picker = UIDocumentPickerViewController(forOpeningContentTypes: [.json], asCopy: true); picker.delegate = self; present(picker, animated: true)
+    }
+
+    @objc private func exportConfig() {
+        let config = TigrConfig(settings: settings, exposure: exposure, name: "Tigr Style \(lensName)")
+        let encoder = JSONEncoder(); encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        guard let data = try? encoder.encode(config) else { return }
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent("Tigr-Style-\(lensName).json")
+        do { try data.write(to: url, options: .atomic); present(UIActivityViewController(activityItems: [url], applicationActivities: nil), animated: true) } catch { }
+    }
+
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let url = urls.first, let data = try? Data(contentsOf: url), let config = try? JSONDecoder().decode(TigrConfig.self, from: data) else {
+            let alert = UIAlertController(title: "ÐžÑˆÐ¸Ð±ÐºÐ°", message: "ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ Ð¿Ñ€Ð¾Ñ‡Ð¸Ñ‚Ð°Ñ‚ÑŒ ÐºÐ¾Ð½Ñ„Ð¸Ð³ Tigr JSON.", preferredStyle: .alert); alert.addAction(UIAlertAction(title: "OK", style: .default)); present(alert, animated: true); return
+        }
+        settings = config.applied(to: settings); exposure = min(max(config.exposure, -2), 2)
+        let alert = UIAlertController(title: "ÐšÐ¾Ð½Ñ„Ð¸Ð³ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½", message: "\(config.name) Ð¿Ñ€Ð¸Ð¼ÐµÐ½Ñ‘Ð½ Ðº Ð¾Ð±ÑŠÐµÐºÑ‚Ð¸Ð²Ñƒ \(lensName).", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ÐŸÑ€Ð¸Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ", style: .default) { [weak self] _ in guard let self else { return }; self.onSave?(self.settings, self.exposure); self.dismiss(animated: true) })
+        present(alert, animated: true)
+    }
+
+    @objc private func done() { onSave?(settings, exposure); dismiss(animated: true) }
+}
+
+private enum DeviceInfo {
+    static func machine() -> String { var info = utsname(); uname(&info); return withUnsafePointer(to: &info.machine) { $0.withMemoryRebound(to: CChar.self, capacity: 1) { String(cString: $0) } } }
+    static func hasLens(_ type: AVCaptureDevice.DeviceType) -> Bool { !AVCaptureDevice.DiscoverySession(deviceTypes: [type], mediaType: .video, position: .back).devices.isEmpty }
+    static func shortSummary(photoOutput: AVCapturePhotoOutput) -> String { "\(machine()) â€¢ RAW \(photoOutput.availableRawPhotoPixelFormatTypes.isEmpty ? "Ð½ÐµÑ‚" : "Ð´Ð°")" }
+    static func summary(photoOutput: AVCapturePhotoOutput) -> String {
+        "Ð£ÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð¾: \(machine())\n0.5Ã—: \(hasLens(.builtInUltraWideCamera) ? "Ð¿Ð¾Ð´Ð´ÐµÑ€Ð¶Ð¸Ð²Ð°ÐµÑ‚ÑÑ" : "Ð½ÐµÑ‚") â€¢ 2Ã—: \(hasLens(.builtInTelephotoCamera) ? "Ð¿Ð¾Ð´Ð´ÐµÑ€Ð¶Ð¸Ð²Ð°ÐµÑ‚ÑÑ" : "Ð½ÐµÑ‚")\nRAW/ProRAW: \(photoOutput.availableRawPhotoPixelFormatTypes.isEmpty ? "Ð½Ðµ Ð¿Ð¾Ð´Ð´ÐµÑ€Ð¶Ð¸Ð²Ð°ÐµÑ‚ÑÑ" : "Ð¿Ð¾Ð´Ð´ÐµÑ€Ð¶Ð¸Ð²Ð°ÐµÑ‚ÑÑ") â€¢ ÐŸÐ¾Ñ€Ñ‚Ñ€ÐµÑ‚Ð½Ð°Ñ Ð³Ð»ÑƒÐ±Ð¸Ð½Ð°: \(photoOutput.isDepthDataDeliverySupported ? "Ð´Ð°" : "Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ð½Ð¾Ðµ Ñ€Ð°Ð·Ð¼Ñ‹Ñ‚Ð¸Ðµ")"
+    }
+}
+
+extension CameraViewController: AVCaptureFileOutputRecordingDelegate {
+    func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
+        DispatchQueue.main.async { self.setRecordingUI(active: false) }
+        guard error == nil else { try? FileManager.default.removeItem(at: outputFileURL); DispatchQueue.main.async { self.showStatus("ÐžÑˆÐ¸Ð±ÐºÐ° Ð·Ð°Ð¿Ð¸ÑÐ¸") }; return }
+        saveVideo(outputFileURL)
+    }
+}
+
+extension CameraViewController: PHPickerViewControllerDelegate { func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) { picker.dismiss(animated: true) } }
+
+private final class GridOverlayView: UIView {
+    override class var layerClass: AnyClass { CAShapeLayer.self }
+    override func layoutSubviews() {
+        super.layoutSubviews(); guard let shape = layer as? CAShapeLayer else { return }; let path = UIBezierPath()
+        for f in [CGFloat(1.0/3.0), CGFloat(2.0/3.0)] { path.move(to: .init(x: bounds.width*f, y: 0)); path.addLine(to: .init(x: bounds.width*f, y: bounds.height)); path.move(to: .init(x: 0, y: bounds.height*f)); path.addLine(to: .init(x: bounds.width, y: bounds.height*f)) }
+        shape.path = path.cgPath; shape.strokeColor = UIColor.white.withAlphaComponent(0.34).cgColor; shape.fillColor = UIColor.clear.cgColor; shape.lineWidth = 0.7
+    }
+}
