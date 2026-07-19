@@ -31,6 +31,7 @@ jobs:
             -framework Foundation \
             -framework UIKit \
             -framework QuartzCore \
+            -framework CoreGraphics \
             -install_name '@loader_path/NeonBee.dylib' \
             -Wl,-dead_strip \
             -o NeonBee.dylib
