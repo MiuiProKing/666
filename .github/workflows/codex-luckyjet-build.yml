@@ -10,10 +10,6 @@ jobs:
   build:
     runs-on: macos-15
     timeout-minutes: 30
-    defaults:
-      run:
-        working-directory: codex-ios-build
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -26,11 +22,16 @@ jobs:
           cache-dependency-path: codex-ios-build/package-lock.json
 
       - name: Install dependencies
-        run: npm ci --no-audit --no-fund
+        run: |
+          set -euo pipefail
+          cd "$GITHUB_WORKSPACE/codex-ios-build"
+          test -f package.json
+          npm install --no-audit --no-fund
 
       - name: Generate placeholder app artwork
         run: |
           set -euo pipefail
+          cd "$GITHUB_WORKSPACE/codex-ios-build"
           printf 'P6\n1 1\n255\n\x0f\x15\x25' > /tmp/luckyjet.ppm
           sips -s format png -z 1024 1024 /tmp/luckyjet.ppm --out ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png >/dev/null
           sips -s format png -z 2732 2732 /tmp/luckyjet.ppm --out ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732.png >/dev/null
@@ -38,11 +39,14 @@ jobs:
           cp ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732.png ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732-2.png
 
       - name: Sync Capacitor project
-        run: npx cap sync ios
+        run: |
+          cd "$GITHUB_WORKSPACE/codex-ios-build"
+          npx cap sync ios
 
       - name: Build app without code signing
         run: |
           set -euo pipefail
+          cd "$GITHUB_WORKSPACE/codex-ios-build"
           xcodebuild \
             -project ios/App/App.xcodeproj \
             -scheme App \
@@ -60,6 +64,7 @@ jobs:
       - name: Package unsigned IPA
         run: |
           set -euo pipefail
+          cd "$GITHUB_WORKSPACE/codex-ios-build"
           test -d build/Build/Products/Release-iphoneos/App.app
           rm -rf Payload
           mkdir Payload
@@ -73,3 +78,4 @@ jobs:
           path: codex-ios-build/LuckyJetExact-wrapper-unsigned.ipa
           if-no-files-found: error
           retention-days: 7
+
