@@ -1,0 +1,45 @@
+name: Build NeonBee overlay
+
+on:
+  push:
+    branches:
+      - codex-ios-build-20260719
+    paths:
+      - codex-neonbee/**
+      - .github/workflows/codex-neonbee-build.yml
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile unsigned arm64 overlay
+        run: |
+          set -euo pipefail
+          cd "$GITHUB_WORKSPACE/codex-neonbee"
+          SDK="$(xcrun --sdk iphoneos --show-sdk-path)"
+          xcrun --sdk iphoneos clang \
+            -arch arm64 \
+            -dynamiclib \
+            -fobjc-arc \
+            -fblocks \
+            -miphoneos-version-min=15.0 \
+            -isysroot "$SDK" \
+            NeonBee.m \
+            -framework Foundation \
+            -framework UIKit \
+            -framework QuartzCore \
+            -install_name '@loader_path/NeonBee.dylib' \
+            -Wl,-dead_strip \
+            -o NeonBee.dylib
+          file NeonBee.dylib
+          otool -L NeonBee.dylib
+      - name: Upload overlay
+        uses: actions/upload-artifact@v4
+        with:
+          name: NeonBee-arm64-overlay
+          path: codex-neonbee/NeonBee.dylib
+          if-no-files-found: error
+          retention-days: 7
