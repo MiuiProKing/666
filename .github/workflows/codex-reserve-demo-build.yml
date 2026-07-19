@@ -1,0 +1,66 @@
+name: Build Reserve Demo IPA
+
+on:
+  push:
+    branches:
+      - codex-ios-build-20260719
+    paths:
+      - codex-reserve-demo/**
+      - .github/workflows/codex-reserve-demo-build.yml
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate clearly marked demo artwork
+        run: |
+          set -euo pipefail
+          cd "$GITHUB_WORKSPACE/codex-reserve-demo"
+          python3 - <<'PY'
+          def art(path, size):
+              with open(path, 'wb') as f:
+                  f.write(f'P6\n{size} {size}\n255\n'.encode())
+                  for y in range(size):
+                      for x in range(size):
+                          border=size*.10
+                          inside=border<x<size-border and border<y<size-border
+                          c=(226,224,203) if inside else (21,21,19)
+                          # Orange demo band; no official symbols.
+                          if inside and size*.65<y<size*.78: c=(255,134,44)
+                          # Bold letter D built from simple blocks.
+                          if inside and size*.28<x<size*.36 and size*.25<y<size*.60: c=(18,18,17)
+                          if inside and size*.34<x<size*.61 and (size*.25<y<size*.32 or size*.53<y<size*.60): c=(18,18,17)
+                          if inside and size*.56<x<size*.64 and size*.31<y<size*.54: c=(18,18,17)
+                          f.write(bytes(c))
+          art('/tmp/demo-icon.ppm',1024)
+          art('/tmp/demo-splash.ppm',1366)
+          PY
+          sips -s format png /tmp/demo-icon.ppm --out App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png >/dev/null
+          sips -s format png /tmp/demo-splash.ppm --out App/Assets.xcassets/Splash.imageset/splash-2732x2732.png >/dev/null
+          cp App/Assets.xcassets/Splash.imageset/splash-2732x2732.png App/Assets.xcassets/Splash.imageset/splash-2732x2732-1.png
+          cp App/Assets.xcassets/Splash.imageset/splash-2732x2732.png App/Assets.xcassets/Splash.imageset/splash-2732x2732-2.png
+      - name: Build unsigned app
+        run: |
+          set -euo pipefail
+          cd "$GITHUB_WORKSPACE/codex-reserve-demo"
+          xcodebuild -project App.xcodeproj -scheme App -configuration Release -sdk iphoneos \
+            -derivedDataPath build CODE_SIGN_STYLE=Manual CODE_SIGN_IDENTITY="" DEVELOPMENT_TEAM="" \
+            CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO clean build
+      - name: Package unsigned IPA
+        run: |
+          set -euo pipefail
+          cd "$GITHUB_WORKSPACE/codex-reserve-demo"
+          APP_PATH="build/Build/Products/Release-iphoneos/Reserve Demo.app"
+          test -d "$APP_PATH"
+          mkdir Payload
+          cp -R "$APP_PATH" "Payload/ReserveDemo.app"
+          /usr/bin/zip -qry Reserve-Demo-unsigned.ipa Payload
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Reserve-Demo-unsigned-ipa
+          path: codex-reserve-demo/Reserve-Demo-unsigned.ipa
+          if-no-files-found: error
+          retention-days: 7
