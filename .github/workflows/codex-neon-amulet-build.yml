@@ -1,0 +1,85 @@
+
+name: Build Neon Amulet IPA
+
+on:
+  push:
+    branches:
+      - codex-ios-build-20260719
+    paths:
+      - codex-neon-amulet/**
+      - .github/workflows/codex-neon-amulet-build.yml
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate neon amulet artwork
+        run: |
+          set -euo pipefail
+          cd "$GITHUB_WORKSPACE/codex-neon-amulet"
+          python3 - <<'PY'
+          import math
+          def art(path, size):
+              with open(path, 'wb') as f:
+                  f.write(f'P6\n{size} {size}\n255\n'.encode())
+                  for y in range(size):
+                      for x in range(size):
+                          dx=(x-size/2)/(size/2); dy=(y-size/2)/(size/2)
+                          r=math.hypot(dx,dy)
+                          a=(math.atan2(dy,dx)+math.pi)/(2*math.pi)
+                          glow=max(0.0,1.0-r)
+                          base=(int(4+8*glow),int(6+8*glow),int(18+28*glow))
+                          ring=max(0.0,1.0-abs(r-.42)*65)
+                          outer=max(0.0,1.0-abs(r-.59)*50)
+                          cyan=(20,245,255); purple=(178,42,255); pink=(255,28,157)
+                          if a < .33:
+                              t=a/.33; col=tuple(int(cyan[i]*(1-t)+purple[i]*t) for i in range(3))
+                          elif a < .66:
+                              t=(a-.33)/.33; col=tuple(int(purple[i]*(1-t)+pink[i]*t) for i in range(3))
+                          else:
+                              t=(a-.66)/.34; col=tuple(int(pink[i]*(1-t)+cyan[i]*t) for i in range(3))
+                          star = (abs(dx) < .025 and abs(dy) < .19) or (abs(dy) < .025 and abs(dx) < .19)
+                          power=max(ring,outer*.42,1.0 if star else 0.0)
+                          rgb=tuple(min(255,int(base[i]*(1-power)+col[i]*power)) for i in range(3))
+                          f.write(bytes(rgb))
+          art('/tmp/amulet-icon.ppm',1024)
+          art('/tmp/amulet-splash.ppm',1366)
+          PY
+          sips -s format png /tmp/amulet-icon.ppm --out App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png >/dev/null
+          sips -s format png /tmp/amulet-splash.ppm --out App/Assets.xcassets/Splash.imageset/splash-2732x2732.png >/dev/null
+          cp App/Assets.xcassets/Splash.imageset/splash-2732x2732.png App/Assets.xcassets/Splash.imageset/splash-2732x2732-1.png
+          cp App/Assets.xcassets/Splash.imageset/splash-2732x2732.png App/Assets.xcassets/Splash.imageset/splash-2732x2732-2.png
+      - name: Build unsigned app
+        run: |
+          set -euo pipefail
+          cd "$GITHUB_WORKSPACE/codex-neon-amulet"
+          xcodebuild \
+            -project App.xcodeproj \
+            -scheme App \
+            -configuration Release \
+            -sdk iphoneos \
+            -derivedDataPath build \
+            CODE_SIGN_STYLE=Manual \
+            CODE_SIGN_IDENTITY="" \
+            DEVELOPMENT_TEAM="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO \
+            clean build
+      - name: Package unsigned IPA
+        run: |
+          set -euo pipefail
+          cd "$GITHUB_WORKSPACE/codex-neon-amulet"
+          APP_PATH="build/Build/Products/Release-iphoneos/Neon Amulet.app"
+          test -d "$APP_PATH"
+          mkdir Payload
+          cp -R "$APP_PATH" "Payload/NeonAmulet.app"
+          /usr/bin/zip -qry Neon-Amulet-unsigned.ipa Payload
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Neon-Amulet-unsigned-ipa
+          path: codex-neon-amulet/Neon-Amulet-unsigned.ipa
+          if-no-files-found: error
+          retention-days: 7
