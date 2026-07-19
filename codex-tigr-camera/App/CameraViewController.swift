@@ -521,7 +521,11 @@ final class CameraViewController: UIViewController {
         switch photoMode { case .normal, .portrait: count = 1; case .hdr, .night: count = settings.frameCount }
         guard count > 1 else { return [exposureSlider.value] }
         let range: Float = photoMode == .night ? 1.35 : 1.7
-        return (0..<count).map { -range + (2 * range * Float($0) / Float(count - 1)) + exposureSlider.value }
+        let step = (range * 2.0) / Float(count - 1)
+        let base = exposureSlider.value - range
+        var values: [Float] = []
+        for index in 0..<count { values.append(base + step * Float(index)) }
+        return values
     }
 
     private func captureSeries() {
