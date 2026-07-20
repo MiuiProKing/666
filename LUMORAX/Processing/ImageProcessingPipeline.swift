@@ -88,9 +88,7 @@ final class ImageProcessingPipeline: ImageProcessing {
         image = applyingVignette(to: image, amount: preset.vignette * preset.intensity)
 
         let colorSpace = CGColorSpace(name: CGColorSpace.sRGB) ?? CGColorSpaceCreateDeviceRGB()
-        let options: [CIImageRepresentationOption: Any] = [
-            .lossyCompressionQuality: 0.96
-        ]
+        let options: [CIImageRepresentationOption: Any] = [:]
 
         let data: Data?
         switch outputFormat {
