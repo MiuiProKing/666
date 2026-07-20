@@ -71,4 +71,470 @@ final class CameraEngine: ObservableObject {
     }
 
     func start() async {
-        var state = permissimºãO-¢G§²ÚîÆ­yÖ÷W&6W2¢òÀ ”"ò¢†÷FôÆ–'&'•6W'f–6Rç7v–gB–â6÷W&6W2¢òÀ ”2ò¢6WGF–æw2ç7v–gB–â6÷W&6W2¢òÀ ”Bò¢6ÖW&&Wf–Wrç7v–gB–â6÷W&6W2¢òÀ ”Rò¢6ÖW&67&VVâç7v–gB–â6÷W&6W2¢òÀ ”bò¢6WGF–æw567&VVâç7v–gB–â6÷W&6W2¢òÀ ’“° —'VäöæÇ”f÷$FWÆ÷–ÖVçE÷7G&ö6W76–ærÒ° —Ó° ”33"ò¢6÷W&6W2¢òÒ° –—6Ò%…6÷W&6W4'V–ÆE†6S° –'V–ÆD7F–öäÖ6²Ò#CsCƒ3cCs° –f–ÆW2Ò€ ”"ò¢&W6WDÖöFVÅFW7G2ç7v–gB–â6÷W&6W2¢òÀ ”2ò¢6WGF–æw5FW7G2ç7v–gB–â6÷W&6W2¢òÀ ’“° —'VäöæÇ”f÷$FWÆ÷–ÖVçE÷7G&ö6W76–ærÒ° —Ó°¢ò¢VæB%…6÷W&6W4'V–ÆE†6R6V7F–öâ¢ð ¢ò¢&Vv–â%…F&vWDFWVæFVæ7’6V7F–öâ¢ð ”3Sò¢%…F&vWDFWVæFVæ7’¢òÒ° –—6Ò%…F&vWDFWVæFVæ7“° —F&vWBÒS#ò¢ÅTÔõ$‚¢ó° —F&vWE&÷‡’Ò3ò¢%„6öçF–æW$—FVÕ&÷‡’¢ó° —Ó°¢ò¢VæB%…F&vWDFWVæFVæ7’6V7F–öâ¢ð ¢ò¢&Vv–â„4'V–ÆD6öæf–wW&F–öâ6V7F–öâ¢ð ”S3ò¢FV'Vr¢òÒ° –—6Ò„4'V–ÆD6öæf–wW&F–öã° –'V–ÆE6WGF–æw2Ò° ”Åt•5õ4T$4…õU4U%õD…2Òäó° ”4ÄäuôäÅ•¤U%ôäôäåTÄÂÒ”U3° ”4ÄäuôTä$ÄUôÔôETÄU2Ò”U3° ”4ÄäuôTä$ÄUôô$¤5ô$2Ò”U3° ”4Ääuõt$åôDô5TÔTåDD”ôåô4ôÔÔTåE2Ò”U3° ”4õ•õ„4Uõ5E$•Òäó° ”DT%Tuô”ädõ$ÔD”ôåôdõ$ÔBÒGv&c° ”Tä$ÄUõDU5D$”Ä•E’Ò”U3° ”t45ô5ôÄäuTtUõ5DäD$BÒvçSs° ”t45ôõD”Ô•¤D”ôåôÄUdTÂÒ° ”t45õ$U$ô4U54õ%ôDTd”ä•D”ôå2Ò‚$DT%TsÓ"Â"B†–æ†W&—FVB’"Â“° ”•„ôäTõ5ôDUÄõ”ÔTåEõD$tUBÒbã° ”ÕDÅôTä$ÄUôDT%Tuô”ädòÒ”ä4ÅTDUõ4õU$4S° ”ôäÅ•ô5D•dUô$4‚Ò”U3° •4Dµ$ôõBÒ—†öæV÷3° •5t”eEô5D•dUô4ôÕ”ÄD”ôåô4ôäD•D”ôå2Ò$DT%TrB†–æ†W&—FVB’#° •5t”eEôõD”Ô•¤D”ôåôÄUdTÂÒ"ÔöæöæR#° —Ó° –æÖRÒFV'Vs° —Ó° ”S3"ò¢&VÆV6R¢òÒ° –—6Ò„4'V–ÆD6öæf–wW&F–öã° –'V–ÆE6WGF–æw2Ò° ”Åt•5õ4T$4…õU4U%õD…2Òäó° ”4ÄäuôäÅ•¤U%ôäôäåTÄÂÒ”U3° ”4ÄäuôTä$ÄUôÔôETÄU2Ò”U3° ”4ÄäuôTä$ÄUôô$¤5ô$2Ò”U3° ”4Ääuõt$åôDô5TÔTåDD”ôåô4ôÔÔTåE2Ò”U3° ”4õ•õ„4Uõ5E$•Òäó° ”DT%Tuô”ädõ$ÔD”ôåôdõ$ÔBÒ&Gv&b×v—F‚ÖG7–Ò#° ”Tä$ÄUôå5ô54U%D”ôå2Òäó° ”t45ô5ôÄäuTtUõ5DäD$BÒvçSs° ”•„ôäTõ5ôDUÄõ”ÔTåEõD$tUBÒbã° ”ÕDÅôTä$ÄUôDT%Tuô”ädòÒäó° •4Dµ$ôõBÒ—†öæV÷3° •5t”eEô4ôÕ”ÄD”ôåôÔôDRÒv†öÆVÖöGVÆS° •dÄ”DDUõ$ôET5BÒ”U3° —Ó° –æÖRÒ&VÆV6S° —Ó° ”S32ò¢FV'Vr¢òÒ° –—6Ò„4'V–ÆD6öæf–wW&F–öã° –'V–ÆE6WGF–æw2Ò° ”54UD4DÄôuô4ôÕ”ÄU%ô”4ôåôäÔRÒ–6öã° ”4ôDUõ4”tåõ5E”ÄRÒWFöÖF–3° ”5U%$TåEõ$ô¤T5EõdU%4”ôâÒ° ”DUdTÄõÔTåEõDTÒÒ"#° ”tTäU$DUô”ädõÄ•5Eôd”ÄRÒ”U3° ””ädõÄ•5Eô´U•ôå46ÖW&W6vTFW67&—F–öâÒ$ÅTÔõ$‚ýí½Í}=]"­Í]2-í½Í­âM½ò­Í­‚Mí-âÝ-]Â•†öæRâ#° ””ädõÄ•5Eô´U•ôå5†÷FôÆ–'&'”FEW6vTFW67&—F–öâÒ$ÅTÔõ$‚Mí-½ý]"Ýý-½RMí-í=M‚"-2Í]M-]­2â#° ””ädõÄ•5Eô´U•õT”Æ–6F–öå66VæTÖæ–fW7EôvVæW&F–öâÒ”U3° ””ädõÄ•5Eô´U•õT”Æ–6F–öå7W÷'G4–æF—&V7D–çWDWfVçG2Ò”U3° ””ädõÄ•5Eô´U•õT”ÆVæ6…67&VVåôvVæW&F–öâÒ”U3° ””ädõÄ•5Eô´U•õT•7W÷'FVD–çFW&f6T÷&–VçFF–öç5ö•†öæRÒ%T”–çFW&f6T÷&–VçFF–öå÷'G&—BT”–çFW&f6T÷&–VçFF–öäÆæG66TÆVgBT”–çFW&f6T÷&–VçFF–öäÆæG66U&–v‡B#° ”•„ôäTõ5ôDUÄõ”ÔTåEõD$tUBÒbã° ”Ô$´UD”äuõdU%4”ôâÒãã° •$ôET5Eô%TäDÄUô”DTåD”d”U"Ò6öÒç–÷W&æÖRæÇVÖ÷&ƒ° •$ôET5EôäÔRÒ"B…D$tUEôäÔR’#° •5Uõ%DTEõÄDdõ$Õ2Ò&—†öæV÷2—†öæW6–×VÆF÷"#° •5Uõ%E5ôÔ44DÅ•5BÒäó° •5t”eEôTÔ•EôÄô5õ5E$”äu2Ò”U3° •5t”eEõdU%4”ôâÒRã° •D$tUDTEôDUd”4UôdÔ”Å’Ò° —Ó° –æÖRÒFV'Vs° —Ó° ”S3Bò¢&VÆV6R¢òÒ° –—6Ò„4'V–ÆD6öæf–wW&F–öã° –'V–ÆE6WGF–æw2Ò° ”54UD4DÄôuô4ôÕ”ÄU%ô”4ôåôäÔRÒ–6öã° ”4ôDUõ4”tåõ5E”ÄRÒWFöÖF–3° ”5U%$TåEõ$ô¤T5EõdU%4”ôâÒ° ”DUdTÄõÔTåEõDTÒÒ"#° ”tTäU$DUô”ädõÄ•5Eôd”ÄRÒ”U3° ””ädõÄ•5Eô´U•ôå46ÖW&W6vTFW67&—F–öâÒ$ÅTÔõ$‚ýí½Í}=]"­Í]2-í½Í­âM½ò­Í­‚Mí-âÝ-]Â•†öæRâ#° ””ädõÄ•5Eô´U•ôå5†÷FôÆ–'&'”FEW6vTFW67&—F–öâÒ$ÅTÔõ$‚Mí-½ý]"Ýý-½RMí-í=M‚"-2Í]M-]­2â#° ””ädõÄ•5Eô´U•õT”Æ–6F–öå66VæTÖæ–fW7EôvVæW&F–öâÒ”U3° ””ädõÄ•5Eô´U•õT”Æ–6F–öå7W÷'G4–æF—&V7D–çWDWfVçG2Ò”U3° ””ädõÄ•5Eô´U•õT”ÆVæ6…67&VVåôvVæW&F–öâÒ”U3° ””ädõÄ•5Eô´U•õT•7W÷'FVD–çFW&f6T÷&–VçFF–öç5ö•†öæRÒ%T”–çFW&f6T÷&–VçFF–öå÷'G&—BT”–çFW&f6T÷&–VçFF–öäÆæG66TÆVgBT”–çFW&f6T÷&–VçFF–öäÆæG66U&–v‡B#° ”•„ôäTõ5ôDUÄõ”ÔTåEõD$tUBÒbã° ”Ô$´UD”äuõdU%4”ôâÒãã° •$ôET5Eô%TäDÄUô”DTåD”d”U"Ò6öÒç–÷W&æÖRæÇVÖ÷&ƒ° •$ôET5EôäÔRÒ"B…D$tUEôäÔR’#° •5Uõ%DTEõÄDdõ$Õ2Ò&—†öæV÷2—†öæW6–×VÆF÷"#° •5Uõ%E5ôÔ44DÅ•5BÒäó° •5t”eEôTÔ•EôÄô5õ5E$”äu2Ò”U3° •5t”eEõdU%4”ôâÒRã° •D$tUDTEôDUd”4UôdÔ”Å’Ò° —Ó° –æÖRÒ&VÆV6S° —Ó° ”S3Rò¢FV'Vr¢òÒ° –—6Ò„4'V–ÆD6öæf–wW&F–öã° –'V–ÆE6WGF–æw2Ò° ”%TäDÄUôÄôDU"Ò"B…DU5Eô„õ5B’#° ”4ôDUõ4”tåõ5E”ÄRÒWFöÖF–3° ”tTäU$DUô”ädõÄ•5Eôd”ÄRÒ”U3° ”•„ôäTõ5ôDUÄõ”ÔTåEõD$tUBÒbã° •$ôET5Eô%TäDÄUô”DTåD”d”U"Ò6öÒç–÷W&æÖRæÇVÖ÷&‚çFW7G3° •$ôET5EôäÔRÒ"B…D$tUEôäÔR’#° •5t”eEõdU%4”ôâÒRã° •D$tUDTEôDUd”4UôdÔ”Å’Ò° •DU5Eô„õ5BÒ"B„%T”ÅEõ$ôET5E5ôD•"’ôÅTÔõ$‚æòB„%TäDÄUôU„T5UD$ÄUôdôÄDU%õD‚’ôÅTÔõ$‚#° —Ó° –æÖRÒFV'Vs° —Ó° ”S3bò¢&VÆV6R¢òÒ° –—6Ò„4'V–ÆD6öæf–wW&F–öã° –'V–ÆE6WGF–æw2Ò° ”%TäDÄUôÄôDU"Ò"B…DU5Eô„õ5B’#° ”4ôDUõ4”tåõ5E”ÄRÒWFöÖF–3° ”tTäU$DUô”ädõÄ•5Eôd”ÄRÒ”U3° ”•„ôäTõ5ôDUÄõ”ÔTåEõD$tUBÒbã° •$ôET5Eô%TäDÄUô”DTåD”d”U"Ò6öÒç–÷W&æÖRæÇVÖ÷&‚çFW7G3° •$ôET5EôäÔRÒ"B…D$tUEôäÔR’#° •5t”eEõdU%4”ôâÒRã° •D$tUDTEôDUd”4UôdÔ”Å’Ò° •DU5Eô„õ5BÒ"B„%T”ÅEõ$ôET5E5ôD•"’ôÅTÔõ$‚æòB„%TäDÄUôU„T5UD$ÄUôdôÄDU%õD‚’ôÅTÔõ$‚#° —Ó° –æÖRÒ&VÆV6S° —Ó°¢ò¢VæB„4'V–ÆD6öæf–wW&F–öâ6V7F–öâ¢ð ¢ò¢&Vv–â„46öæf–wW&F–öäÆ—7B6V7F–öâ¢ð ”SCò¢'V–ÆB6öæf–wW&F–öâÆ—7Bf÷"%…&ö¦V7B$ÅTÔõ$‚"¢òÒ° –—6Ò„46öæf–wW&F–öäÆ—7C° –'V–ÆD6öæf–wW&F–öç2Ò€ ”S3ò¢FV'Vr¢òÀ ”S3"ò¢&VÆV6R¢òÀ ’“° –FVfVÇD6öæf–wW&F–öä—5f—6–&ÆRÒ° –FVfVÇD6öæf–wW&F–öäæÖRÒ&VÆV6S° —Ó° ”SC"ò¢'V–ÆB6öæf–wW&F–öâÆ—7Bf÷"%„æF—fUF&vWB$ÅTÔõ$‚"¢òÒ° –—6Ò„46öæf–wW&F–öäÆ—7C° –'V–ÆD6öæf–wW&F–öç2Ò€ ”S32ò¢FV'Vr¢òÀ ”S3Bò¢&VÆV6R¢òÀ ’“° –FVfVÇD6öæf–wW&F–öä—5f—6–&ÆRÒ° –FVfVÇD6öæf–wW&F–öäæÖRÒ&VÆV6S° —Ó° ”SC2ò¢'V–ÆB6öæf–wW&F–öâÆ—7Bf÷"%„æF—fUF&vWB$ÅTÔõ$…FW7G2"¢òÒ° –—6Ò„46öæf–wW&F–öäÆ—7C° –'V–ÆD6öæf–wW&F–öç2Ò€ ”S3Rò¢FV'Vr¢òÀ ”S3bò¢&VÆV6R¢òÀ ’“° –FVfVÇD6öæf–wW&F–öä—5f—6–&ÆRÒ° –FVfVÇD6öæf–wW&F–öäæÖRÒ&VÆV6S° —Ó°¢ò¢VæB„46öæf–wW&F–öäÆ—7B6V7F–öâ¢ð ¢ò¢&Vv–â„5&VÖ÷FU7v–gE6¶vU&VfW&Væ6R6V7F–öâ¢ð ”Cò¢„5&VÖ÷FU7v–gE6¶vU&VfW&Væ6R$ÖWFÅWFÂ"¢òÒ° –—6Ò„5&VÖ÷FU7v–gE6¶vU&VfW&Væ6S° —&W÷6—F÷'•U$ÂÒ&‡GG3¢òöv—F‡V"æ6öÒôÖWFÅWFÂôÖWFÅWFÂæv—B#° —&WV—&VÖVçBÒ° –¶–æBÒW†7EfW'6–öã° —fW'6–öâÒã#Rã#° —Ó° —Ó°¢ò¢VæB„5&VÖ÷FU7v–gE6¶vU&VfW&Væ6R6V7F–öâ¢ð ¢ò¢&Vv–â„57v–gE6¶vU&öGV7DFWVæFVæ7’6V7F–öâ¢ð ”Cò¢ÖWFÅWFÂ¢òÒ° –—6Ò„57v–gE6¶vU&öGV7DFWVæFVæ7“° —6¶vRÒCò¢„5&VÖ÷FU7v–gE6¶vU&VfW&Væ6R$ÖWFÅWFÂ"¢ó° —&öGV7DæÖRÒÖWFÅWFÃ° —Ó°¢ò¢VæB„57v–gE6¶vU&öGV7DFWVæFVæ7’6V7F–öâ¢ð —Ó° —&ö÷Dö&¦V7BÒSò¢&ö¦V7Bö&¦V7B¢ó°§Ð
+        var state = permissionManager.currentState()
+        authorizationState = state
+
+        if state == .notDetermined {
+            state = await permissionManager.requestAccess()
+            authorizationState = state
+        }
+
+        guard state == .authorized else { return }
+
+        await withCheckedContinuation { continuation in
+            sessionQueue.async { [weak self] in
+                guard let self else {
+                    continuation.resume()
+                    return
+                }
+
+                do {
+                    if self.currentInput == nil {
+                        try self.configureSession()
+                    }
+                    if !self.session.isRunning {
+                        self.session.startRunning()
+                    }
+                    Task { @MainActor in
+                        self.isRunning = self.session.isRunning
+                        continuation.resume()
+                    }
+                } catch {
+                    self.logger.error("Camera start failed: \(error.localizedDescription, privacy: .public)")
+                    Task { @MainActor in
+                        self.errorMessage = error.localizedDescription
+                        continuation.resume()
+                    }
+                }
+            }
+        }
+    }
+
+    func stop() {
+        sessionQueue.async { [weak self] in
+            guard let self, self.session.isRunning else { return }
+            self.session.stopRunning()
+            Task { @MainActor in self.isRunning = false }
+        }
+    }
+
+    func selectLens(id: CameraLens.ID) {
+        switchToDevice(id: id)
+    }
+
+    func switchCamera() {
+        let target: CameraPosition = position == .back ? .front : .back
+        guard let lens = availableLenses.first(where: {
+            $0.position == target && $0.deviceType == .builtInWideAngleCamera
+        }) ?? availableLenses.first(where: { $0.position == target }) else {
+            errorMessage = "ÐÐ° ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ðµ Ð½ÐµÑ‚ ÐºÐ°Ð¼ÐµÑ€Ñ‹ Ð´Ð»Ñ Ð¿ÐµÑ€ÐµÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ñ."
+            return
+        }
+        switchToDevice(id: lens.id)
+    }
+
+    func focus(at devicePoint: CGPoint) {
+        sessionQueue.async { [weak self] in
+            guard let device = self?.currentInput?.device else { return }
+            do {
+                try device.lockForConfiguration()
+                defer { device.unlockForConfiguration() }
+
+                if device.isFocusPointOfInterestSupported,
+                   device.isFocusModeSupported(.continuousAutoFocus) {
+                    device.focusPointOfInterest = devicePoint
+                    device.focusMode = .continuousAutoFocus
+                }
+                if device.isExposurePointOfInterestSupported,
+                   device.isExposureModeSupported(.continuousAutoExposure) {
+                    device.exposurePointOfInterest = devicePoint
+                    device.exposureMode = .continuousAutoExposure
+                }
+            } catch {
+                self?.logger.error("Focus configuration failed: \(error.localizedDescription, privacy: .public)")
+            }
+        }
+    }
+
+    func setExposureBias(_ value: Float) {
+        exposureBias = min(max(value, exposureRange.lowerBound), exposureRange.upperBound)
+        let clampedValue = exposureBias
+        sessionQueue.async { [weak self] in
+            guard let device = self?.currentInput?.device else { return }
+            do {
+                try device.lockForConfiguration()
+                device.setExposureTargetBias(clampedValue, completionHandler: nil)
+                device.unlockForConfiguration()
+            } catch {
+                self?.logger.error("Exposure configuration failed: \(error.localizedDescription, privacy: .public)")
+            }
+        }
+    }
+
+    func setManualMode(_ enabled: Bool) {
+        isManualMode = enabled
+        if enabled {
+            applyManualExposure()
+        } else {
+            restoreAutomaticControls()
+        }
+    }
+
+    func setManualISO(_ value: Float) {
+        manualISO = min(max(value, isoRange.lowerBound), isoRange.upperBound)
+        applyManualExposure()
+    }
+
+    func setManualShutterStops(_ value: Float) {
+        shutterStops = min(
+            max(value, shutterStopsRange.lowerBound),
+            shutterStopsRange.upperBound
+        )
+        applyManualExposure()
+    }
+
+    func setManualFocus(_ value: Float) {
+        manualFocusPosition = min(max(value, 0), 1)
+        let position = manualFocusPosition
+        sessionQueue.async { [weak self] in
+            guard let device = self?.currentInput?.device,
+                  device.isFocusModeSupported(.locked) else { return }
+            do {
+                try device.lockForConfiguration()
+                device.setFocusModeLocked(lensPosition: position, completionHandler: nil)
+                device.unlockForConfiguration()
+            } catch {
+                self?.logger.error("Manual focus failed: \(error.localizedDescription, privacy: .public)")
+            }
+        }
+    }
+
+    func cycleFlash() {
+        guard hasFlash else { return }
+        switch flashMode {
+        case .off: flashMode = .auto
+        case .auto: flashMode = .on
+        case .on: flashMode = .off
+        }
+    }
+
+    func capturePhoto() {
+        guard authorizationState == .authorized, isRunning, !isCapturing else { return }
+        isCapturing = true
+        statusMessage = nil
+
+        let requestedQuality = settings.captureQuality
+        let actualQuality: CaptureQuality = isThermallyConstrained ? .balanced : requestedQuality
+        let outputFormat = settings.outputFormat
+        let saveOriginal = settings.saveOriginal
+        let mirrorSelfie = settings.mirrorSelfie
+        let selectedPreset = presetStore.selectedPreset
+        let requestedFlash = flashMode
+        let orientation = Self.currentVideoOrientation()
+
+        sessionQueue.async { [weak self] in
+            guard let self else { return }
+
+            let codec: AVVideoCodecType = self.photoOutput.availablePhotoCodecTypes.contains(.hevc)
+                ? .hevc
+                : .jpeg
+            let captureSettings = AVCapturePhotoSettings(format: [
+                AVVideoCodecKey: codec
+            ])
+            captureSettings.photoQualityPrioritization = actualQuality.photoQualityPrioritization
+
+            if self.currentInput?.device.hasFlash == true {
+                captureSettings.flashMode = requestedFlash.avMode
+            }
+
+            if let connection = self.photoOutput.connection(with: .video) {
+                if connection.isVideoOrientationSupported {
+                    connection.videoOrientation = orientation
+                }
+                if connection.isVideoMirroringSupported {
+                    connection.automaticallyAdjustsVideoMirroring = false
+                    connection.isVideoMirrored = self.currentInput?.device.position == .front
+                        && mirrorSelfie
+                }
+            }
+
+            let captureID = captureSettings.uniqueID
+            let delegate = PhotoCaptureDelegate { [weak self] result in
+                guard let self else { return }
+                self.sessionQueue.async {
+                    self.captureDelegates[captureID] = nil
+                }
+                Task { @MainActor in
+                    await self.finishCapture(
+                        result,
+                        preset: selectedPreset,
+                        outputFormat: outputFormat,
+                        saveOriginal: saveOriginal
+                    )
+                }
+            }
+            self.captureDelegates[captureID] = delegate
+            self.photoOutput.capturePhoto(with: captureSettings, delegate: delegate)
+        }
+    }
+
+    func dismissError() {
+        errorMessage = nil
+    }
+
+    func clearStatus() {
+        statusMessage = nil
+    }
+
+    private func configureSession() throws {
+        session.beginConfiguration()
+        defer { session.commitConfiguration() }
+        session.sessionPreset = .photo
+
+        let devices = discoverDevices()
+        guard let initialDevice = devices.first(where: {
+            $0.position == .back && $0.deviceType == .builtInWideAngleCamera
+        }) ?? devices.first else {
+            throw CameraError.noCamera
+        }
+
+        let input: AVCaptureDeviceInput
+        do {
+            input = try AVCaptureDeviceInput(device: initialDevice)
+        } catch {
+            throw CameraError.cannotCreateInput
+        }
+
+        guard session.canAddInput(input) else { throw CameraError.cannotAddInput }
+        session.addInput(input)
+
+        guard session.canAddOutput(photoOutput) else { throw CameraError.cannotAddOutput }
+        session.addOutput(photoOutput)
+        photoOutput.maxPhotoQualityPrioritization = .quality
+        currentInput = input
+
+        let lensModels = devices.map(Self.makeLens)
+        devicesByID = Dictionary(uniqueKeysWithValues: devices.map { ($0.uniqueID, $0) })
+
+        Task { @MainActor in
+            self.availableLenses = lensModels
+            self.applyPublishedDeviceState(initialDevice)
+        }
+    }
+
+    private func discoverDevices() -> [AVCaptureDevice] {
+        let discovery = AVCaptureDevice.DiscoverySession(
+            deviceTypes: [
+                .builtInWideAngleCamera,
+                .builtInUltraWideCamera,
+                .builtInTelephotoCamera,
+                .builtInTrueDepthCamera
+            ],
+            mediaType: .video,
+            position: .unspecified
+        )
+
+        var seen = Set<String>()
+        return discovery.devices.filter { seen.insert($0.uniqueID).inserted }
+    }
+
+    private func switchToDevice(id: String) {
+        sessionQueue.async { [weak self] in
+            guard let self,
+                  let device = self.devicesByID[id],
+                  self.currentInput?.device.uniqueID != id else { return }
+
+            do {
+                let newInput = try AVCaptureDeviceInput(device: device)
+                self.session.beginConfiguration()
+                if let oldInput = self.currentInput {
+                    self.session.removeInput(oldInput)
+                }
+
+                if self.session.canAddInput(newInput) {
+                    self.session.addInput(newInput)
+                    self.currentInput = newInput
+                    self.session.commitConfiguration()
+                    Task { @MainActor in
+                        self.applyPublishedDeviceState(device)
+                    }
+                } else {
+                    if let oldInput = self.currentInput,
+                       self.session.canAddInput(oldInput) {
+                        self.session.addInput(oldInput)
+                    }
+                    self.session.commitConfiguration()
+                    throw CameraError.cannotAddInput
+                }
+            } catch {
+                self.logger.error("Camera switch failed: \(error.localizedDescription, privacy: .public)")
+                Task { @MainActor in self.errorMessage = error.localizedDescription }
+            }
+        }
+    }
+
+    private func applyPublishedDeviceState(_ device: AVCaptureDevice) {
+        selectedLensID = device.uniqueID
+        position = device.position == .front ? .front : .back
+        exposureRange = device.minExposureTargetBias...device.maxExposureTargetBias
+        exposureBias = 0
+        hasFlash = device.hasFlash
+        isoRange = device.activeFormat.minISO...device.activeFormat.maxISO
+        manualISO = device.iso
+        manualFocusPosition = device.lensPosition
+        isManualFocusSupported = device.isFocusModeSupported(.locked)
+
+        let minimumSeconds = max(
+            CMTimeGetSeconds(device.activeFormat.minExposureDuration),
+            1.0 / 100_000.0
+        )
+        let maximumSeconds = max(
+            minimumSeconds,
+            CMTimeGetSeconds(device.activeFormat.maxExposureDuration)
+        )
+        shutterStopsRange = Float(log2(minimumSeconds))...Float(log2(maximumSeconds))
+        let currentSeconds = max(CMTimeGetSeconds(device.exposureDuration), minimumSeconds)
+        shutterStops = Float(log2(currentSeconds))
+
+        if !device.hasFlash { flashMode = .off }
+        if isManualMode { applyManualExposure() }
+    }
+
+    private func applyManualExposure() {
+        guard isManualMode else { return }
+        let requestedISO = manualISO
+        let requestedStops = shutterStops
+
+        sessionQueue.async { [weak self] in
+            guard let device = self?.currentInput?.device,
+                  device.isExposureModeSupported(.custom) else { return }
+
+            let minimumSeconds = CMTimeGetSeconds(device.activeFormat.minExposureDuration)
+            let maximumSeconds = CMTimeGetSeconds(device.activeFormat.maxExposureDuration)
+            let requestedSeconds = pow(2.0, Double(requestedStops))
+            let seconds = min(max(requestedSeconds, minimumSeconds), maximumSeconds)
+            let duration = CMTimeMakeWithSeconds(seconds, preferredTimescale: 1_000_000_000)
+            let iso = min(max(requestedISO, device.activeFormat.minISO), device.activeFormat.maxISO)
+
+            do {
+                try device.lockForConfiguration()
+                device.setExposureModeCustom(
+                    duration: duration,
+                    iso: iso,
+                    completionHandler: nil
+                )
+                device.unlockForConfiguration()
+            } catch {
+                self?.logger.error("Manual exposure failed: \(error.localizedDescription, privacy: .public)")
+            }
+        }
+    }
+
+    private func restoreAutomaticControls() {
+        exposureBias = 0
+        sessionQueue.async { [weak self] in
+            guard let device = self?.currentInput?.device else { return }
+            do {
+                try device.lockForConfiguration()
+                if device.isExposureModeSupported(.continuousAutoExposure) {
+                    device.exposureMode = .continuousAutoExposure
+                    device.setExposureTargetBias(0, completionHandler: nil)
+                }
+                if device.isFocusModeSupported(.continuousAutoFocus) {
+                    device.focusMode = .continuousAutoFocus
+                }
+                device.unlockForConfiguration()
+            } catch {
+                self?.logger.error("Auto controls restore failed: \(error.localizedDescription, privacy: .public)")
+            }
+        }
+    }
+
+    private func finishCapture(
+        _ result: Result<Data, Error>,
+        preset: PresetModel,
+        outputFormat: PhotoOutputFormat,
+        saveOriginal: Bool
+    ) async {
+        defer { isCapturing = false }
+
+        do {
+            let originalData = try result.get()
+            let timestamp = Int(Date().timeIntervalSince1970)
+
+            if saveOriginal {
+                try await photoLibrary.savePhoto(
+                    data: originalData,
+                    filename: "LUMORAX_\(timestamp)_ORIGINAL.heic"
+                )
+            }
+
+            let processedData = try await processor.process(
+                photoData: originalData,
+                preset: preset,
+                outputFormat: outputFormat
+            )
+            let fileExtension = outputFormat == .heif ? "heic" : "jpg"
+            try await photoLibrary.savePhoto(
+                data: processedData,
+                filename: "LUMORAX_\(timestamp).\(fileExtension)"
+            )
+
+            lastThumbnail = UIImage(data: processedData)
+            statusMessage = saveOriginal
+                ? "ÐžÐ±Ñ€Ð°Ð±Ð¾Ñ‚Ð°Ð½Ð½Ñ‹Ð¹ ÑÐ½Ð¸Ð¼Ð¾Ðº Ð¸ Ð¾Ñ€Ð¸Ð³Ð¸Ð½Ð°Ð» ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ñ‹"
+                : "Ð¡Ð½Ð¸Ð¼Ð¾Ðº ÑÐ¾Ñ…Ñ€Ð°Ð½Ñ‘Ð½"
+            logger.info("Photo saved with preset \(preset.id, privacy: .public)")
+        } catch {
+            logger.error("Photo capture pipeline failed: \(error.localizedDescription, privacy: .public)")
+            errorMessage = error.localizedDescription
+        }
+    }
+
+    private func observeThermalState() {
+        updateThermalState()
+        thermalObserver = NotificationCenter.default.addObserver(
+            forName: ProcessInfo.thermalStateDidChangeNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            Task { @MainActor in self?.updateThermalState() }
+        }
+    }
+
+    private func updateThermalState() {
+        switch ProcessInfo.processInfo.thermalState {
+        case .serious, .critical:
+            isThermallyConstrained = true
+        default:
+            isThermallyConstrained = false
+        }
+    }
+
+    private static func makeLens(_ device: AVCaptureDevice) -> CameraLens {
+        let position: CameraPosition = device.position == .front ? .front : .back
+        let shortName: String
+        switch device.deviceType {
+        case .builtInUltraWideCamera: shortName = "0.5Ã—"
+        case .builtInTelephotoCamera: shortName = "TELE"
+        case .builtInTrueDepthCamera: shortName = "FRONT"
+        default: shortName = position == .front ? "FRONT" : "1Ã—"
+        }
+        return CameraLens(
+            id: device.uniqueID,
+            name: device.localizedName,
+            shortName: shortName,
+            position: position,
+            deviceType: device.deviceType
+        )
+    }
+
+    private static func currentVideoOrientation() -> AVCaptureVideoOrientation {
+        switch UIDevice.current.orientation {
+        case .landscapeLeft: return .landscapeRight
+        case .landscapeRight: return .landscapeLeft
+        case .portraitUpsideDown: return .portraitUpsideDown
+        default: return .portrait
+        }
+    }
+}
