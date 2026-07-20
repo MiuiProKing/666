@@ -1,0 +1,19 @@
+:root{--global-theme-bg:#000000}
+html.global-theme{background:var(--global-theme-bg)}
+html.global-theme body,html.global-theme body.catalog-active,html.global-theme .catalog-view{background:var(--global-theme-bg)!important;color:#fff!important}
+html.global-theme .catalog-title{color:#fff!important}
+html.global-theme .catalog-kicker{color:rgba(255,255,255,.62)!important}
+html.global-theme .panel,html.global-theme .field,html.global-theme .cell,html.global-theme .analysis-window,html.global-theme .square,html.global-theme .panel-close,html.global-theme .btn-secondary,html.global-theme .history-tools select,html.global-theme .controls input,html.global-theme .controls select{background:linear-gradient(rgba(10,12,22,.3),rgba(10,12,22,.3)),var(--global-theme-bg)!important;color:#fff!important;border-color:rgba(255,255,255,.2)!important}
+.global-theme-host{position:relative;z-index:2147483000}
+.global-theme-fab{position:fixed;right:14px;top:calc(12px + env(safe-area-inset-top));z-index:2147483001;width:48px!important;height:48px!important;border-radius:16px!important;padding:0!important;display:grid;place-items:center;font-size:23px!important;letter-spacing:0!important;color:#fff!important;background:rgba(13,16,28,.9)!important;border:1px solid rgba(255,255,255,.2)!important;box-shadow:0 10px 28px rgba(0,0,0,.45)!important;backdrop-filter:blur(14px)}
+.global-theme-panel{position:fixed;right:14px;top:calc(68px + env(safe-area-inset-top));z-index:2147483002;width:min(280px,calc(100vw - 28px));padding:14px;border-radius:18px;color:#fff;background:rgba(12,15,27,.96);border:1px solid rgba(255,255,255,.18);box-shadow:0 18px 50px rgba(0,0,0,.58);backdrop-filter:blur(18px);opacity:0;transform:translateY(-8px) scale(.97);pointer-events:none;transition:.18s ease}
+.global-theme-panel.open{opacity:1;transform:none;pointer-events:auto}
+.global-theme-head,.global-theme-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.global-theme-head{margin-bottom:12px;font-size:13px;letter-spacing:1.4px}
+.global-theme-head button{width:30px!important;height:30px!important;padding:0!important;border-radius:10px!important;background:#24283a!important;box-shadow:none!important}
+.global-theme-row{min-height:42px;font-size:13px;font-weight:800;border-top:1px solid rgba(255,255,255,.1)}
+.global-theme-row input[type="color"]{width:48px;height:32px;border:0;border-radius:9px;background:transparent}
+.global-theme-row input[type="checkbox"]{width:22px;height:22px;accent-color:#7c3aed}
+.global-theme-presets{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;padding:12px 0}
+.global-theme-presets button{width:28px!important;height:28px!important;padding:0!important;border-radius:50%!important;background:var(--swatch)!important;border:2px solid rgba(255,255,255,.38)!important;box-shadow:none!important}
+.global-theme-panel small{display:block;opacity:.62;font-size:10px;line-height:1.3}

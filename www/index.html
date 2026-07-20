@@ -7,8 +7,8 @@
 <meta name="format-detection" content="telephone=no">
 <script>
   try{
-    const oledEnabled = localStorage.getItem("luckyjet_oled_theme") !== "off";
-    const oledColor = localStorage.getItem("luckyjet_oled_color") || "#000000";
+    const oledEnabled = (localStorage.getItem("lumorax_theme_enabled") ?? localStorage.getItem("luckyjet_oled_theme")) !== "off";
+    const oledColor = localStorage.getItem("lumorax_theme_color") || localStorage.getItem("luckyjet_oled_color") || "#000000";
     document.documentElement.style.setProperty("--oled-bg", oledColor);
     if(oledEnabled) document.documentElement.classList.add("oled-theme");
   }catch(_){ document.documentElement.classList.add("oled-theme"); }
@@ -225,17 +225,17 @@
     min-height:100dvh; width:100%; background:#f2f3f7;
     padding:calc(26px + env(safe-area-inset-top)) 16px calc(30px + env(safe-area-inset-bottom));
   }
-  .catalog-shell{ width:100%; max-width:520px; margin:0 auto; }
+  .catalog-shell{width:100%;max-width:720px;margin:0 auto}
   .catalog-kicker{font-size:11px;font-weight:900;letter-spacing:3px;color:#6b7280;margin-bottom:4px}
   .catalog-title{
     color:#090a0f; font-size:clamp(34px,11vw,52px); line-height:.95;
     font-weight:1000; letter-spacing:-2px; margin:0 0 24px;
   }
-  .game-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px 12px}
+  .game-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 16px}
   .game-card{
-    position:relative; isolation:isolate; aspect-ratio:.68; width:100%; overflow:hidden;
-    border:0; border-radius:18px; padding:0; color:#fff; cursor:pointer;
-    box-shadow:0 8px 18px rgba(15,23,42,.16),inset 0 0 0 1px rgba(255,255,255,.22);
+    position:relative;isolation:isolate;aspect-ratio:.84;width:100%;min-height:210px;overflow:hidden;
+    border:0;border-radius:24px;padding:0;color:#fff;cursor:pointer;
+    box-shadow:0 14px 30px rgba(0,0,0,.32),inset 0 0 0 1px rgba(255,255,255,.28);
     transition:transform .15s ease,filter .15s ease; -webkit-tap-highlight-color:transparent;
   }
   .game-card:active{transform:scale(.95)}
@@ -250,23 +250,23 @@
   }
   .game-card.locked{filter:saturate(.88)}
   .game-card.locked .card-icon{filter:grayscale(.1);opacity:.84}
-  .card-art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .card-art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transform:scale(1.025);filter:saturate(1.08) contrast(1.04)}
   .game-card.has-art::before,.game-card.has-art::after{z-index:1}
   .game-card.has-art .card-copy{z-index:2}
   .card-icon{
     position:absolute;left:50%;top:32%;transform:translate(-50%,-50%);
-    font-size:clamp(28px,9vw,44px);line-height:1;filter:drop-shadow(0 5px 5px rgba(0,0,0,.32));
+    font-size:clamp(52px,15vw,82px);line-height:1;filter:drop-shadow(0 5px 5px rgba(0,0,0,.32));
   }
-  .card-copy{position:absolute;left:5px;right:5px;bottom:9px;text-align:center;text-transform:uppercase}
-  .card-name{display:block;font:1000 clamp(9px,2.65vw,13px)/.9 "Arial Black",Impact,sans-serif;letter-spacing:-.55px;text-shadow:0 2px 3px rgba(0,0,0,.65)}
-  .card-studio{display:block;margin-top:5px;font-size:5.5px;line-height:1;font-weight:900;letter-spacing:1.2px;opacity:.78}
+  .card-copy{position:absolute;z-index:2;left:8px;right:8px;bottom:12px;text-align:center;text-transform:uppercase}
+  .card-name{display:block;font:1000 clamp(14px,4.4vw,22px)/.95 "Arial Black",Impact,sans-serif;letter-spacing:-.5px;text-shadow:0 3px 8px rgba(0,0,0,.9)}
+  .card-studio{display:block;margin-top:7px;font-size:8px;line-height:1;font-weight:900;letter-spacing:1.4px;opacity:.9}
   .lock-pill{
-    position:absolute;z-index:3;left:50%;top:49%;transform:translate(-50%,-50%);
+    position:absolute;z-index:3;left:auto;right:10px;top:10px;transform:none;
     display:flex;align-items:center;gap:3px;white-space:nowrap;border-radius:999px;
-    padding:4px 7px;background:rgba(10,13,20,.82);font-size:7px;font-weight:1000;letter-spacing:.3px;
+    padding:6px 9px;background:rgba(10,13,20,.82);font-size:9px;font-weight:1000;letter-spacing:.3px;
     box-shadow:0 3px 8px rgba(0,0,0,.35);backdrop-filter:blur(5px);
   }
-  .open-pill{background:#facc15;color:#201500;top:48%;font-size:7px}
+  .open-pill{background:#facc15;color:#201500;top:10px;font-size:9px}
   .c-purple{background:linear-gradient(145deg,#7639f4,#f02ab7)}
   .c-pink{background:linear-gradient(145deg,#ff4fba,#8a35f6)}
   .c-green{background:linear-gradient(145deg,#103417,#4cd137)}
@@ -292,15 +292,15 @@
   }
   @media(max-width:350px){.game-grid{gap:10px 8px}.game-card{border-radius:15px}.catalog-view{padding-left:11px;padding-right:11px}}
 </style>
-</head>
+<link rel="stylesheet" href="theme.css">
+<script src="theme.js"></script></head>
 <body class="catalog-active">
   <section class="catalog-view" id="selectorView" aria-label="Game selector">
     <div class="catalog-shell">
       <div class="catalog-kicker">1WIN GAMES</div>
       <h1 class="catalog-title">PREDICTORS</h1>
       <div class="game-grid">
-        <button class="game-card c-purple" type="button" data-open-game="luckyjet" aria-label="Open Lucky Jet">
-          <span class="card-icon">✈</span><span class="lock-pill open-pill">OPEN</span>
+        <button class="game-card has-art c-purple" type="button" data-open-game="luckyjet" aria-label="Open Lucky Jet"><img class="card-art" src="luckyjet-card-v2.png" alt=""><span class="lock-pill open-pill">OPEN</span>
           <span class="card-copy"><span class="card-name">LUCKY JET</span><span class="card-studio">1WIN GAMES</span></span>
         </button>
         <button class="game-card locked c-pink" type="button" data-locked-game><span class="card-icon">👑</span><span class="lock-pill">🔒 SOON</span><span class="card-copy"><span class="card-name">ROCKET QUEEN</span><span class="card-studio">COMING SOON</span></span></button>
@@ -310,7 +310,7 @@
         <button class="game-card locked c-orange" type="button" data-locked-game><span class="card-icon">🕶</span><span class="lock-pill">🔒 SOON</span><span class="card-copy"><span class="card-name">CRIME EMPIRE</span><span class="card-studio">COMING SOON</span></span></button>
         <button class="game-card locked c-blue" type="button" data-locked-game><span class="card-icon">🏹</span><span class="lock-pill">🔒 SOON</span><span class="card-copy"><span class="card-name">FORTUNE CRASH</span><span class="card-studio">COMING SOON</span></span></button>
         <button class="game-card locked c-cyan" type="button" data-locked-game><span class="card-icon">🌴</span><span class="lock-pill">🔒 SOON</span><span class="card-copy"><span class="card-name">TROPICANA</span><span class="card-studio">COMING SOON</span></span></button>
-        <button class="game-card has-art c-red" type="button" data-open-game="aviator" aria-label="Open Aviator"><img class="card-art" src="aviator-card.svg" alt=""><span class="lock-pill open-pill">OPEN</span><span class="card-copy"><span class="card-name">AVIATOR</span><span class="card-studio">SPRIBE LIVE</span></span></button>
+        <button class="game-card has-art c-red" type="button" data-open-game="aviator" aria-label="Open Aviator"><img class="card-art" src="aviator-card-v2.png" alt=""><span class="lock-pill open-pill">OPEN</span><span class="card-copy"><span class="card-name">AVIATOR</span><span class="card-studio">SPRIBE LIVE</span></span></button>
         <button class="game-card locked c-cyan" type="button" data-locked-game><span class="card-icon">💣</span><span class="lock-pill">🔒 SOON</span><span class="card-copy"><span class="card-name">MINES</span><span class="card-studio">COMING SOON</span></span></button>
         <button class="game-card locked c-blue" type="button" data-locked-game><span class="card-icon">💎</span><span class="lock-pill">🔒 SOON</span><span class="card-copy"><span class="card-name">MINES 2</span><span class="card-studio">COMING SOON</span></span></button>
         <button class="game-card locked c-navy" type="button" data-locked-game><span class="card-icon">♠</span><span class="lock-pill">🔒 SOON</span><span class="card-copy"><span class="card-name">BLACKJACK</span><span class="card-studio">COMING SOON</span></span></button>
@@ -581,8 +581,8 @@
   const oledThemeToggle = document.getElementById("oledThemeToggle");
   const oledColorInput = document.getElementById("oledColor");
   const themeColorMeta = document.getElementById("themeColorMeta");
-  const OLED_THEME_KEY = "luckyjet_oled_theme";
-  const OLED_COLOR_KEY = "luckyjet_oled_color";
+  const OLED_THEME_KEY = "lumorax_theme_enabled";
+  const OLED_COLOR_KEY = "lumorax_theme_color";
 
   const fmt2 = n => (n < 10 ? "0" + n : "" + n);
   const hhmm = d => fmt2(d.getHours()) + ":" + fmt2(d.getMinutes());
