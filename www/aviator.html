@@ -354,6 +354,7 @@
   const aviatorMode = true;
   let aviatorRoundsReceived = 0;
   let aviatorBridgeReady = false;
+  let lastAviatorMessageAt = 0;
 
   const multEl  = document.getElementById("multiplier");
   const circle  = document.getElementById("circle");
@@ -608,31 +609,58 @@
     return true;
   }
 
+  function aviatorSnapshotDelta(rawValues){
+    const values = (Array.isArray(rawValues) ? rawValues : [])
+      .map(normalizeCoef).filter(value => value != null).slice(-120);
+    if(!values.length) return [];
+    if(!coefs.length) return values;
+
+    const maxAnchor = Math.min(12, coefs.length, values.length);
+    for(let length = maxAnchor; length >= 2; length -= 1){
+      const anchor = coefs.slice(-length);
+      for(let start = values.length - length; start >= 0; start -= 1){
+        let match = true;
+        for(let index = 0; index < length; index += 1){
+          if(values[start + index] !== anchor[index]){ match = false; break; }
+        }
+        if(match) return values.slice(start + length);
+      }
+    }
+
+    const newest = values[values.length - 1];
+    return coefs[coefs.length - 1] === newest ? [] : [newest];
+  }
+
   function acceptAviatorMessage(data){
     if(!data || data.source !== "lumorax-aviator") return false;
+    lastAviatorMessageAt = Date.now();
 
-    if(data.type === "bridge-ready"){
+    if(data.type === "bridge-reconnecting"){
+      aviatorBridgeReady = false;
+      setApiState("RECONNECTING", "ko");
+      return true;
+    }
+
+    if(data.type === "bridge-ready" || data.type === "heartbeat"){
       aviatorBridgeReady = true;
-      setApiState("BRIDGE READY", "ok");
+      setApiState("AVIATOR " + aviatorRoundsReceived + " LIVE", "ok");
       return true;
     }
 
     if(data.type === "history"){
-      const values = Array.isArray(data.values) ? data.values : [];
+      const values = aviatorSnapshotDelta(data.values);
       let added = 0;
-      values.slice(-120).forEach((value, index) => {
-        const coef = normalizeCoef(value);
-        if(coef == null) return;
-        const key = "aviator:history:" + String(data.batchId || "initial") + ":" + index;
-        if(addCoef({ coef, key })) added += 1;
+      values.forEach((coef, index) => {
+        const key = "aviator:sync:" + String(data.ts || data.batchId || Date.now()) + ":" + index;
+        if(addCoef({coef, key})) added += 1;
       });
       if(added){
         aviatorRoundsReceived += added;
         setButtons(last5.length >= 5);
-        setApiState("AVIATOR " + aviatorRoundsReceived, "ok");
-        setStatus("История Aviator получена: " + added + " раундов. Жду новые коэффициенты.", "ok");
-        writeAnalysis("Подключение к Aviator работает. Начальная история загружена от старых раундов к новым.", "ok", analyze());
+        setStatus("Aviator synchronized: " + added + " new rounds received.", "ok");
+        writeAnalysis("Live bridge recovered and synchronized without duplicates.", "ok", analyze());
       }
+      setApiState("AVIATOR " + aviatorRoundsReceived + " LIVE", "ok");
       return true;
     }
 
@@ -640,11 +668,12 @@
     const coef = normalizeCoef(data.coef);
     if(coef == null) return false;
     const key = "aviator:" + String(data.roundKey || (Date.now() + ":" + coef.toFixed(2)));
-    if(!addCoef({ coef, key })) return true;
+    if(!addCoef({coef, key})) return true;
 
+    aviatorBridgeReady = true;
     aviatorRoundsReceived += 1;
     setButtons(last5.length >= 5);
-    setApiState("AVIATOR " + aviatorRoundsReceived, "ok");
+    setApiState("AVIATOR " + aviatorRoundsReceived + " LIVE", "ok");
     onNewCoef(coef);
     return true;
   }
@@ -653,7 +682,6 @@
     if(event.source !== window) return;
     acceptAviatorMessage(event.data);
   });
-
   function rememberGrandEvent(coef){
     if(coef < 10) return;
     const d = new Date();
@@ -1356,6 +1384,12 @@
   }
   if(!aviatorBridgeReady) setApiState(restoredState ? "AVIATOR RESTORED" : "WAIT BRIDGE", restoredState ? "ok" : "");
   mainTimer = setInterval(mainTick, 1000);
+  setInterval(() => {
+    if(lastAviatorMessageAt && Date.now() - lastAviatorMessageAt > 15000){
+      aviatorBridgeReady = false;
+      setApiState("RECONNECTING", "ko");
+    }
+  }, 5000);
 
 </script>
 

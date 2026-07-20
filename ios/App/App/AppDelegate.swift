@@ -11,8 +11,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WKScriptMessageHandler, W
     private var gameWebView: WKWebView?
     private var gameContainer: UIView?
     private var bridgeConfigured = false
-    private var analyzerHasState = false
-    private var latestHistory: [String: Any]?
+    private var bridgeWatchdog: Timer?
+    private var lastBridgeMessageAt: TimeInterval = 0
+    private var bridgeWasActive = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         DispatchQueue.main.async { [weak self] in self?.configureAviatorBridge() }
@@ -49,6 +50,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WKScriptMessageHandler, W
           let previousValues = [];
           let sequence = 0;
           let scheduled = false;
+          let observer = null;
+          let observedRoot = null;
+          let emptyScans = 0;
+          let lastHistoryAt = 0;
+          let lastHeartbeatAt = 0;
 
           function send(message){
             try {
@@ -66,17 +72,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WKScriptMessageHandler, W
             return Number.isFinite(value) && value >= 1 ? Number(value.toFixed(2)) : null;
           }
 
+          function roots(){
+            const all = [document];
+            for(let index = 0; index < all.length; index += 1){
+              all[index].querySelectorAll("*").forEach(node => {
+                if(node.shadowRoot && !all.includes(node.shadowRoot)) all.push(node.shadowRoot);
+              });
+            }
+            return all;
+          }
+
           function currentValues(){
-            return Array.from(document.querySelectorAll(".payouts-wrapper .payout"))
-              .map(node => normalize(node.textContent))
-              .filter(value => value != null)
-              .slice(0, 120);
+            const selectors = [
+              ".payouts-wrapper .payout",
+              "[class*='payouts-wrapper'] [class~='payout']",
+              "[class*='payouts'] [class*='payout']"
+            ];
+            for(const root of roots()){
+              for(const selector of selectors){
+                const values = Array.from(root.querySelectorAll(selector))
+                  .map(node => normalize(node.textContent))
+                  .filter(value => value != null)
+                  .slice(0, 120);
+                if(values.length >= 2) return values;
+              }
+            }
+            return [];
+          }
+
+          function sendHistory(reason = "periodic"){
+            const values = currentValues();
+            if(!values.length) return false;
+            lastHistoryAt = Date.now();
+            send({
+              type:"history",
+              values:values.slice().reverse(),
+              batchId:"ios-spribe:" + lastHistoryAt,
+              reason,
+              ts:lastHistoryAt
+            });
+            return true;
           }
 
           function sameAtShift(current, previous, shift){
             const overlap = Math.min(previous.length, current.length - shift);
-            const minimum = Math.min(3, previous.length);
-            if(overlap < minimum) return false;
+            if(overlap < Math.min(3, previous.length)) return false;
             for(let index = 0; index < overlap; index += 1){
               if(current[shift + index] !== previous[index]) return false;
             }
@@ -95,14 +135,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WKScriptMessageHandler, W
           function scan(){
             scheduled = false;
             const values = currentValues();
-            if(!values.length) return;
+            if(!values.length){
+              emptyScans += 1;
+              if(emptyScans >= 10) previousValues = [];
+              return;
+            }
+            emptyScans = 0;
 
             if(!previousValues.length){
-              send({
-                type:"history",
-                values:values.slice().reverse(),
-                batchId:"ios-spribe:" + Date.now()
-              });
+              sendHistory("attached");
               previousValues = values;
               return;
             }
@@ -111,7 +152,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WKScriptMessageHandler, W
                values.every((value, index) => value === previousValues[index])) return;
 
             let newCount = -1;
-            const maxShift = Math.min(20, values.length - 1);
+            const maxShift = Math.min(40, values.length - 1);
             for(let shift = 0; shift <= maxShift; shift += 1){
               if(sameAtShift(values, previousValues, shift)){
                 newCount = shift;
@@ -123,6 +164,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WKScriptMessageHandler, W
               values.slice(0, newCount).reverse().forEach(emit);
             }else if(newCount < 0 && values[0] !== previousValues[0]){
               emit(values[0]);
+              sendHistory("realigned");
             }
             previousValues = values;
           }
@@ -133,13 +175,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WKScriptMessageHandler, W
             setTimeout(scan, 80);
           }
 
-          new MutationObserver(schedule).observe(document.documentElement, {
-            childList:true,
-            subtree:true,
-            characterData:true
-          });
+          function ensureObserver(){
+            if(observedRoot === document.documentElement && observer) return;
+            if(observer) observer.disconnect();
+            observedRoot = document.documentElement;
+            if(!observedRoot) return;
+            observer = new MutationObserver(schedule);
+            observer.observe(observedRoot, { childList:true, subtree:true, characterData:true });
+          }
+
+          function keepAlive(){
+            ensureObserver();
+            schedule();
+            const now = Date.now();
+            if(now - lastHeartbeatAt >= 5000){
+              lastHeartbeatAt = now;
+              send({ type:"heartbeat", ts:now, url:location.href });
+            }
+            if(now - lastHistoryAt >= 15000) sendHistory("periodic");
+          }
+
+          window.addEventListener("pageshow", () => { previousValues = []; keepAlive(); });
+          document.addEventListener("visibilitychange", () => { if(!document.hidden) keepAlive(); });
+          ensureObserver();
           scan();
-          setInterval(schedule, 1000);
+          setInterval(keepAlive, 1000);
         })();
         """#
     }
@@ -149,7 +209,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WKScriptMessageHandler, W
 
         if message.name == "aviatorControl" {
             let action = body["action"] as? String ?? ""
-            if let hasState = body["hasState"] as? Bool { analyzerHasState = hasState }
             if action == "open" { openAviator() }
             if action == "close" { closeAviator() }
             return
@@ -157,17 +216,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WKScriptMessageHandler, W
 
         guard message.name == "aviatorBridge",
               body["source"] as? String == "lumorax-aviator",
-              let type = body["type"] as? String else { return }
+              let type = body["type"] as? String,
+              ["history", "coef", "heartbeat"].contains(type) else { return }
 
-        if type == "history" {
-            latestHistory = body
-            if !analyzerHasState {
-                relayToAnalyzer(body)
-                analyzerHasState = true
-            }
-        } else if type == "coef" {
-            relayToAnalyzer(body)
-        }
+        lastBridgeMessageAt = Date().timeIntervalSince1970
+        bridgeWasActive = true
+        relayToAnalyzer(body)
     }
 
     private func relayToAnalyzer(_ payload: [String: Any]) {
@@ -175,7 +229,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WKScriptMessageHandler, W
               let data = try? JSONSerialization.data(withJSONObject: payload),
               let json = String(data: data, encoding: .utf8) else { return }
         DispatchQueue.main.async { [weak self] in
-            self?.analyzerWebView?.evaluateJavaScript("window.postMessage(\(json), '*');", completionHandler: nil)
+            self?.analyzerWebView?.evaluateJavaScript("window.postMessage((json), '*');", completionHandler: nil)
+        }
+    }
+
+    private func relayBridgeStatus(_ type: String) {
+        relayToAnalyzer([
+            "source": "lumorax-aviator",
+            "type": type,
+            "ts": Int(Date().timeIntervalSince1970 * 1000)
+        ])
+    }
+
+    private func startBridgeWatchdog() {
+        bridgeWatchdog?.invalidate()
+        let timer = Timer(timeInterval: 5, repeats: true) { [weak self] _ in
+            self?.checkBridgeHealth()
+        }
+        bridgeWatchdog = timer
+        RunLoop.main.add(timer, forMode: .common)
+    }
+
+    private func checkBridgeHealth() {
+        guard UIApplication.shared.applicationState == .active,
+              let webView = gameWebView else { return }
+
+        webView.evaluateJavaScript("document.readyState") { [weak webView] _, error in
+            if error != nil { webView?.reload() }
+        }
+
+        guard bridgeWasActive else { return }
+        let silence = Date().timeIntervalSince1970 - lastBridgeMessageAt
+        if silence > 45 {
+            bridgeWasActive = false
+            relayBridgeStatus("bridge-reconnecting")
+            webView.reload()
         }
     }
 
@@ -220,6 +308,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WKScriptMessageHandler, W
         root.view.addSubview(container)
         gameContainer = container
         gameWebView = webView
+        lastBridgeMessageAt = 0
+        bridgeWasActive = false
+        startBridgeWatchdog()
 
         if let url = URL(string: "https://1w-ftend.life/casino/play/v_spribe:aviator") {
             webView.load(URLRequest(url: url))
@@ -227,12 +318,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WKScriptMessageHandler, W
     }
 
     @objc private func closeAviator() {
+        bridgeWatchdog?.invalidate()
+        bridgeWatchdog = nil
         gameWebView?.stopLoading()
         gameWebView?.configuration.userContentController.removeScriptMessageHandler(forName: "aviatorBridge")
         gameWebView?.removeFromSuperview()
         gameContainer?.removeFromSuperview()
         gameWebView = nil
         gameContainer = nil
+        bridgeWasActive = false
+        lastBridgeMessageAt = 0
     }
 
     func webView(_ webView: WKWebView,
@@ -245,12 +340,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WKScriptMessageHandler, W
         return nil
     }
 
+    func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
+        guard webView === gameWebView else { return }
+        bridgeWasActive = false
+        relayBridgeStatus("bridge-reconnecting")
+        webView.reload()
+    }
+
     func applicationWillResignActive(_ application: UIApplication) {
         application.isIdleTimerDisabled = false
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {}
-    func applicationWillEnterForeground(_ application: UIApplication) {}
+
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { [weak self] in
+            guard let self, let webView = self.gameWebView else { return }
+            webView.evaluateJavaScript("document.readyState") { _, error in
+                if error != nil { webView.reload() }
+            }
+        }
+    }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         application.isIdleTimerDisabled = true
