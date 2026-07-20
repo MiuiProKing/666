@@ -20,21 +20,7 @@ jobs:
           set -euo pipefail
           cd "$GITHUB_WORKSPACE/codex-neonbee"
           SDK="$(xcrun --sdk iphoneos --show-sdk-path)"
-          xcrun --sdk iphoneos clang \
-            -arch arm64 \
-            -dynamiclib \
-            -fobjc-arc \
-            -fblocks \
-            -miphoneos-version-min=15.0 \
-            -isysroot "$SDK" \
-            NeonBee.m \
-            -framework Foundation \
-            -framework UIKit \
-            -framework QuartzCore \
-            -framework CoreGraphics \
-            -install_name '@loader_path/NeonBee.dylib' \
-            -Wl,-dead_strip \
-            -o NeonBee.dylib
+          xcrun --sdk iphoneos clang             -arch arm64             -dynamiclib             -fobjc-arc             -fblocks             -miphoneos-version-min=15.0             -isysroot "$SDK"             NeonBee.m             -framework Foundation             -framework UIKit             -framework QuartzCore             -framework CoreGraphics             -framework AVFoundation             -install_name '@loader_path/NeonBee.dylib'             -Wl,-dead_strip             -o NeonBee.dylib
           file NeonBee.dylib
           otool -L NeonBee.dylib
       - name: Upload overlay
