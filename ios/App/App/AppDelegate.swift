@@ -209,13 +209,115 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WKScriptMessageHandler, W
         """#
     }
 
+    private var rocketQueenReaderScript: String {
+        return #"""
+        (() => {
+          "use strict";
+          if (window.__LUMORAX_IOS_ROCKETQUEEN_BRIDGE__) return;
+          window.__LUMORAX_IOS_ROCKETQUEEN_BRIDGE__ = true;
+          let lastSignature = "";
+          let lastHeartbeat = 0;
+          let scheduled = false;
+          function send(message) {
+            try { window.webkit.messageHandlers.aviatorBridge.postMessage({ source:"lumorax-aviator", game:"rocketqueen", ...message }); } catch (_error) {}
+          }
+          function coefficient(value) {
+            const text = String(value == null ? "" : value).replace(/\s+/g, "").replace(",", ".");
+            const match = text.match(/^(?:x)?(\d+(?:\.\d+)?)(?:x)?$/i);
+            if (!match) return null;
+            const number = Number(match[1]);
+            return Number.isFinite(number) && number >= 1 && number <= 100000 ? Number(number.toFixed(2)) : null;
+          }
+          function publish(values) {
+            const clean = values.map(coefficient).filter(value => value !== null).slice(0, 80);
+            if (clean.length < 3) return;
+            const signature = clean.join("|");
+            if (signature === lastSignature) return;
+            lastSignature = signature;
+            send({ type:"history", values:clean, ts:Date.now() });
+          }
+          function scanDOM() {
+            scheduled = false;
+            if (!document.documentElement) return;
+            const groups = new Map();
+            const nodes = document.querySelectorAll("span,div,button,li,p");
+            for (let index = 0; index < nodes.length && index < 4500; index += 1) {
+              const node = nodes[index];
+              if (node.children.length) continue;
+              const value = coefficient(node.textContent);
+              if (value === null) continue;
+              const rect = node.getBoundingClientRect();
+              if (!rect.width || !rect.height) continue;
+              const key = String(Math.round(rect.top / 18));
+              if (!groups.has(key)) groups.set(key, []);
+              groups.get(key).push({ left:rect.left, value });
+            }
+            let best = [];
+            for (const entries of groups.values()) {
+              if (entries.length < 3) continue;
+              entries.sort((a,b) => a.left - b.left);
+              const values = entries.map(entry => entry.value);
+              if (values.length > best.length) best = values;
+            }
+            publish(best);
+            const now = Date.now();
+            if (now - lastHeartbeat > 5000) { lastHeartbeat = now; send({ type:"heartbeat", ts:now }); }
+          }
+          function schedule() {
+            if (scheduled) return;
+            scheduled = true;
+            setTimeout(scanDOM, 120);
+          }
+          function fromPayload(payload) {
+            let object = payload;
+            try { if (typeof object === "string" && /^[\[{]/.test(object.trim())) object = JSON.parse(object); } catch (_error) { return; }
+            if (!object || typeof object !== "object") return;
+            const stack = [{ value:object, key:"", depth:0 }];
+            while (stack.length) {
+              const item = stack.pop();
+              if (item.depth > 6 || item.value == null) continue;
+              if (Array.isArray(item.value)) {
+                if (/history|result|round|multiplier|coefficient|coef|crash/i.test(item.key)) {
+                  publish(item.value.map(entry => entry && typeof entry === "object" ? (entry.multiplier ?? entry.coefficient ?? entry.coef ?? entry.crashPoint ?? entry.result) : entry));
+                }
+                for (const value of item.value.slice(0,100)) stack.push({ value, key:item.key, depth:item.depth + 1 });
+              } else if (typeof item.value === "object") {
+                for (const [key,value] of Object.entries(item.value)) stack.push({ value, key, depth:item.depth + 1 });
+              }
+            }
+          }
+          try {
+            const NativeWebSocket = window.WebSocket;
+            if (NativeWebSocket) {
+              class ObservedWebSocket extends NativeWebSocket {
+                constructor(...args) { super(...args); this.addEventListener("message", event => fromPayload(event.data)); }
+              }
+              window.WebSocket = ObservedWebSocket;
+            }
+          } catch (_error) {}
+          const start = () => {
+            try { new MutationObserver(schedule).observe(document.documentElement, { childList:true, subtree:true, characterData:true }); } catch (_error) {}
+            schedule();
+            setInterval(schedule, 1000);
+          };
+          if (document.documentElement) start(); else document.addEventListener("DOMContentLoaded", start, { once:true });
+        })();
+        """#
+    }
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         guard let body = message.body as? [String: Any] else { return }
 
         if message.name == "aviatorControl" {
             let action = body["action"] as? String ?? ""
             if action == "open" { openAviator() }
+            if action == "open-rocketqueen" { openRocketQueen() }
             if action == "close" { closeAviator() }
+            if action == "open-game",
+               let urlText = body["url"] as? String,
+               let url = URL(string: urlText),
+               isAllowedStandaloneGameURL(url) {
+                openStandaloneGame(url: url, title: body["title"] as? String ?? "LIVE GAME")
+            }
             return
         }
 
@@ -273,7 +375,71 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WKScriptMessageHandler, W
         }
     }
 
+    private func isAllowedStandaloneGameURL(_ url: URL) -> Bool {
+        guard url.scheme?.lowercased() == "https",
+              let host = url.host?.lowercased() else { return false }
+        return host == "one-vv1220.com" || host.hasSuffix(".one-vv1220.com")
+    }
+
+    private func openStandaloneGame(url: URL, title: String) {
+        guard let root = window?.rootViewController, gameWebView == nil else { return }
+
+        let configuration = WKWebViewConfiguration()
+        configuration.websiteDataStore = .default()
+        configuration.allowsInlineMediaPlayback = true
+        configuration.mediaTypesRequiringUserActionForPlayback = []
+
+        let workspace = UIViewController()
+        workspace.modalPresentationStyle = .fullScreen
+        workspace.view.backgroundColor = .black
+
+        let game = WKWebView(frame: workspace.view.bounds, configuration: configuration)
+        game.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        game.uiDelegate = self
+        game.navigationDelegate = self
+        game.scrollView.contentInsetAdjustmentBehavior = .never
+        workspace.view.addSubview(game)
+
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: workspace.view.bounds.width, height: 58))
+        header.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
+        header.backgroundColor = UIColor.black.withAlphaComponent(0.82)
+
+        let closeButton = UIButton(type: .system)
+        closeButton.frame = CGRect(x: 10, y: 10, width: 100, height: 38)
+        closeButton.setTitle("‹ GAMES", for: .normal)
+        closeButton.setTitleColor(.white, for: .normal)
+        closeButton.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .black)
+        closeButton.backgroundColor = UIColor.white.withAlphaComponent(0.12)
+        closeButton.layer.cornerRadius = 19
+        closeButton.addTarget(self, action: #selector(closeAviator), for: .touchUpInside)
+        header.addSubview(closeButton)
+
+        let label = UILabel(frame: CGRect(x: 116, y: 10, width: max(80, workspace.view.bounds.width - 126), height: 38))
+        label.autoresizingMask = [.flexibleWidth]
+        label.text = title
+        label.textColor = .white
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 15, weight: .black)
+        header.addSubview(label)
+        workspace.view.addSubview(header)
+
+        workspaceViewController = workspace
+        workspaceNavigation = header
+        gameWebView = game
+        root.present(workspace, animated: true)
+        game.load(URLRequest(url: url))
+    }
     private func openAviator() {
+        guard let url = URL(string: "https://1w-ftend.life/casino/play/v_spribe:aviator") else { return }
+        openCrashWorkspace(gameURL: url, analyzerPage: "aviator", readerScript: aviatorReaderScript, injectionTime: .atDocumentEnd)
+    }
+
+    private func openRocketQueen() {
+        guard let url = URL(string: "https://one-vv1220.com/casino/play/v_1wingames:rocketqueen?p=yshe") else { return }
+        openCrashWorkspace(gameURL: url, analyzerPage: "rocketqueen", readerScript: rocketQueenReaderScript, injectionTime: .atDocumentStart)
+    }
+
+    private func openCrashWorkspace(gameURL: URL, analyzerPage: String, readerScript: String, injectionTime: WKUserScriptInjectionTime) {
         guard let root = window?.rootViewController else { return }
 
         if gameWebView != nil {
@@ -298,7 +464,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WKScriptMessageHandler, W
 
         let gameContent = WKUserContentController()
         gameContent.add(self, name: "aviatorBridge")
-        gameContent.addUserScript(WKUserScript(source: aviatorReaderScript, injectionTime: .atDocumentEnd, forMainFrameOnly: false))
+        gameContent.addUserScript(WKUserScript(source: readerScript, injectionTime: injectionTime, forMainFrameOnly: false))
 
         let gameConfiguration = WKWebViewConfiguration()
         gameConfiguration.websiteDataStore = .default()
@@ -352,7 +518,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WKScriptMessageHandler, W
         installWorkspaceNavigation(in: workspace.view)
         layoutWorkspace(analyzerHeight: max(root.view.bounds.height * 1.55, 1080))
 
-        if let analyzerURL = Bundle.main.url(forResource: "aviator", withExtension: "html", subdirectory: "public") {
+        if let analyzerURL = Bundle.main.url(forResource: analyzerPage, withExtension: "html", subdirectory: "public") {
             mirror.loadFileURL(analyzerURL, allowingReadAccessTo: analyzerURL.deletingLastPathComponent())
         }
 
@@ -360,9 +526,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WKScriptMessageHandler, W
         bridgeWasActive = false
         startBridgeWatchdog()
 
-        if let url = URL(string: "https://1w-ftend.life/casino/play/v_spribe:aviator") {
-            game.load(URLRequest(url: url))
-        }
+        game.load(URLRequest(url: gameURL))
 
         root.present(workspace, animated: true) { [weak self] in
             self?.refreshAnalyzerHeight()

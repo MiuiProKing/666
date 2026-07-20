@@ -1,19 +1,7 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
-<meta name="theme-color" content="#000000" id="themeColorMeta">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="format-detection" content="telephone=no">
-<script>
-  try{
-    const oledEnabled = (localStorage.getItem("lumorax_theme_enabled") ?? localStorage.getItem("luckyjet_oled_theme")) !== "off";
-    const oledColor = localStorage.getItem("lumorax_theme_color") || localStorage.getItem("luckyjet_oled_color") || "#000000";
-    document.documentElement.style.setProperty("--oled-bg", oledColor);
-    if(oledEnabled) document.documentElement.classList.add("oled-theme");
-  }catch(_){ document.documentElement.classList.add("oled-theme"); }
-</script>
-<title>LuckyJet Analys Exact</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Rocket Queen Analys Exact</title>
 <style>
   :root{
     --primary:#367de7; --primary-dark:#2252a3;
@@ -183,147 +171,33 @@
     flex:1; background:#2a2349; color:#fff; border:1px solid rgba(255,255,255,.15);
     border-radius:8px; height:40px; padding:0 10px; font-weight:700; text-align:center;
   }
-
-  /* === IGOledTheme-inspired appearance setting === */
-  .theme-controls{display:flex;align-items:center;gap:12px;margin-top:8px}
-  .oled-switch{display:flex;align-items:center;gap:10px;flex:1;font-size:13px;font-weight:900;cursor:pointer}
-  .oled-switch input{position:absolute;opacity:0;pointer-events:none}
-  .switch-track{position:relative;width:48px;height:28px;flex:0 0 48px;border-radius:999px;background:#3d4251;border:1px solid rgba(255,255,255,.18);transition:.2s ease}
-  .switch-track::after{content:"";position:absolute;width:22px;height:22px;left:2px;top:2px;border-radius:50%;background:#fff;box-shadow:0 2px 7px rgba(0,0,0,.4);transition:.2s ease}
-  .oled-switch input:checked + .switch-track{background:#7c3aed;box-shadow:0 0 16px rgba(124,58,237,.55)}
-  .oled-switch input:checked + .switch-track::after{transform:translateX(20px)}
-  #oledColor{width:46px;height:32px;padding:2px;border:1px solid rgba(255,255,255,.25);border-radius:9px;background:#080808}
-  .theme-credit{font-size:10px;opacity:.58;margin-top:7px}
-
-  html.oled-theme{color-scheme:dark;background:var(--oled-bg,#000)}
-  html.oled-theme body,
-  html.oled-theme body.catalog-active,
-  html.oled-theme .catalog-view{background:var(--oled-bg,#000)!important;color:#fff!important}
-  html.oled-theme .catalog-title{color:#fff}
-  html.oled-theme .catalog-kicker{color:#a7a7b3}
-  html.oled-theme .icon-btn,
-  html.oled-theme .panel,
-  html.oled-theme .field,
-  html.oled-theme .cell,
-  html.oled-theme .analysis-window,
-  html.oled-theme .square,
-  html.oled-theme .panel-close,
-  html.oled-theme .btn-secondary,
-  html.oled-theme .history-tools select,
-  html.oled-theme .controls input,
-  html.oled-theme .controls select{background:var(--oled-bg,#000)!important;color:#fff!important;border-color:rgba(255,255,255,.18)!important}
-  html.oled-theme .circle{background:radial-gradient(closest-side,var(--oled-bg,#000) 0%,#080713 78%,var(--oled-bg,#000) 100%)}
-  html.oled-theme .catalog-back{background:var(--oled-bg,#000);color:#fff;border-color:rgba(255,255,255,.22)}
-  html.oled-theme .panel{box-shadow:0 18px 60px rgba(0,0,0,.9),0 0 30px rgba(124,58,237,.16)}
-  html.oled-theme .game-card{box-shadow:0 8px 22px rgba(0,0,0,.72),inset 0 0 0 1px rgba(255,255,255,.24)}
-
-  /* === Game selector inspired by the compact predictor grid === */
-  body.catalog-active{
-    display:block; background:#f2f3f7; color:#0c0d12; padding:0;
-  }
-  .catalog-view{
-    min-height:100dvh; width:100%; background:#f2f3f7;
-    padding:calc(26px + env(safe-area-inset-top)) 16px calc(30px + env(safe-area-inset-bottom));
-  }
-  .catalog-shell{width:100%;max-width:720px;margin:0 auto}
-  .catalog-kicker{font-size:11px;font-weight:900;letter-spacing:3px;color:#6b7280;margin-bottom:4px}
-  .catalog-title{
-    color:#090a0f; font-size:clamp(34px,11vw,52px); line-height:.95;
-    font-weight:1000; letter-spacing:-2px; margin:0 0 24px;
-  }
-  .game-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 16px}
-  .game-card{
-    position:relative;isolation:isolate;aspect-ratio:.84;width:100%;min-height:210px;overflow:hidden;
-    border:0;border-radius:24px;padding:0;color:#fff;cursor:pointer;
-    box-shadow:0 14px 30px rgba(0,0,0,.32),inset 0 0 0 1px rgba(255,255,255,.28);
-    transition:transform .15s ease,filter .15s ease; -webkit-tap-highlight-color:transparent;
-  }
-  .game-card:active{transform:scale(.95)}
-  .game-card::before{
-    content:"";position:absolute;inset:-20% -35% 38%;z-index:-1;
-    background:radial-gradient(circle,rgba(255,255,255,.62),rgba(255,255,255,0) 64%);
-    transform:rotate(-20deg);
-  }
-  .game-card::after{
-    content:"";position:absolute;inset:auto 0 0;height:62%;z-index:-1;
-    background:linear-gradient(0deg,rgba(0,0,0,.62),rgba(0,0,0,0));
-  }
-  .game-card.locked{filter:saturate(.88)}
-  .game-card.locked .card-icon{filter:grayscale(.1);opacity:.84}
-  .card-art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transform:scale(1.025);filter:saturate(1.08) contrast(1.04)}
-  .game-card.has-art::before,.game-card.has-art::after{z-index:1}
-  .game-card.has-art .card-copy{z-index:2}
-  .card-icon{
-    position:absolute;left:50%;top:32%;transform:translate(-50%,-50%);
-    font-size:clamp(52px,15vw,82px);line-height:1;filter:drop-shadow(0 5px 5px rgba(0,0,0,.32));
-  }
-  .card-copy{position:absolute;z-index:2;left:8px;right:8px;bottom:12px;text-align:center;text-transform:uppercase}
-  .card-name{display:block;font:1000 clamp(14px,4.4vw,22px)/.95 "Arial Black",Impact,sans-serif;letter-spacing:-.5px;text-shadow:0 3px 8px rgba(0,0,0,.9)}
-  .card-studio{display:block;margin-top:7px;font-size:8px;line-height:1;font-weight:900;letter-spacing:1.4px;opacity:.9}
-  .lock-pill{
-    position:absolute;z-index:3;left:auto;right:10px;top:10px;transform:none;
-    display:flex;align-items:center;gap:3px;white-space:nowrap;border-radius:999px;
-    padding:6px 9px;background:rgba(10,13,20,.82);font-size:9px;font-weight:1000;letter-spacing:.3px;
-    box-shadow:0 3px 8px rgba(0,0,0,.35);backdrop-filter:blur(5px);
-  }
-  .open-pill{background:#facc15;color:#201500;top:10px;font-size:9px}
-  .c-purple{background:linear-gradient(145deg,#7639f4,#f02ab7)}
-  .c-pink{background:linear-gradient(145deg,#ff4fba,#8a35f6)}
-  .c-green{background:linear-gradient(145deg,#103417,#4cd137)}
-  .c-red{background:linear-gradient(145deg,#ec1717,#710b20)}
-  .c-blue{background:linear-gradient(145deg,#168bea,#183ce1)}
-  .c-orange{background:linear-gradient(145deg,#ff9a2b,#c83916)}
-  .c-cyan{background:linear-gradient(145deg,#12cbea,#0878ad)}
-  .c-violet{background:linear-gradient(145deg,#822de8,#321477)}
-  .c-navy{background:linear-gradient(145deg,#1554a1,#071a4c)}
-  .c-lime{background:linear-gradient(145deg,#87d929,#1a7c2e)}
-  .catalog-toast{
-    position:fixed;z-index:100;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));
-    transform:translate(-50%,18px);opacity:0;pointer-events:none;white-space:nowrap;
-    background:#111827;color:#fff;border-radius:999px;padding:10px 14px;font-size:12px;font-weight:800;
-    box-shadow:0 12px 30px rgba(0,0,0,.25);transition:.22s ease;
-  }
-  .catalog-toast.show{opacity:1;transform:translate(-50%,0)}
-  .catalog-back{
-    position:fixed;z-index:15;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));
-    width:auto;height:38px;border:1px solid rgba(255,255,255,.18);border-radius:999px;
-    padding:0 13px;background:rgba(20,17,42,.88);color:#e8e7ff;font-weight:900;font-size:11px;
-    box-shadow:0 8px 20px rgba(0,0,0,.35);backdrop-filter:blur(8px);
-  }
-  @media(max-width:350px){.game-grid{gap:10px 8px}.game-card{border-radius:15px}.catalog-view{padding-left:11px;padding-right:11px}}
-</style>
+  /* Rocket Queen game-inspired skin */
+  :root{--primary:#bd2cff;--primary-dark:#ff3f91;--panel:rgba(54,17,86,.74);--panel-bd:rgba(255,151,221,.34);--chipA:#7024c4;--chipB:#d72f9f;--chipTxt:#fff7ff;--chipOk:#ff9b36;--chipOkTxt:#2c092b}
+  body{background:radial-gradient(circle at 78% 12%,rgba(255,147,55,.72) 0,rgba(255,68,150,.34) 23%,transparent 48%),radial-gradient(circle at 16% 24%,rgba(159,43,255,.75),transparent 46%),linear-gradient(155deg,#26004b 0%,#720095 46%,#e83186 100%);background-attachment:fixed;overflow-x:hidden}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 0 54%,rgba(255,201,94,.12) 54% 56%,transparent 56% 100%);filter:blur(1px)}
+  .wrap{z-index:1}
+  h1{font-size:clamp(23px,7vw,38px);font-style:italic;text-shadow:0 4px 18px rgba(50,0,72,.75)}
+  h1 .lucky{color:#fff;opacity:1} h1 .jet{color:#ffd253;text-shadow:0 0 18px rgba(255,146,43,.82)}
+  .icon-btn{background:linear-gradient(145deg,rgba(83,20,128,.95),rgba(220,38,147,.9));border-color:rgba(255,205,244,.38)}
+  .circle{background:radial-gradient(circle at 55% 56%,#24103f 0 38%,#5a147e 66%,#d73398 100%);box-shadow:0 18px 42px rgba(45,0,61,.58),inset 0 0 34px rgba(255,151,55,.45)}
+  .circle::before{content:"🚀";position:absolute;font-size:64px;opacity:.22;transform:translate(-8px,8px) rotate(-28deg);filter:drop-shadow(0 0 14px #ffad3f)}
+  .ring{border-color:rgba(255,220,166,.4)}
+  .ring-spin{background:conic-gradient(from 0deg,transparent 0%,rgba(255,211,77,.9) 20%,rgba(255,54,158,.72) 38%,transparent 58%);filter:drop-shadow(0 0 12px rgba(255,108,72,.7))}
+  .orb{background:#ffd85c;box-shadow:0 0 12px #ff7c3c}
+  #multiplier{color:#fff170;text-shadow:0 0 15px rgba(255,108,43,.82);font-size:22px}
+  .cell,.analysis-window,.field{background:linear-gradient(145deg,rgba(51,13,82,.86),rgba(119,20,125,.72));border-color:rgba(255,185,226,.3);box-shadow:0 9px 22px rgba(44,0,65,.24)}
+  button{background:linear-gradient(135deg,#9c2cff,#ff3d96);box-shadow:0 10px 24px rgba(212,41,169,.4);border-radius:13px}
+  #autoButton{background:linear-gradient(135deg,#ff386f,#a71563);border-radius:13px}
+  #autoButton.on{background:linear-gradient(135deg,#37d98a,#087d61)}
+  #grandButton{background:linear-gradient(135deg,#ffb431,#f26c2d)}
+  #trainedButton{background:linear-gradient(135deg,#7f3dff,#db36d6)}
+  #aviatorButton{background:linear-gradient(135deg,#ff8a2c,#ff3f86);box-shadow:0 10px 28px rgba(255,103,57,.46)}
+  .panel{background:linear-gradient(155deg,#2d0b4b,#6e126f);border-color:rgba(255,180,226,.28)}
+  .controls input,.controls select,.history-tools select,.btn-secondary{background:#48115f;border-color:rgba(255,184,226,.25)}
+  @keyframes glow{0%,100%{box-shadow:inset 0 0 26px rgba(255,130,60,.35),0 14px 36px rgba(43,0,62,.55)}50%{box-shadow:inset 0 0 44px rgba(255,54,153,.58),0 18px 44px rgba(43,0,62,.66)}}</style>
 <link rel="stylesheet" href="theme.css">
 <script src="theme.js"></script></head>
-<body class="catalog-active">
-  <section class="catalog-view" id="selectorView" aria-label="Game selector">
-    <div class="catalog-shell">
-      <div class="catalog-kicker">1WIN GAMES</div>
-      <h1 class="catalog-title">PREDICTORS</h1>
-      <div class="game-grid">
-        <button class="game-card has-art c-purple" type="button" data-open-game="luckyjet" aria-label="Open Lucky Jet"><img class="card-art" src="luckyjet-card-v2.png" alt=""><span class="lock-pill open-pill">OPEN</span>
-          <span class="card-copy"><span class="card-name">LUCKY JET</span><span class="card-studio">1WIN GAMES</span></span>
-        </button>
-        <button class="game-card has-art c-pink" type="button" data-open-game="rocketqueen" aria-label="Open Rocket Queen"><img class="card-art" src="rocketqueen-card.jpg" alt=""><span class="lock-pill open-pill">OPEN</span><span class="card-copy"><span class="card-name">ROCKET QUEEN</span><span class="card-studio">1WIN GAMES LIVE</span></span></button>
-        <button class="game-card locked c-green" type="button" data-locked-game><span class="card-icon">●</span><span class="lock-pill">🔒 SOON</span><span class="card-copy"><span class="card-name">CRASH</span><span class="card-studio">COMING SOON</span></span></button>
-        <button class="game-card locked c-red" type="button" data-locked-game><span class="card-icon">🚀</span><span class="lock-pill">🔒 SOON</span><span class="card-copy"><span class="card-name">ASTRONAUT</span><span class="card-studio">COMING SOON</span></span></button>
-        <button class="game-card locked c-blue" type="button" data-locked-game><span class="card-icon">🌐</span><span class="lock-pill">🔒 SOON</span><span class="card-copy"><span class="card-name">META CRASH</span><span class="card-studio">COMING SOON</span></span></button>
-        <button class="game-card locked c-orange" type="button" data-locked-game><span class="card-icon">🕶</span><span class="lock-pill">🔒 SOON</span><span class="card-copy"><span class="card-name">CRIME EMPIRE</span><span class="card-studio">COMING SOON</span></span></button>
-        <button class="game-card locked c-blue" type="button" data-locked-game><span class="card-icon">🏹</span><span class="lock-pill">🔒 SOON</span><span class="card-copy"><span class="card-name">FORTUNE CRASH</span><span class="card-studio">COMING SOON</span></span></button>
-        <button class="game-card locked c-cyan" type="button" data-locked-game><span class="card-icon">🌴</span><span class="lock-pill">🔒 SOON</span><span class="card-copy"><span class="card-name">TROPICANA</span><span class="card-studio">COMING SOON</span></span></button>
-        <button class="game-card has-art c-red" type="button" data-open-game="aviator" aria-label="Open Aviator"><img class="card-art" src="aviator-card-v2.png" alt=""><span class="lock-pill open-pill">OPEN</span><span class="card-copy"><span class="card-name">AVIATOR</span><span class="card-studio">SPRIBE LIVE</span></span></button>
-        <button class="game-card locked c-cyan" type="button" data-locked-game><span class="card-icon">💣</span><span class="lock-pill">🔒 SOON</span><span class="card-copy"><span class="card-name">MINES</span><span class="card-studio">COMING SOON</span></span></button>
-        <button class="game-card locked c-blue" type="button" data-locked-game><span class="card-icon">💎</span><span class="lock-pill">🔒 SOON</span><span class="card-copy"><span class="card-name">MINES 2</span><span class="card-studio">COMING SOON</span></span></button>
-        <button class="game-card locked c-navy" type="button" data-locked-game><span class="card-icon">♠</span><span class="lock-pill">🔒 SOON</span><span class="card-copy"><span class="card-name">BLACKJACK</span><span class="card-studio">COMING SOON</span></span></button>
-        <button class="game-card locked c-navy" type="button" data-locked-game><span class="card-icon">🎲</span><span class="lock-pill">🔒 SOON</span><span class="card-copy"><span class="card-name">DICE</span><span class="card-studio">COMING SOON</span></span></button>
-        <button class="game-card locked c-lime" type="button" data-locked-game><span class="card-icon">⚽</span><span class="lock-pill">🔒 SOON</span><span class="card-copy"><span class="card-name">PENALTY</span><span class="card-studio">COMING SOON</span></span></button>
-        <button class="game-card locked c-violet" type="button" data-locked-game><span class="card-icon">🏎</span><span class="lock-pill">🔒 SOON</span><span class="card-copy"><span class="card-name">SPEED N CASH</span><span class="card-studio">COMING SOON</span></span></button>
-        <button class="game-card locked c-violet" type="button" data-locked-game><span class="card-icon">🧪</span><span class="lock-pill">🔒 SOON</span><span class="card-copy"><span class="card-name">ROCKETX</span><span class="card-studio">COMING SOON</span></span></button>
-      </div>
-    </div>
-    <div class="catalog-toast" id="catalogToast" role="status">🔒 Эта игра пока в разработке</div>
-  </section>
-
-  <section id="analyzerView" hidden>
+<body>
   <div class="wrap">
     <!-- Top bar -->
     <div class="topbar">
@@ -338,7 +212,7 @@
         </svg>
       </button>
 
-      <h1><span class="lucky">LUCKY</span><span class="jet">JET</span></h1>
+      <h1><span class="lucky">ROCKET</span> <span class="jet">QUEEN</span></h1>
 
       <!-- History button (right) -->
       <button class="icon-btn" id="openHistory" aria-label="History">
@@ -381,6 +255,7 @@
     <button id="autoButton">AUTO</button>
     <button id="grandButton" class="btn-grand">GRAND 10X</button>
     <button id="trainedButton" class="btn-trained">TRAINED V3</button>
+    <button id="aviatorButton">OPEN ROCKET QUEEN</button>
     <button id="exportCsv">EXPORT CSV</button>
 
     <div id="verifyStatus" class="status"></div>
@@ -440,19 +315,6 @@
         <div class="label">Fixed logic</div>
         <div class="hint">PRO / balance / 2.00x-5.00x. Starts fresh and waits for signals like analys.py.</div>
       </div>
-      <div class="field">
-        <div class="label">OLED THEME</div>
-        <div class="theme-controls">
-          <label class="oled-switch" for="oledThemeToggle">
-            <input type="checkbox" id="oledThemeToggle">
-            <span class="switch-track" aria-hidden="true"></span>
-            <span>Полностью чёрная тема</span>
-          </label>
-          <input type="color" id="oledColor" value="#000000" aria-label="Цвет темы">
-        </div>
-        <div class="hint">Включите чистый OLED-чёрный фон или выберите собственный цвет.</div>
-        <div class="theme-credit">Идея оформления: IGOledTheme by DeNsor</div>
-      </div>
       <div class="actions">
         <button class="btn-secondary danger" id="resetStats">Reset stats</button>
         <button class="btn-secondary danger" id="resetHistory">Reset round history</button>
@@ -460,41 +322,8 @@
       <div class="hint" id="settingsMsg"></div>
     </div>
   </div>
-  <button class="catalog-back" id="backToCatalog" type="button">‹ GAMES</button>
-  </section>
 
 <script>
-  const selectorView = document.getElementById("selectorView");
-  const analyzerView = document.getElementById("analyzerView");
-  const catalogToast = document.getElementById("catalogToast");
-  let catalogToastTimer = null;
-
-  function openCatalog(){
-    analyzerView.hidden = true;
-    selectorView.hidden = false;
-    document.body.classList.add("catalog-active");
-    window.scrollTo(0, 0);
-  }
-
-  function openLuckyJet(){
-    selectorView.hidden = true;
-    analyzerView.hidden = false;
-    document.body.classList.remove("catalog-active");
-    window.scrollTo(0, 0);
-  }
-
-  document.querySelector('[data-open-game="luckyjet"]').addEventListener("click", openLuckyJet);
-  document.querySelector('[data-open-game="aviator"]').addEventListener("click", () => { window.location.href = "aviator.html"; });
-  document.querySelector('[data-open-game="rocketqueen"]').addEventListener("click", () => { window.location.href = "rocketqueen.html"; });
-  document.getElementById("backToCatalog").addEventListener("click", openCatalog);
-  document.querySelectorAll("[data-locked-game]").forEach(card => {
-    card.addEventListener("click", () => {
-      clearTimeout(catalogToastTimer);
-      catalogToast.classList.add("show");
-      catalogToastTimer = setTimeout(() => catalogToast.classList.remove("show"), 1800);
-    });
-  });
-
   // === Exact browser port of analys.py decision flow ===
   const apiURL = "https://crash-gateway-grm-cr.100hp.app/state";
   const headers = {
@@ -508,7 +337,7 @@
   const PAUSE_AFTER_LOSSES = 2;
   const PAUSE_SECONDS = 5 * 60;
   const SETTINGS = { mode:"PRO", goal:"balance", range:{ min:2.0, max:5.0 } };
-  const STORAGE_KEY = "luckyjet_analys_exact_v4";
+  const STORAGE_KEY = "lumorax_rocketqueen_live_v1";
   const FETCH_TIMEOUT_MS = 8000;
   const TRAINED_V3 = {
     name:"TRAINED V3",
@@ -546,6 +375,10 @@
   let entryTimer = null;
   let countdownTimer = null;
   let signalPollTimer = null;
+  const aviatorMode = true;
+  let aviatorRoundsReceived = 0;
+  let aviatorBridgeReady = false;
+  let lastAviatorMessageAt = 0;
 
   const multEl  = document.getElementById("multiplier");
   const circle  = document.getElementById("circle");
@@ -567,6 +400,7 @@
   const rate2xEl = document.getElementById("rate2x");
   const rate10xEl = document.getElementById("rate10x");
   const exportCsvBtn = document.getElementById("exportCsv");
+  const aviatorBtn = document.getElementById("aviatorButton");
 
   const openHistoryBtn = document.getElementById("openHistory");
   const closeHistoryBtn = document.getElementById("closeHistory");
@@ -579,39 +413,11 @@
   const resetStatsBtn = document.getElementById("resetStats");
   const resetHistoryBtn = document.getElementById("resetHistory");
   const settingsMsg = document.getElementById("settingsMsg");
-  const oledThemeToggle = document.getElementById("oledThemeToggle");
-  const oledColorInput = document.getElementById("oledColor");
-  const themeColorMeta = document.getElementById("themeColorMeta");
-  const OLED_THEME_KEY = "lumorax_theme_enabled";
-  const OLED_COLOR_KEY = "lumorax_theme_color";
 
   const fmt2 = n => (n < 10 ? "0" + n : "" + n);
   const hhmm = d => fmt2(d.getHours()) + ":" + fmt2(d.getMinutes());
   const clamp = (value, minimum, maximum) => Math.max(minimum, Math.min(maximum, value));
   const avg = arr => arr.reduce((sum, value) => sum + value, 0) / Math.max(1, arr.length);
-
-  function normalizeThemeColor(value){
-    return /^#[0-9a-f]{6}$/i.test(value || "") ? value : "#000000";
-  }
-
-  function applyOledTheme(enabled, color, persist){
-    const safeColor = normalizeThemeColor(color);
-    document.documentElement.classList.toggle("oled-theme", !!enabled);
-    document.documentElement.style.setProperty("--oled-bg", safeColor);
-    if(themeColorMeta) themeColorMeta.setAttribute("content", enabled ? safeColor : "#0f1525");
-    if(oledThemeToggle) oledThemeToggle.checked = !!enabled;
-    if(oledColorInput) oledColorInput.value = safeColor;
-    if(persist){
-      try{
-        localStorage.setItem(OLED_THEME_KEY, enabled ? "on" : "off");
-        localStorage.setItem(OLED_COLOR_KEY, safeColor);
-      }catch(e){ console.warn("Theme save error", e); }
-    }
-  }
-
-  const initialOledEnabled = document.documentElement.classList.contains("oled-theme");
-  const initialOledColor = normalizeThemeColor(getComputedStyle(document.documentElement).getPropertyValue("--oled-bg").trim());
-  applyOledTheme(initialOledEnabled, initialOledColor, false);
 
   function normalizeCoef(value){
     if(value == null || value === "") return null;
@@ -786,6 +592,7 @@
   }
 
   async function getCoef(){
+    if(aviatorMode) return null;
     const controller = typeof AbortController !== "undefined" ? new AbortController() : null;
     const timeoutId = controller ? setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS) : null;
     try{
@@ -826,6 +633,79 @@
     return true;
   }
 
+  function aviatorSnapshotDelta(rawValues){
+    const values = (Array.isArray(rawValues) ? rawValues : [])
+      .map(normalizeCoef).filter(value => value != null).slice(-120);
+    if(!values.length) return [];
+    if(!coefs.length) return values;
+
+    const maxAnchor = Math.min(12, coefs.length, values.length);
+    for(let length = maxAnchor; length >= 2; length -= 1){
+      const anchor = coefs.slice(-length);
+      for(let start = values.length - length; start >= 0; start -= 1){
+        let match = true;
+        for(let index = 0; index < length; index += 1){
+          if(values[start + index] !== anchor[index]){ match = false; break; }
+        }
+        if(match) return values.slice(start + length);
+      }
+    }
+
+    const newest = values[values.length - 1];
+    return coefs[coefs.length - 1] === newest ? [] : [newest];
+  }
+
+  function acceptAviatorMessage(data){
+    if(!data || data.source !== "lumorax-aviator") return false;
+    lastAviatorMessageAt = Date.now();
+
+    if(data.type === "bridge-reconnecting"){
+      aviatorBridgeReady = false;
+      setApiState("RECONNECTING", "ko");
+      return true;
+    }
+
+    if(data.type === "bridge-ready" || data.type === "heartbeat"){
+      aviatorBridgeReady = true;
+      setApiState("ROCKET QUEEN " + aviatorRoundsReceived + " LIVE", "ok");
+      return true;
+    }
+
+    if(data.type === "history"){
+      const values = aviatorSnapshotDelta(data.values);
+      let added = 0;
+      values.forEach((coef, index) => {
+        const key = "aviator:sync:" + String(data.ts || data.batchId || Date.now()) + ":" + index;
+        if(addCoef({coef, key})) added += 1;
+      });
+      if(added){
+        aviatorRoundsReceived += added;
+        setButtons(last5.length >= 5);
+        setStatus("Rocket Queen synchronized: " + added + " new rounds received.", "ok");
+        writeAnalysis("Live bridge recovered and synchronized without duplicates.", "ok", analyze());
+      }
+      setApiState("ROCKET QUEEN " + aviatorRoundsReceived + " LIVE", "ok");
+      return true;
+    }
+
+    if(data.type !== "coef") return false;
+    const coef = normalizeCoef(data.coef);
+    if(coef == null) return false;
+    const key = "aviator:" + String(data.roundKey || (Date.now() + ":" + coef.toFixed(2)));
+    if(!addCoef({coef, key})) return true;
+
+    aviatorBridgeReady = true;
+    aviatorRoundsReceived += 1;
+    setButtons(last5.length >= 5);
+    setApiState("ROCKET QUEEN " + aviatorRoundsReceived + " LIVE", "ok");
+    onNewCoef(coef);
+    return true;
+  }
+
+  window.addEventListener("message", event => {
+    if(event.source !== window) return;
+    acceptAviatorMessage(event.data);
+  });
   function rememberGrandEvent(coef){
     if(coef < 10) return;
     const d = new Date();
@@ -1460,17 +1340,25 @@
   openHistoryBtn.addEventListener("click", () => { renderHistory(); toggle(historyPanel, true); });
   closeHistoryBtn.addEventListener("click", () => toggle(historyPanel, false));
   if(historyFilterEl) historyFilterEl.addEventListener("change", renderHistory);
+  if(aviatorBtn) aviatorBtn.addEventListener("click", () => {
+    const nativeControl = window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.aviatorControl;
+    if(nativeControl){
+      nativeControl.postMessage({ action:"open", hasState:Boolean(localStorage.getItem(STORAGE_KEY)) });
+      setStatus("Открываю Rocket Queen внутри приложения. После входа мост передаст коэффициенты.", "ok");
+      writeAnalysis("Войдите в 1win в открывшемся окне и запустите Rocket Queen. Ставки приложение не нажимает.", "ok", analyze());
+      return;
+    }
+    const gameWindow = window.open("https://one-vv1220.com/casino/play/v_1wingames:rocketqueen?p=yshe", "lumorax-aviator");
+    if(gameWindow){
+      setStatus("Rocket Queen открыта. Мост передаст отображённые завершённые коэффициенты.", "ok");
+      writeAnalysis("Жду коэффициенты Rocket Queen. Сигналы появятся после получения истории.", "ok", analyze());
+    }else{
+      setStatus("Не удалось открыть Rocket Queen.", "ko");
+    }
+  });
   if(exportCsvBtn) exportCsvBtn.addEventListener("click", exportCsv);
   openSettingsBtn.addEventListener("click", () => toggle(settingsPanel, true));
   closeSettingsBtn.addEventListener("click", () => toggle(settingsPanel, false));
-  oledThemeToggle.addEventListener("change", () => {
-    applyOledTheme(oledThemeToggle.checked, oledColorInput.value, true);
-    settingsMsg.textContent = oledThemeToggle.checked ? "OLED-тема включена." : "OLED-тема выключена.";
-  });
-  oledColorInput.addEventListener("input", () => {
-    applyOledTheme(oledThemeToggle.checked, oledColorInput.value, true);
-    settingsMsg.textContent = "Цвет темы сохранён.";
-  });
 
   resetStatsBtn.addEventListener("click", () => {
     stats = { ok:0, ko:0 };
@@ -1510,7 +1398,7 @@
   renderAnalytics();
   renderHistory();
   setButtons(last5.length >= 5);
-  setApiState(restoredState ? "RESTORED" : "WAIT", restoredState ? "ok" : "");
+  setApiState(restoredState ? "ROCKET QUEEN RESTORED" : "WAIT ROCKET QUEEN", restoredState ? "ok" : "");
   if(last5.length >= 5){
     setStatus(restoredState ? "Данные восстановлены. Кнопки активны, продолжаю мониторинг." : "Готово. Кнопки активны, жду запрос сигнала.", "");
     writeAnalysis((restoredState ? "История восстановлена из localStorage. " : "") + "Собрано " + last5.length + "/5 последних коэффициентов. Можно запрашивать сигнал.", "ok", analyze());
@@ -1518,9 +1406,31 @@
     setStatus("Сбор первых коэффициентов...", "");
     writeAnalysis("Как analys.py: сначала собираю 5 последних коэффициентов, потом активирую сигналы.", "", analyze());
   }
-  maybePoll();
+  if(!aviatorBridgeReady) setApiState(restoredState ? "ROCKET QUEEN RESTORED" : "WAIT BRIDGE", restoredState ? "ok" : "");
   mainTimer = setInterval(mainTick, 1000);
+  setInterval(() => {
+    if(lastAviatorMessageAt && Date.now() - lastAviatorMessageAt > 15000){
+      aviatorBridgeReady = false;
+      setApiState("RECONNECTING", "ko");
+    }
+  }, 5000);
 
 </script>
 
+
+<button id="iosBackToGames" type="button" style="position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:80;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:#171225;color:#fff;padding:11px 17px;font-weight:900;box-shadow:0 8px 24px rgba(0,0,0,.45)">‹ GAMES</button>
+<script>
+(function(){
+  const control = window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.aviatorControl;
+  if(control){
+    window.postMessage({source:"lumorax-aviator",type:"bridge-ready"}, "*");
+    control.postMessage({action:"ready",hasState:Boolean(localStorage.getItem("lumorax_rocketqueen_live_v1"))});
+  }
+  document.getElementById("iosBackToGames").addEventListener("click", function(){
+    if(control) control.postMessage({action:"close"});
+    window.location.href = "index.html";
+  });
+})();
+</script>
 </body></html>
+
