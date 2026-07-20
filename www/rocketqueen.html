@@ -1343,7 +1343,7 @@
   if(aviatorBtn) aviatorBtn.addEventListener("click", () => {
     const nativeControl = window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.aviatorControl;
     if(nativeControl){
-      nativeControl.postMessage({ action:"open", hasState:Boolean(localStorage.getItem(STORAGE_KEY)) });
+      nativeControl.postMessage({ action:"open-rocketqueen", hasState:Boolean(localStorage.getItem(STORAGE_KEY)) });
       setStatus("Открываю Rocket Queen внутри приложения. После входа мост передаст коэффициенты.", "ok");
       writeAnalysis("Войдите в 1win в открывшемся окне и запустите Rocket Queen. Ставки приложение не нажимает.", "ok", analyze());
       return;
