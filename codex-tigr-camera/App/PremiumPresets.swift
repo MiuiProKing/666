@@ -202,4 +202,3 @@ final class PremiumPresetStore {
 extension Float {
     func clamped(_ lower: Float, _ upper: Float) -> Float { Swift.min(upper, Swift.max(lower, self)) }
 }
-
