@@ -1,5 +1,5 @@
 name: Build Google Camera Tigr IPA
-# Tigr Camera Pro photo/video engine v3.0
+# Tigr Camera Pro iPhone 12 premium presets + PNG v4.0
 
 on:
   push:
@@ -69,10 +69,11 @@ jobs:
           rm -rf Payload
           mkdir Payload
           cp -R "$APP_PATH" "Payload/GoogleCameraTigr.app"
-          /usr/bin/zip -qry Google-Camera-Tigr-v3-Pro-unsigned.ipa Payload
+          /usr/bin/zip -qry Google-Camera-Tigr-v4-iPhone12-Premium-PNG-unsigned.ipa Payload
       - uses: actions/upload-artifact@v4
         with:
-          name: Google-Camera-Tigr-v3-Pro-unsigned-ipa
-          path: codex-tigr-camera/Google-Camera-Tigr-v3-Pro-unsigned.ipa
+          name: Google-Camera-Tigr-v4-iPhone12-Premium-PNG-unsigned-ipa
+          path: codex-tigr-camera/Google-Camera-Tigr-v4-iPhone12-Premium-PNG-unsigned.ipa
           if-no-files-found: error
           retention-days: 7
+
