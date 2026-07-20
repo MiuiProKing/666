@@ -28,6 +28,7 @@ jobs:
       - name: Build unsigned device app
         run: |
           set +e
+          mkdir -p build
           xcodebuild \
             -project LUMORAX.xcodeproj \
             -scheme LUMORAX \
