@@ -1,0 +1,4 @@
+node_modules/
+ios/App/DerivedData/
+*.xcarchive
+*.ipa
