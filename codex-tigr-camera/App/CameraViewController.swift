@@ -37,7 +37,7 @@ private enum ProcessingProfile: String, Codable, CaseIterable {
     }
 }
 
-struct ProcessingSettings: Codable {
+private struct ProcessingSettings: Codable {
     var profile: ProcessingProfile = .natural
     var frameCount = 10
     var hdrStrength: Float = 0.72
