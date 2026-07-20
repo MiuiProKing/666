@@ -16,9 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WKScriptMessageHandler, W
     private var bridgeWasActive = false
     private var workspaceScrollView: UIScrollView?
     private var workspaceNavigation: UIView?
-    private weak var analyzerOriginalSuperview: UIView?
-    private var analyzerOriginalFrame: CGRect = .zero
-    private var analyzerOriginalScrollEnabled = true
+    private var workspaceViewController: UIViewController?
+    private var workspaceAnalyzerWebView: WKWebView?
     private var analyzerSectionHeight: CGFloat = 0
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -235,10 +234,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WKScriptMessageHandler, W
               let data = try? JSONSerialization.data(withJSONObject: payload),
               let json = String(data: data, encoding: .utf8) else { return }
         DispatchQueue.main.async { [weak self] in
-            self?.analyzerWebView?.evaluateJavaScript("window.postMessage(\(json), '*');", completionHandler: nil)
+            let script = "window.postMessage(\(json), '*');"
+            self?.analyzerWebView?.evaluateJavaScript(script, completionHandler: nil)
+            self?.workspaceAnalyzerWebView?.evaluateJavaScript(script, completionHandler: nil)
         }
     }
-
     private func relayBridgeStatus(_ type: String) {
         relayToAnalyzer([
             "source": "lumorax-aviator",
@@ -274,8 +274,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WKScriptMessageHandler, W
     }
 
     private func openAviator() {
-        guard let root = window?.rootViewController,
-              let analyzer = analyzerWebView else { return }
+        guard let root = window?.rootViewController else { return }
 
         if gameWebView != nil {
             scrollToGame()
@@ -283,26 +282,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WKScriptMessageHandler, W
             return
         }
 
-        let content = WKUserContentController()
-        content.add(self, name: "aviatorBridge")
-        content.addUserScript(WKUserScript(source: aviatorReaderScript, injectionTime: .atDocumentEnd, forMainFrameOnly: false))
+        let analyzerContent = WKUserContentController()
+        analyzerContent.add(self, name: "aviatorControl")
+        let analyzerConfiguration = WKWebViewConfiguration()
+        analyzerConfiguration.websiteDataStore = .default()
+        analyzerConfiguration.userContentController = analyzerContent
 
-        let configuration = WKWebViewConfiguration()
-        configuration.websiteDataStore = .default()
-        configuration.userContentController = content
-        configuration.allowsInlineMediaPlayback = true
-        configuration.mediaTypesRequiringUserActionForPlayback = []
+        let mirror = WKWebView(frame: .zero, configuration: analyzerConfiguration)
+        mirror.autoresizingMask = [.flexibleWidth]
+        mirror.navigationDelegate = self
+        mirror.scrollView.isScrollEnabled = false
+        mirror.scrollView.contentInsetAdjustmentBehavior = .never
+        mirror.backgroundColor = .black
+        mirror.isOpaque = false
 
-        let container = UIView()
-        container.backgroundColor = .black
-        container.autoresizingMask = [.flexibleWidth]
+        let gameContent = WKUserContentController()
+        gameContent.add(self, name: "aviatorBridge")
+        gameContent.addUserScript(WKUserScript(source: aviatorReaderScript, injectionTime: .atDocumentEnd, forMainFrameOnly: false))
 
-        let webView = WKWebView(frame: .zero, configuration: configuration)
-        webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        webView.uiDelegate = self
-        webView.navigationDelegate = self
-        webView.scrollView.contentInsetAdjustmentBehavior = .never
-        container.addSubview(webView)
+        let gameConfiguration = WKWebViewConfiguration()
+        gameConfiguration.websiteDataStore = .default()
+        gameConfiguration.userContentController = gameContent
+        gameConfiguration.allowsInlineMediaPlayback = true
+        gameConfiguration.mediaTypesRequiringUserActionForPlayback = []
+
+        let gameSection = UIView()
+        gameSection.backgroundColor = .black
+        gameSection.autoresizingMask = [.flexibleWidth]
+
+        let game = WKWebView(frame: .zero, configuration: gameConfiguration)
+        game.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        game.uiDelegate = self
+        game.navigationDelegate = self
+        game.scrollView.contentInsetAdjustmentBehavior = .never
+        gameSection.addSubview(game)
 
         let upButton = UIButton(type: .system)
         upButton.setTitle("↑ ANALYZER", for: .normal)
@@ -315,73 +328,77 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WKScriptMessageHandler, W
         upButton.frame = CGRect(x: 12, y: 12, width: 118, height: 36)
         upButton.autoresizingMask = [.flexibleRightMargin, .flexibleBottomMargin]
         upButton.addTarget(self, action: #selector(scrollToAnalyzer), for: .touchUpInside)
-        container.addSubview(upButton)
+        gameSection.addSubview(upButton)
 
-        let scrollView = UIScrollView(frame: root.view.bounds)
+        let workspace = UIViewController()
+        workspace.modalPresentationStyle = .fullScreen
+        workspace.view.backgroundColor = .black
+
+        let scrollView = UIScrollView(frame: workspace.view.bounds)
         scrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         scrollView.backgroundColor = .black
         scrollView.alwaysBounceVertical = true
         scrollView.showsVerticalScrollIndicator = true
         scrollView.contentInsetAdjustmentBehavior = .never
+        scrollView.addSubview(mirror)
+        scrollView.addSubview(gameSection)
+        workspace.view.addSubview(scrollView)
 
-        analyzerOriginalSuperview = analyzer.superview
-        analyzerOriginalFrame = analyzer.frame
-        analyzerOriginalScrollEnabled = analyzer.scrollView.isScrollEnabled
-        analyzer.removeFromSuperview()
-        analyzer.translatesAutoresizingMaskIntoConstraints = true
-        analyzer.autoresizingMask = [.flexibleWidth]
-        analyzer.scrollView.isScrollEnabled = false
-
-        scrollView.addSubview(analyzer)
-        scrollView.addSubview(container)
-        root.view.addSubview(scrollView)
-
+        workspaceViewController = workspace
+        workspaceAnalyzerWebView = mirror
         workspaceScrollView = scrollView
-        gameContainer = container
-        gameWebView = webView
-        installWorkspaceNavigation(in: root.view)
+        gameContainer = gameSection
+        gameWebView = game
+        installWorkspaceNavigation(in: workspace.view)
         layoutWorkspace(analyzerHeight: max(root.view.bounds.height * 1.55, 1080))
-        refreshAnalyzerHeight()
+
+        if let analyzerURL = Bundle.main.url(forResource: "aviator", withExtension: "html", subdirectory: "public") {
+            mirror.loadFileURL(analyzerURL, allowingReadAccessTo: analyzerURL.deletingLastPathComponent())
+        }
 
         lastBridgeMessageAt = 0
         bridgeWasActive = false
         startBridgeWatchdog()
 
         if let url = URL(string: "https://1w-ftend.life/casino/play/v_spribe:aviator") {
-            webView.load(URLRequest(url: url))
+            game.load(URLRequest(url: url))
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) { [weak self] in
-            self?.scrollToGame()
+
+        root.present(workspace, animated: true) { [weak self] in
+            self?.refreshAnalyzerHeight()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) { [weak self] in
+                self?.scrollToGame()
+            }
         }
     }
 
     private func refreshAnalyzerHeight() {
-        guard let analyzer = analyzerWebView else { return }
+        guard let analyzer = workspaceAnalyzerWebView else { return }
         let script = "Math.max(document.documentElement.scrollHeight || 0, document.body ? document.body.scrollHeight : 0)"
         analyzer.evaluateJavaScript(script) { [weak self] result, _ in
             guard let self else { return }
             let measured = (result as? NSNumber)?.doubleValue ?? 0
-            let minimum = self.window?.rootViewController?.view.bounds.height ?? 800
+            let minimum = self.workspaceViewController?.view.bounds.height ?? 800
             self.layoutWorkspace(analyzerHeight: max(CGFloat(measured), minimum))
         }
     }
 
     private func layoutWorkspace(analyzerHeight: CGFloat) {
-        guard let root = window?.rootViewController,
+        guard let workspace = workspaceViewController,
               let scrollView = workspaceScrollView,
-              let analyzer = analyzerWebView,
+              let analyzer = workspaceAnalyzerWebView,
               let container = gameContainer,
               let webView = gameWebView else { return }
 
         let width = scrollView.bounds.width
-        analyzerSectionHeight = max(analyzerHeight, root.view.bounds.height)
+        analyzerSectionHeight = max(analyzerHeight, workspace.view.bounds.height)
         analyzer.frame = CGRect(x: 0, y: 0, width: width, height: analyzerSectionHeight)
 
         let gap: CGFloat = 16
-        let gameHeight = max(root.view.bounds.height * 1.08, 780)
+        let gameHeight = max(workspace.view.bounds.height * 1.08, 780)
         container.frame = CGRect(x: 0, y: analyzerSectionHeight + gap, width: width, height: gameHeight)
         webView.frame = container.bounds
-        scrollView.contentSize = CGSize(width: width, height: container.frame.maxY + root.view.safeAreaInsets.bottom + 24)
+        scrollView.contentSize = CGSize(width: width, height: container.frame.maxY + workspace.view.safeAreaInsets.bottom + 24)
     }
 
     private func installWorkspaceNavigation(in rootView: UIView) {
@@ -431,27 +448,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WKScriptMessageHandler, W
         bridgeWatchdog?.invalidate()
         bridgeWatchdog = nil
 
-        let analyzer = analyzerWebView
-        analyzer?.removeFromSuperview()
         gameWebView?.stopLoading()
+        workspaceAnalyzerWebView?.stopLoading()
         gameWebView?.configuration.userContentController.removeScriptMessageHandler(forName: "aviatorBridge")
-        gameWebView?.removeFromSuperview()
+        workspaceAnalyzerWebView?.configuration.userContentController.removeScriptMessageHandler(forName: "aviatorControl")
         workspaceNavigation?.removeFromSuperview()
-        workspaceScrollView?.removeFromSuperview()
-
-        if let analyzer, let originalSuperview = analyzerOriginalSuperview {
-            analyzer.translatesAutoresizingMaskIntoConstraints = true
-            analyzer.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            analyzer.frame = originalSuperview.bounds
-            analyzer.scrollView.isScrollEnabled = analyzerOriginalScrollEnabled
-            originalSuperview.addSubview(analyzer)
-        }
+        workspaceViewController?.dismiss(animated: true)
 
         gameWebView = nil
         gameContainer = nil
         workspaceNavigation = nil
         workspaceScrollView = nil
-        analyzerOriginalSuperview = nil
+        workspaceAnalyzerWebView = nil
+        workspaceViewController = nil
         analyzerSectionHeight = 0
         bridgeWasActive = false
         lastBridgeMessageAt = 0
@@ -466,6 +475,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WKScriptMessageHandler, W
         return nil
     }
 
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        if webView === workspaceAnalyzerWebView {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) { [weak self] in self?.refreshAnalyzerHeight() }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { [weak self] in self?.refreshAnalyzerHeight() }
+            return
+        }
+        if webView === gameWebView {
+            relayBridgeStatus("bridge-ready")
+        }
+    }
     func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
         guard webView === gameWebView else { return }
         bridgeWasActive = false
